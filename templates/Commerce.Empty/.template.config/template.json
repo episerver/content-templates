@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "classifications": [
+    "EPiServer",
+    "Optimizely",
+    "Empty"
+  ],
+  "name": "Episerver Commerce empty",
+  "identity": "EPiServer.Templates.Commerce.Empty",
+  "shortName": "epi-commerce-empty",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Commerce.Empty"
+}
