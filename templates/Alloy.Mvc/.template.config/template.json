@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "classifications": [
+    "EPiServer",
+    "Optimizely",
+    "MVC"
+  ],
+  "name": "Episerver Alloy MVC",
+  "identity": "EPiServer.Templates.Alloy.Mvc",
+  "shortName": "epi-alloy-mvc",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Alloy.Mvc"
+}

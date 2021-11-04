@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <IsPackable>false</IsPackable>
+    <IncludeSymbols>false</IncludeSymbols>
+    <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Assigns SolutionDir when building individual projects -->
+    <SolutionDir Condition=" '$(SolutionDir)' == '' ">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\'))</SolutionDir>
+    <BuildDirectory>$(MSBuildThisFileDirectory)build\</BuildDirectory>
+    <ArtifactsDirectory>$(SolutionDir)artifacts\</ArtifactsDirectory>
+  </PropertyGroup>
+
+  <Import Project="$(BuildDirectory)codeanalysis.props" />
+  <Import Project="$(BuildDirectory)version.props" />
+
+  <ItemGroup>
+    <Content Include=".template.config\**" />
+  </ItemGroup>
+</Project>

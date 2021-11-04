@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageOutputPath>$(ArtifactsDirectory)</PackageOutputPath>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <NoWarn>$(NoWarn);NU5100;NU5110;NU5111;NU5123</NoWarn>
+  </PropertyGroup>
+
+  <!-- Package information -->
+  <PropertyGroup>
+    <PackageId>EPiServer.Templates</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageType>Template</PackageType>
+    <PackageTags>$(PackageTags);dotnet-new;templates;Episerver;Optimizely</PackageTags>
+    <PackageProjectUrl>https://github.com/episerver/content-templates</PackageProjectUrl>
+    <Product>Episerver Digital Experience Platform</Product>
+    <Description>Templates for the Episerver Digital Experience Cloud</Description>
+    <Company>Episerver AB</Company>
+    <Authors>Episerver AB</Authors>
+    <Copyright>© 2021 by Episerver AB. All rights reserved</Copyright>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(SolutionDir)shared\icon.png" LinkBase="shared" Visible="false" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Shared items to include in every template -->
+  <ItemGroup>
+    <Content Include="$(SolutionDir)nuget.config" LinkBase="Alloy.Mvc" PackagePath="content\Alloy.Mvc" />
+    <Content Include="$(SolutionDir).gitignore" LinkBase="Alloy.Mvc" PackagePath="content\Alloy.Mvc" />
+  </ItemGroup>
+
+  <!-- Include everything but do not compile anything when packing the templates -->
+  <ItemGroup>
+    <Compile Remove="**\*" />
+    <Content
+      Include="**\*"
+      Exclude="EPiServer.Templates.csproj;**\bin\**;**\obj\**;**\modules\**" />
+  </ItemGroup>
+
+</Project>

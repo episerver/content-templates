@@ -1,0 +1,8 @@
+{
+  "sdk": {
+    "version": "5.0.302",
+    "runtime": "clr",
+    "architecture": "x86",
+    "rollForward": "minor"
+  }
+}

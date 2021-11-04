@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <!-- Suppress some analyzer warnings in Debug compilation to make it less disruptive to the coding flow -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <!-- CS1591: Missing XML documentation -->
+    <!-- IDE0005: Using directive is unnecessary -->
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);CS1591;IDE0005</WarningsNotAsErrors>
+  </PropertyGroup>
+</Project>
