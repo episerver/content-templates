@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build_test_pack:
+    name: Build, test & pack
+    runs-on: windows-latest
+    env:
+      buildConfiguration: release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore --configuration $env:buildConfiguration
+      - name: Test
+        run: dotnet test --no-build --configuration $env:buildConfiguration
+      - name: Pack
+        run: dotnet pack --no-build --configuration $env:buildConfiguration
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packages
+          path: artifacts/packages/*.nupkg
+          retention-days: 2
+
+  publish:
+    name: Publish
+    needs: build_test_pack
+    runs-on: windows-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: packages
+      - name: Publish packages
+        # run: dotnet nuget push *.nupkg --source 'nuget.org'
+        run: echo 'Packages are not published at the moment, they can however be downloaded from the artifacts'
