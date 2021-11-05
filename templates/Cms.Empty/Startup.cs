@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using Alloy.Mvc.Extensions;
-using Alloy.Mvc.Infrastructure;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
@@ -11,7 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Alloy.Mvc
+namespace Cms.Empty
 {
     public class Startup
     {
@@ -34,7 +32,6 @@ namespace Alloy.Mvc
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
-                .AddAlloy()
                 .AddEmbeddedLocalization<Startup>();
         }
 
@@ -43,7 +40,6 @@ namespace Alloy.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMiddleware<AdministratorRegistrationPageMiddleware>();
             }
 
             app.UseStaticFiles();
@@ -54,7 +50,6 @@ namespace Alloy.Mvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
-                endpoints.MapControllerRoute("Register", "/Register", new { controller = "Register", action = "Index" });
             });
         }
     }

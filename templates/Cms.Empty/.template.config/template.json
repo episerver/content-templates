@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "classifications": [
+    "EPiServer",
+    "Optimizely",
+    "Empty"
+  ],
+  "name": "Episerver CMS empty",
+  "identity": "EPiServer.Templates.Cms.Empty",
+  "shortName": "epi-cms-empty",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Cms.Empty"
+}

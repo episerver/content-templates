@@ -17,5 +17,5 @@ namespace Alloy.Mvc.Business.Channels
             var detection = context.RequestServices.GetRequiredService<IDetection>();
             return detection.Device.Type == DeviceType.Desktop;
         }
-}
+    }
 }
