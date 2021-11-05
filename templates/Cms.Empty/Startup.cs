@@ -32,8 +32,7 @@ namespace Cms.Empty
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
-                .AddEmbeddedLocalization<Startup>()
-                .AddMvc();
+                .AddEmbeddedLocalization<Startup>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,7 +50,6 @@ namespace Cms.Empty
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
-                endpoints.MapDefaultControllerRoute();
             });
         }
     }

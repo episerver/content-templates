@@ -46,8 +46,7 @@ namespace Commerce.Empty
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCommerce()
-                .AddEmbeddedLocalization<Startup>()
-                .AddMvc();
+                .AddEmbeddedLocalization<Startup>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,7 +66,6 @@ namespace Commerce.Empty
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
-                endpoints.MapDefaultControllerRoute();
             });
         }
     }

@@ -35,8 +35,7 @@ namespace Alloy.Mvc
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
                 .AddAlloy()
-                .AddEmbeddedLocalization<Startup>()
-                .AddMvc();
+                .AddEmbeddedLocalization<Startup>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,7 +55,6 @@ namespace Alloy.Mvc
             {
                 endpoints.MapContent();
                 endpoints.MapControllerRoute("Register", "/Register", new { controller = "Register", action = "Index" });
-                endpoints.MapRazorPages();
             });
         }
     }
