@@ -7,8 +7,6 @@
   <ItemGroup>
     <PackageReference Include="EPiServer.CMS" Version="12.0.3" />
     <PackageReference Include="EPiServer.Commerce" Version="14.0.2" />
-    <PackageReference Include="EPiServer.Telemetry.UI" Version="2.0.1" />
-    <PackageReference Include="EPiServer.Telemetry.UI.Core" Version="2.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 

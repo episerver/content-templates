@@ -11,8 +11,9 @@
     </displaychannels>
     <displayoptions>
       <full>Full</full>
-      <narrow>Narrow</narrow>
       <wide>Wide</wide>
+      <half>Half</half>
+      <narrow>Narrow</narrow>
     </displayoptions>
     <resolutions>
       <androidvertical>Android vertical (480x800)</androidvertical>

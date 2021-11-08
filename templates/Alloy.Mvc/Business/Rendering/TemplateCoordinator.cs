@@ -39,17 +39,10 @@ namespace Alloy.Mvc.Business.Rendering
         /// </remarks>
         public void Register(TemplateModelCollection viewTemplateModelRegistrator)
         {
-            viewTemplateModelRegistrator.Add(typeof(JumbotronBlock), new TemplateModel
-            {
-                Name = "JumbotronBlockWide",
-                Tags = new[] { Global.ContentAreaTags.FullWidth },
-                AvailableWithoutTag = false,
-            });
-
             viewTemplateModelRegistrator.Add(typeof(TeaserBlock), new TemplateModel
             {
                 Name = "TeaserBlockWide",
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Global.ContentAreaTags.WideWidth, Global.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
             });
 
@@ -65,16 +58,9 @@ namespace Alloy.Mvc.Business.Rendering
             {
                 Name = "PageWide",
                 Inherit = true,
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Global.ContentAreaTags.WideWidth, Global.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
                 Path = PagePartialPath("PageWide.cshtml")
-            });
-
-            viewTemplateModelRegistrator.Add(typeof(ContactPage), new TemplateModel
-            {
-                Name = "ContactPageWide",
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
-                AvailableWithoutTag = false,
             });
 
             viewTemplateModelRegistrator.Add(typeof(IContentData), new TemplateModel

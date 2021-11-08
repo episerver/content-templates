@@ -1,5 +1,4 @@
 using EPiServer.DataAnnotations;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Alloy.Mvc
@@ -41,31 +40,12 @@ namespace Alloy.Mvc
         /// </summary>
         public static class ContentAreaTags
         {
-            public const string FullWidth = "span12";
-            public const string TwoThirdsWidth = "span8";
-            public const string HalfWidth = "span6";
-            public const string OneThirdWidth = "span4";
+            public const string FullWidth = "full";
+            public const string WideWidth = "wide";
+            public const string HalfWidth = "half";
+            public const string NarrowWidth = "narrow";
             public const string NoRenderer = "norenderer";
         }
-
-        /// <summary>
-        /// Main widths used in the Bootstrap HTML framework
-        /// </summary>
-        public static class ContentAreaWidths
-        {
-            public const int FullWidth = 12;
-            public const int TwoThirdsWidth = 8;
-            public const int HalfWidth = 6;
-            public const int OneThirdWidth = 4;
-        }
-
-        public static readonly Dictionary<string, int> ContentAreaTagWidths = new()
-        {
-            { ContentAreaTags.FullWidth, ContentAreaWidths.FullWidth },
-            { ContentAreaTags.TwoThirdsWidth, ContentAreaWidths.TwoThirdsWidth },
-            { ContentAreaTags.HalfWidth, ContentAreaWidths.HalfWidth },
-            { ContentAreaTags.OneThirdWidth, ContentAreaWidths.OneThirdWidth }
-        };
 
         /// <summary>
         /// Names used for UIHint attributes to map specific rendering controls to page properties
