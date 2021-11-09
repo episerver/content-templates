@@ -24,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: packages
-          path: artifacts/packages/*.nupkg
+          path: artifacts/*.nupkg
           retention-days: 2
 
   publish:

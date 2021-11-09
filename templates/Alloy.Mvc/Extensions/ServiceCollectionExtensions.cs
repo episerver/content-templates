@@ -17,8 +17,9 @@ namespace Alloy.Mvc.Extensions
             services.Configure<DisplayOptions>(displayOption =>
             {
                 displayOption.Add("full", "/displayoptions/full", Global.ContentAreaTags.FullWidth, "", "epi-icon__layout--full");
-                displayOption.Add("wide", "/displayoptions/wide", Global.ContentAreaTags.TwoThirdsWidth, "", "epi-icon__layout--two-thirds");
-                displayOption.Add("narrow", "/displayoptions/narrow", Global.ContentAreaTags.OneThirdWidth, "", "epi-icon__layout--one-third");
+                displayOption.Add("wide", "/displayoptions/wide", Global.ContentAreaTags.WideWidth, "", "epi-icon__layout--wide");
+                displayOption.Add("half", "/displayoptions/half", Global.ContentAreaTags.HalfWidth, "", "epi-icon__layout--half");
+                displayOption.Add("narrow", "/displayoptions/narrow", Global.ContentAreaTags.NarrowWidth, "", "epi-icon__layout--narrow");
             });
 
             services.Configure<MvcOptions>(options => options.Filters.Add<PageContextActionFilter>());

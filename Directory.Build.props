@@ -7,6 +7,8 @@
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+    <!-- Temporary disable this warning until EPiServer.Commerce has fixed its dependencies -->
+    <NoWarn>$(NoWarn);NU1603</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

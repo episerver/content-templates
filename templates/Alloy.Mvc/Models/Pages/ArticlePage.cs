@@ -1,3 +1,5 @@
+using EPiServer.DataAbstraction;
+
 namespace Alloy.Mvc.Models.Pages
 {
     /// <summary>
@@ -9,6 +11,11 @@ namespace Alloy.Mvc.Models.Pages
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-article.png")]
     public class ArticlePage : StandardPage
     {
+        public override void SetDefaultValues(ContentType contentType)
+        {
+            base.SetDefaultValues(contentType);
 
+            VisibleInMenu = false;
+        }
     }
 }
