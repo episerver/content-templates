@@ -52,7 +52,7 @@ namespace Alloy.Mvc.Setup.Internal
             if (await _registerAdminUserBehaviorEvaluator.IsEnabledAsync(forceBehavior: RegisterAdminUserBehaviors.SingleUser))
             {
                 _logger.LogInformation(
-                    "This is the first request to '/'´, redirecting to '{0}'.",
+                    "This is the first request to '/', redirecting to '{0}'.",
                     RegisterAdminUserDefaults.Path);
 
                 context.Response.Redirect(RegisterAdminUserDefaults.Path);
