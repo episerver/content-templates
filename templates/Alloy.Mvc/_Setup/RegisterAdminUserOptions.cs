@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using EPiServer.ServiceLocation;
 
 namespace Alloy.Mvc.Setup
 {
     /// <summary>
     /// Defines the settings for the admin user registration feature.
     /// </summary>
+    [Options(ConfigurationSection = ConfigurationSectionConstants.Cms)]
     public class RegisterAdminUserOptions
     {
         /// <summary>
