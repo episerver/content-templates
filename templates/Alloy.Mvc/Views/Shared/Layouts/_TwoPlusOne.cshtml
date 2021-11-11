@@ -18,7 +18,7 @@
         }
         else if (Model.CurrentPage is IHasRelatedContent)
         {
-            @Html.PropertyFor(x => ((IHasRelatedContent)x.CurrentPage).RelatedContentArea)
+            @Html.PropertyFor(x => ((IHasRelatedContent)x.CurrentPage).RelatedContentArea, new { Aside = true })
         }
     </div>
 </div>
