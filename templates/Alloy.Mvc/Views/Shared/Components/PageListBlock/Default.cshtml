@@ -28,7 +28,7 @@
     else
     {
         <div class="archive-item @string.Join(" ", page.GetThemeCssClassNames())">
-            <a href="@(page.LinkURL)">
+            <a href="@Url.PageLinkUrl(page)">
                 <div class="row">
                     <div class="col-4">
                         @if (page is SitePageData sitePage && sitePage.PageImage != null)
