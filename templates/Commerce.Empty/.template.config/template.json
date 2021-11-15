@@ -1,17 +1,14 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "classifications": [
-    "EPiServer",
-    "Optimizely",
-    "Empty"
-  ],
-  "name": "Episerver Commerce empty",
+  "sourceName": "Commerce.Empty",
+  "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Commerce.Empty",
+  "name": "Optimizely Commerce empty",
   "shortName": "epi-commerce-empty",
+  "description": "Empty web application with Optimizely CMS and Commerce",
   "tags": {
     "language": "C#",
     "type": "project"
-  },
-  "sourceName": "Commerce.Empty"
+  }
 }

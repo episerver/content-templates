@@ -1,17 +1,14 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "classifications": [
-    "EPiServer",
-    "Optimizely",
-    "MVC"
-  ],
-  "name": "Episerver Alloy MVC",
+  "sourceName": "Alloy.Mvc",
+  "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Alloy.Mvc",
+  "name": "Optimizely Alloy MVC",
   "shortName": "epi-alloy-mvc",
+  "description": "Example MVC application for testing and learning Optimizely CMS.",
   "tags": {
     "language": "C#",
     "type": "project"
-  },
-  "sourceName": "Alloy.Mvc"
+  }
 }
