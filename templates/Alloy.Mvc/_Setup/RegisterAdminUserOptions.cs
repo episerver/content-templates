@@ -20,7 +20,7 @@ namespace Alloy.Mvc.Setup
         /// <remarks>
         /// Default is <see cref="RegisterAdminUserBehaviors.Enabled"/> | <see cref="RegisterAdminUserBehaviors.LocalRequestsOnly"/> | <see cref="RegisterAdminUserBehaviors.SingleUser"/>
         /// </remarks>
-        public RegisterAdminUserBehaviors Behaviors { get; set; } = RegisterAdminUserBehaviors.Enabled |
+        public RegisterAdminUserBehaviors Behavior { get; set; } = RegisterAdminUserBehaviors.Enabled |
                                                                     RegisterAdminUserBehaviors.LocalRequestsOnly |
                                                                     RegisterAdminUserBehaviors.SingleUser;
     }

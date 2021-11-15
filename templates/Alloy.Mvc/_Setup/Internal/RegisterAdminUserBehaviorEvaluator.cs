@@ -58,7 +58,7 @@ namespace Alloy.Mvc.Setup.Internal
             {
                 var force = forceBehavior is not null && forceBehavior.Value.HasFlag(behavior);
 
-                return force || _registerAdminUserOptions.Behaviors.HasFlag(behavior);
+                return force || _registerAdminUserOptions.Behavior.HasFlag(behavior);
             }
 
             return enabled;

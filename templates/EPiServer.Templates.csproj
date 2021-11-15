@@ -17,8 +17,8 @@
     <PackageType>Template</PackageType>
     <PackageTags>$(PackageTags);dotnet-new;templates;Episerver;Optimizely</PackageTags>
     <PackageProjectUrl>https://github.com/episerver/content-templates</PackageProjectUrl>
-    <Product>Episerver Digital Experience Platform</Product>
-    <Description>Templates for the Episerver Digital Experience Cloud</Description>
+    <Product>Optimizely Digital Experience Platform</Product>
+    <Description>Templates for the Optimizely Digital Experience Cloud</Description>
     <Company>Episerver AB</Company>
     <Authors>Episerver AB</Authors>
     <Copyright>© 2021 by Episerver AB. All rights reserved</Copyright>

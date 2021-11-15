@@ -6,7 +6,7 @@ namespace Alloy.Mvc.Setup.Internal
 {
     /// <summary>
     /// Middleware responsible for redirecting request to the root
-    /// depending on the configured behavior in <see cref="RegisterAdminUserOptions.Behaviors"/>.
+    /// depending on the configured behavior in <see cref="RegisterAdminUserOptions.Behavior"/>.
     /// </summary>
     internal class RegisterAdminUserMiddleware
     {

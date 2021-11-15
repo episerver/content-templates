@@ -17,7 +17,7 @@ namespace Alloy.Mvc.Setup
     /// <summary>
     /// Used to register a first-time administrator user.
     /// The availability of these endpoint depends on the configuration
-    /// in <see cref="RegisterAdminUserOptions.Behaviors"/>.
+    /// in <see cref="RegisterAdminUserOptions.Behavior"/>.
     /// </summary>
     public class RegisterAdminUserController : Controller
     {
@@ -110,13 +110,13 @@ namespace Alloy.Mvc.Setup
                 {
                     _logger.LogCritical(
                         "Access to the admin user registration is enabled. Following behaviors were evaluated '{0}'.",
-                        _registerAdminUserOptions.Behaviors);
+                        _registerAdminUserOptions.Behavior);
                 }
                 else
                 {
                     _logger.LogWarning(
                         "Access to the admin user registration is enabled. Following behaviors were evaluated '{0}'.",
-                        _registerAdminUserOptions.Behaviors);
+                        _registerAdminUserOptions.Behavior);
                 }
 
                 await base.OnActionExecutionAsync(context, next);
@@ -125,7 +125,7 @@ namespace Alloy.Mvc.Setup
             {
                 _logger.LogWarning(
                     "Access to the admin user registration was denied, the feature is disabled. Following behaviors were evaluated '{0}'.",
-                    _registerAdminUserOptions.Behaviors);
+                    _registerAdminUserOptions.Behavior);
 
                 context.Result = new NotFoundResult();
 
