@@ -31,9 +31,9 @@
 
   <!-- Shared items to include in every template -->
   <ItemGroup>
-    <Content Include="$(SolutionDir)nuget.config;$(SolutionDir).gitignore" LinkBase="Alloy.Mvc" PackagePath="content\Alloy.Mvc" />
-    <Content Include="$(SolutionDir)nuget.config;$(SolutionDir).gitignore" LinkBase="Cms.Empty" PackagePath="content\Cms.Empty" />
-    <Content Include="$(SolutionDir)nuget.config;$(SolutionDir).gitignore" LinkBase="Commerce.Empty" PackagePath="content\Commerce.Empty" />
+    <Content Include="$(SolutionDir).gitignore" LinkBase="Alloy.Mvc" PackagePath="content\Alloy.Mvc" />
+    <Content Include="$(SolutionDir).gitignore" LinkBase="Cms.Empty" PackagePath="content\Cms.Empty" />
+    <Content Include="$(SolutionDir).gitignore" LinkBase="Commerce.Empty" PackagePath="content\Commerce.Empty" />
 
     <Content Include="$(SolutionDir)shared\icon.png" LinkBase="Alloy.Mvc\.template.config" PackagePath="content\Alloy.Mvc\.template.config" />
     <Content Include="$(SolutionDir)shared\icon.png" LinkBase="Cms.Empty\.template.config" PackagePath="content\Cms.Empty\.template.config" />
@@ -43,9 +43,7 @@
   <!-- Include everything but do not compile anything when packing the templates -->
   <ItemGroup>
     <Compile Remove="**\*" />
-    <Content
-      Include="**\*"
-      Exclude="EPiServer.Templates.csproj;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
+    <Content Include="**\*"
+             Exclude="EPiServer.Templates.csproj;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
   </ItemGroup>
-
 </Project>
