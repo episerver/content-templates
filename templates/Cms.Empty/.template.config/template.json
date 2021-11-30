@@ -30,13 +30,15 @@
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",
+      "displayName": "Enable Docker support",
       "description": "Enable Docker support"
     },
     "saPassword": {
       "type": "parameter",
       "datatype": "string",
       "defaultValue": "Qwerty12345!",
-      "description": "Password for the SA database account",
+      "displayName": "Password SA database account",
+      "description": "The password the SA database account should have",
       "replaces": "Qwerty12345!"
     }
   }

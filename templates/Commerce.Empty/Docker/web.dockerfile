@@ -14,4 +14,4 @@ EXPOSE 443
 EXPOSE 5000
 EXPOSE 5001
 
-ENTRYPOINT dotnet watch run --no-launch-profile
+ENTRYPOINT dotnet run --no-launch-profile
