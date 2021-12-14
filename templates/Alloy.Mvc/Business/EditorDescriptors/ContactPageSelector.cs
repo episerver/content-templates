@@ -11,7 +11,7 @@ namespace Alloy.Mvc.Business.EditorDescriptors
     /// </summary>
     [EditorDescriptorRegistration(
         TargetType = typeof(PageReference),
-        UIHint = Global.SiteUIHints.Contact)]
+        UIHint = Globals.SiteUIHints.Contact)]
     public class ContactPageSelector : EditorDescriptor
     {
         public override void ModifyMetadata(ExtendedMetadata metadata, IEnumerable<Attribute> attributes)

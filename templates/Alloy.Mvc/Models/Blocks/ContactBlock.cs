@@ -34,7 +34,7 @@ namespace Alloy.Mvc.Models.Blocks
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 3)]
-        [UIHint(Global.SiteUIHints.Contact)]
+        [UIHint(Globals.SiteUIHints.Contact)]
         public virtual PageReference ContactPageLink { get; set; }
 
         [Display(

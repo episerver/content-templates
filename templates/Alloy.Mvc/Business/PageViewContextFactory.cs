@@ -61,10 +61,7 @@ namespace Alloy.Mvc.Business
 
         private string GetLoginUrl(ContentReference returnToContentLink)
         {
-            return string.Format(
-                "{0}?ReturnUrl={1}",
-                _cookieAuthenticationOptions?.LoginPath.Value ?? Global.LoginPath,
-                _urlResolver.GetUrl(returnToContentLink));
+            return $"{_cookieAuthenticationOptions?.LoginPath.Value ?? Globals.LoginPath}?ReturnUrl={_urlResolver.GetUrl(returnToContentLink)}";
         }
 
         public virtual IContent GetSection(ContentReference contentLink)

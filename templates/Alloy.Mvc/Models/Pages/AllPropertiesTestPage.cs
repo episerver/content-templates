@@ -18,7 +18,7 @@ namespace Alloy.Mvc.Models.Pages
 {
     [ContentType(
         GUID = "A7D46007-43E5-4401-9204-127040E79E09",
-        GroupName = Global.GroupNames.Specialized)]
+        GroupName = Globals.GroupNames.Specialized)]
     [AvailableContentTypes(
         Availability.Specific,
         IncludeOn = new[] { typeof(StartPage) })

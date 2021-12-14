@@ -3,7 +3,7 @@ using EPiServer.Core;
 using EPiServer.Core.Html.StringParsing;
 using EPiServer.Web.Mvc.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using static Alloy.Mvc.Global;
+using static Alloy.Mvc.Globals;
 
 namespace Alloy.Mvc.Business.Rendering
 {
@@ -49,7 +49,7 @@ namespace Alloy.Mvc.Business.Rendering
             if (content is ICustomCssInContentArea customClassContent &&
                 !string.IsNullOrWhiteSpace(customClassContent.ContentAreaCssClass))
             {
-                cssClass += string.Format(" {0}", customClassContent.ContentAreaCssClass);
+                cssClass += $" {customClassContent.ContentAreaCssClass}";
             }
 
             return cssClass;

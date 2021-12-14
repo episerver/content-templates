@@ -7,7 +7,7 @@ namespace Alloy.Mvc.Models.Pages
     /// </summary>
     [SiteContentType(
         GUID = "D178950C-D20E-4A46-90BD-5338B2424745",
-        GroupName = Global.GroupNames.Specialized)]
+        GroupName = Globals.GroupNames.Specialized)]
     [SiteImageUrl]
     public class ContainerPage : SitePageData, IContainerPage
     {

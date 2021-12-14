@@ -22,7 +22,7 @@ namespace Alloy.Mvc.Controllers
         public ViewResult Index(SitePageData currentPage)
         {
             var model = CreateModel(currentPage);
-            return View(string.Format("~/Views/{0}/Index.cshtml", currentPage.GetOriginalType().Name), model);
+            return View($"~/Views/{currentPage.GetOriginalType().Name}/Index.cshtml", model);
         }
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace Alloy.Mvc.Business.Rendering
             viewTemplateModelRegistrator.Add(typeof(TeaserBlock), new TemplateModel
             {
                 Name = "TeaserBlockWide",
-                Tags = new[] { Global.ContentAreaTags.WideWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
             });
 
@@ -58,7 +58,7 @@ namespace Alloy.Mvc.Business.Rendering
             {
                 Name = "PageWide",
                 Inherit = true,
-                Tags = new[] { Global.ContentAreaTags.WideWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
                 Path = PagePartialPath("PageWide.cshtml")
             });
@@ -67,14 +67,14 @@ namespace Alloy.Mvc.Business.Rendering
             {
                 Name = "NoRenderer",
                 Inherit = true,
-                Tags = new[] { Global.ContentAreaTags.NoRenderer },
+                Tags = new[] { Globals.ContentAreaTags.NoRenderer },
                 AvailableWithoutTag = false,
                 Path = BlockPath("NoRenderer.cshtml")
             });
         }
 
-        private static string BlockPath(string fileName) => string.Format("{0}{1}", BlockFolder, fileName);
+        private static string BlockPath(string fileName) => $"{BlockFolder}{fileName}";
 
-        private static string PagePartialPath(string fileName) => string.Format("{0}{1}", PagePartialsFolder, fileName);
+        private static string PagePartialPath(string fileName) => $"{PagePartialsFolder}{fileName}";
     }
 }

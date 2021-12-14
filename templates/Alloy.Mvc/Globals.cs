@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Alloy.Mvc
 {
-    public class Global
+    public class Globals
     {
         public const string LoginPath = "/util/login";
 
         /// <summary>
         /// Group names for content types and properties
         /// </summary>
-        [GroupDefinitions()]
+        [GroupDefinitions]
         public static class GroupNames
         {
             [Display(Name = "Contact", Order = 1)]

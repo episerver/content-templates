@@ -10,6 +10,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EmbeddedResource Include="Resources\LanguageFiles\**\*" />
+    <EmbeddedResource Include="Resources\Translations\**\*" />
   </ItemGroup>
 </Project>
