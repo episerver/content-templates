@@ -7,9 +7,8 @@
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
-    <!-- NU1603: Temporary dependency issue in EPiServer.Commerce, the EPiServer.Telemetry.UI.Core version doesn't exist. -->
     <!-- CS0436: Temporary build warning when overriding display templates, e.g. Image.cshtml. -->
-    <NoWarn>$(NoWarn);NU1603;CS0436</NoWarn>
+    <NoWarn>$(NoWarn);CS0436</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

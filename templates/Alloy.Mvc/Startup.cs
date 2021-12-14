@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Alloy.Mvc.Extensions;
+using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
@@ -43,7 +44,6 @@ namespace Alloy.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseAdminUserRegistration();
             }
 
             app.UseStaticFiles();
@@ -54,7 +54,6 @@ namespace Alloy.Mvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
-                endpoints.MapAdminUserRegistration();
             });
         }
     }

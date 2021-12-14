@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
@@ -32,6 +33,7 @@ namespace Cms.Empty
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
+                .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
         }
 
