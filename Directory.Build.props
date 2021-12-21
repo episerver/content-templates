@@ -20,8 +20,4 @@
 
   <Import Project="$(BuildDirectory)codeanalysis.props" />
   <Import Project="$(BuildDirectory)version.props" />
-
-  <ItemGroup>
-    <Content Include=".template.config\**" />
-  </ItemGroup>
 </Project>

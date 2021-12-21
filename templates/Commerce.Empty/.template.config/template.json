@@ -10,5 +10,36 @@
   "tags": {
     "language": "C#",
     "type": "project"
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!enablelDocker)",
+          "exclude": [
+            "Directory.Build.props",
+            "docker-compose.yml",
+            "Docker/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "enablelDocker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable Docker support",
+      "description": "Enable Docker support"
+    },
+    "saPassword": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Qwerty12345!",
+      "displayName": "Password SA database account",
+      "description": "The password the SA database account should have",
+      "replaces": "Qwerty12345!"
+    }
   }
 }
