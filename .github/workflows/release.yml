@@ -10,6 +10,7 @@ jobs:
     runs-on: windows-latest
     env:
       buildConfiguration: release
+      versionSuffix: ""
     steps:
       - uses: actions/checkout@v2
       - name: Restore
@@ -19,7 +20,7 @@ jobs:
       - name: Test
         run: dotnet test --no-build --configuration $env:buildConfiguration
       - name: Pack
-        run: dotnet pack --no-build --configuration $env:buildConfiguration
+        run: dotnet pack --no-build --configuration $env:buildConfiguration --version-suffix $env:versionSuffix
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -37,5 +38,4 @@ jobs:
         with:
           name: packages
       - name: Publish packages
-        # run: dotnet nuget push *.nupkg --source 'nuget.org'
-        run: echo 'Packages are not published at the moment, they can however be downloaded from the artifacts'
+        run: dotnet nuget push *.nupkg --source 'nuget.org' --skip-duplicate -k ${{ secrets.NugetAuthToken }}
