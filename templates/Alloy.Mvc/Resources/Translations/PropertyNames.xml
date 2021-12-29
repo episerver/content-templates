@@ -199,11 +199,18 @@
           <copyright>
             <caption>Copyright</caption>
           </copyright>
-          <previewimageurl>
+          <previewimage>
             <caption>Preview image</caption>
-          </previewimageurl>
+          </previewimage>
         </properties>
       </videofile>
+      <newspage>
+        <properties>
+          <newslist>
+            <caption>News list</caption>
+          </newslist>
+        </properties>
+      </newspage>
     </contenttypes>
   </language>
 </languages>
