@@ -2,11 +2,11 @@
   "symbolInfo": {
     "enablelDocker": {
       "longName": "enable-docker",
-      "shortName": "ed"
+      "shortName": ""
     },
     "saPassword": {
       "longName": "sa-password",
-      "shortName": "sp"
+      "shortName": ""
     }
   }
 }
