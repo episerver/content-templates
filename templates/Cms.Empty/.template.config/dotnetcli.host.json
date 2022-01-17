@@ -1,5 +1,13 @@
 {
   "symbolInfo": {
+    "authentication": {
+      "longName": "authentication",
+      "shortName": ""
+    },
+    "enableREST": {
+      "longName": "enable-rest",
+      "shortName": ""
+    },
     "enablelDocker": {
       "longName": "enable-docker",
       "shortName": ""

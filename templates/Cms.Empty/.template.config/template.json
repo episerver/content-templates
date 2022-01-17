@@ -26,6 +26,44 @@
     }
   ],
   "symbols": {
+    "authentication": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "Local",
+          "description": "Local accounts using ASP.NET Identity"
+        },
+        {
+          "choice": "External",
+          "description": "External OpenID Connect provider"
+        }
+      ],
+      "defaultValue": "Local",
+      "description": "The type of authentication to use"
+    },
+    "localAuthentication": {
+      "type": "computed",
+      "value": "(authentication == \"Local\")"
+    },
+    "externalAuthentication": {
+      "type": "computed",
+      "value": "(authentication == \"External\")"
+    },
+    "enableREST": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Add REST APIs for Content Delivery and Definitions"
+    },
+    "enableRESTWithLocalAuthentication": {
+      "type": "computed",
+      "value": "(enableREST && localAuthentication)"
+    },
+    "enableRESTWithExternalAuthentication": {
+      "type": "computed",
+      "value": "(enableREST && externalAuthentication)"
+    },
     "enablelDocker": {
       "type": "parameter",
       "datatype": "bool",
