@@ -134,6 +134,7 @@ namespace Cms.Empty
                     };
                 });
 #endif
+
 #if enableRESTWithLocalAuthentication
             // See https://world.optimizely.com/documentation/developer-guides/content-delivery-api/getting-started/api-authentication/
             services.AddOpenIDConnect<ApplicationUser>(
@@ -153,6 +154,7 @@ namespace Cms.Empty
                     });
                 });
 #endif
+
 #if enableRESTWithLocalAuthentication
             // See https://world.optimizely.com/documentation/developer-guides/content-delivery-api/
             services.AddContentDeliveryApi(OpenIDConnectOptionsDefaults.AuthenticationScheme);
@@ -160,6 +162,7 @@ namespace Cms.Empty
             // See https://world.optimizely.com/documentation/developer-guides/content-delivery-api/
             services.AddContentDeliveryApi(authenticationScheme);
 #endif
+
 #if enableREST
             services
                 .ConfigureForExternalTemplates()
@@ -170,6 +173,7 @@ namespace Cms.Empty
                     options.ForceAbsolute = true;
                 });
 #endif
+
 #if enableRESTWithLocalAuthentication
             // See https://world.optimizely.com/documentation/developer-guides/content-definitions-api/
             services.AddContentDefinitionsApi(OpenIDConnectOptionsDefaults.AuthenticationScheme);
