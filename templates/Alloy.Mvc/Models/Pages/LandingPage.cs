@@ -10,7 +10,7 @@ namespace Alloy.Mvc.Models.Pages
     /// </summary>
     [SiteContentType(
        GUID = "DBED4258-8213-48DB-A11F-99C034172A54",
-       GroupName = Global.GroupNames.Specialized)]
+       GroupName = Globals.GroupNames.Specialized)]
     [SiteImageUrl]
     public class LandingPage : SitePageData
     {

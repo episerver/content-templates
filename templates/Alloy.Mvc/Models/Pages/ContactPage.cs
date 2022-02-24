@@ -10,18 +10,18 @@ namespace Alloy.Mvc.Models.Pages
     /// </summary>
     [SiteContentType(
         GUID = "F8D47655-7B50-4319-8646-3369BA9AF05B",
-        GroupName = Global.GroupNames.Specialized)]
-    [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-contact.png")]
+        GroupName = Globals.GroupNames.Specialized)]
+    [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-contact.png")]
     public class ContactPage : SitePageData, IContainerPage
     {
-        [Display(GroupName = Global.GroupNames.Contact)]
+        [Display(GroupName = Globals.GroupNames.Contact)]
         [UIHint(UIHint.Image)]
         public virtual ContentReference Image { get; set; }
 
-        [Display(GroupName = Global.GroupNames.Contact)]
+        [Display(GroupName = Globals.GroupNames.Contact)]
         public virtual string Phone { get; set; }
 
-        [Display(GroupName = Global.GroupNames.Contact)]
+        [Display(GroupName = Globals.GroupNames.Contact)]
         [EmailAddress]
         public virtual string Email { get; set; }
     }

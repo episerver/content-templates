@@ -1,17 +1,45 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "classifications": [
-    "EPiServer",
-    "Optimizely",
-    "MVC"
-  ],
-  "name": "Episerver Alloy MVC",
+  "sourceName": "Alloy.Mvc",
+  "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Alloy.Mvc",
+  "name": "Optimizely Alloy MVC",
   "shortName": "epi-alloy-mvc",
+  "description": "Example MVC application for testing and learning Optimizely CMS.",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "Alloy.Mvc"
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!enablelDocker)",
+          "exclude": [
+            "Directory.Build.props",
+            "docker-compose.yml",
+            "Docker/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "enablelDocker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable Docker support",
+      "description": "Enable Docker support"
+    },
+    "saPassword": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Qwerty12345!",
+      "displayName": "Password SA database account",
+      "description": "The password the SA database account should have",
+      "replaces": "Qwerty12345!"
+    }
+  }
 }

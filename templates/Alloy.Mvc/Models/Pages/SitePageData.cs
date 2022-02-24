@@ -15,7 +15,7 @@ namespace Alloy.Mvc.Models.Pages
     public abstract class SitePageData : PageData, ICustomCssInContentArea
     {
         [Display(
-            GroupName = Global.GroupNames.MetaData,
+            GroupName = Globals.GroupNames.MetaData,
             Order = 100)]
         [CultureSpecific]
         public virtual string MetaTitle
@@ -33,21 +33,21 @@ namespace Alloy.Mvc.Models.Pages
         }
 
         [Display(
-            GroupName = Global.GroupNames.MetaData,
+            GroupName = Globals.GroupNames.MetaData,
             Order = 200)]
         [CultureSpecific]
         [BackingType(typeof(PropertyStringList))]
         public virtual IList<string> MetaKeywords { get; set; }
 
         [Display(
-            GroupName = Global.GroupNames.MetaData,
+            GroupName = Globals.GroupNames.MetaData,
             Order = 300)]
         [CultureSpecific]
         [UIHint(UIHint.Textarea)]
         public virtual string MetaDescription { get; set; }
 
         [Display(
-            GroupName = Global.GroupNames.MetaData,
+            GroupName = Globals.GroupNames.MetaData,
             Order = 400)]
         [CultureSpecific]
         public virtual bool DisableIndexing { get; set; }

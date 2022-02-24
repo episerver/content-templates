@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "Cms.Empty",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Cms.Empty",
+  "name": "Optimizely CMS empty",
+  "shortName": "epi-cms-empty",
+  "description": "Empty web application with Optimizely CMS",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!enablelDocker)",
+          "exclude": [
+            "Directory.Build.props",
+            "docker-compose.yml",
+            "Docker/**/*"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "enablelDocker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable Docker support",
+      "description": "Enable Docker support"
+    },
+    "saPassword": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Qwerty12345!",
+      "displayName": "Password SA database account",
+      "description": "The password the SA database account should have",
+      "replaces": "Qwerty12345!"
+    }
+  }
+}

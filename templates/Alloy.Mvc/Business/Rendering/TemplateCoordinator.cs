@@ -39,17 +39,10 @@ namespace Alloy.Mvc.Business.Rendering
         /// </remarks>
         public void Register(TemplateModelCollection viewTemplateModelRegistrator)
         {
-            viewTemplateModelRegistrator.Add(typeof(JumbotronBlock), new TemplateModel
-            {
-                Name = "JumbotronBlockWide",
-                Tags = new[] { Global.ContentAreaTags.FullWidth },
-                AvailableWithoutTag = false,
-            });
-
             viewTemplateModelRegistrator.Add(typeof(TeaserBlock), new TemplateModel
             {
                 Name = "TeaserBlockWide",
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
             });
 
@@ -65,30 +58,23 @@ namespace Alloy.Mvc.Business.Rendering
             {
                 Name = "PageWide",
                 Inherit = true,
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
+                Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
                 AvailableWithoutTag = false,
                 Path = PagePartialPath("PageWide.cshtml")
-            });
-
-            viewTemplateModelRegistrator.Add(typeof(ContactPage), new TemplateModel
-            {
-                Name = "ContactPageWide",
-                Tags = new[] { Global.ContentAreaTags.TwoThirdsWidth, Global.ContentAreaTags.FullWidth },
-                AvailableWithoutTag = false,
             });
 
             viewTemplateModelRegistrator.Add(typeof(IContentData), new TemplateModel
             {
                 Name = "NoRenderer",
                 Inherit = true,
-                Tags = new[] { Global.ContentAreaTags.NoRenderer },
+                Tags = new[] { Globals.ContentAreaTags.NoRenderer },
                 AvailableWithoutTag = false,
                 Path = BlockPath("NoRenderer.cshtml")
             });
         }
 
-        private static string BlockPath(string fileName) => string.Format("{0}{1}", BlockFolder, fileName);
+        private static string BlockPath(string fileName) => $"{BlockFolder}{fileName}";
 
-        private static string PagePartialPath(string fileName) => string.Format("{0}{1}", PagePartialsFolder, fileName);
+        private static string PagePartialPath(string fileName) => $"{PagePartialsFolder}{fileName}";
     }
 }

@@ -29,7 +29,7 @@ namespace Alloy.Mvc.Components
             {
                 Url = _urlResolver.GetUrl(currentContent.ContentLink),
                 PreviewImageUrl = ContentReference.IsNullOrEmpty(currentContent.PreviewImage)
-                    ? string.Empty
+                    ? null
                     : _urlResolver.GetUrl(currentContent.PreviewImage),
             };
 

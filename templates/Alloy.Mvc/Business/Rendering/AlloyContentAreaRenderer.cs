@@ -3,6 +3,7 @@ using EPiServer.Core;
 using EPiServer.Core.Html.StringParsing;
 using EPiServer.Web.Mvc.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static Alloy.Mvc.Globals;
 
 namespace Alloy.Mvc.Business.Rendering
 {
@@ -22,7 +23,7 @@ namespace Alloy.Mvc.Business.Rendering
         /// <summary>
         /// Gets a CSS class used for styling based on a tag name (ie a Bootstrap class name)
         /// </summary>
-        /// <param name="tagName">Any tag name available, see <see cref="Global.ContentAreaTags"/></param>
+        /// <param name="tagName">Any tag name available, see <see cref="ContentAreaTags"/></param>
         private static string GetCssClassForTag(string tagName)
         {
             if (string.IsNullOrEmpty(tagName))
@@ -32,9 +33,10 @@ namespace Alloy.Mvc.Business.Rendering
 
             return tagName.ToLowerInvariant() switch
             {
-                "span12" => "full",
-                "span8" => "wide",
-                "span6" => "half",
+                ContentAreaTags.FullWidth => "col-12",
+                ContentAreaTags.WideWidth => "col-12 col-md-8",
+                ContentAreaTags.HalfWidth => "col-12 col-sm-6",
+                ContentAreaTags.NarrowWidth => "col-12 col-sm-6 col-md-4",
                 _ => string.Empty,
             };
         }
@@ -47,7 +49,7 @@ namespace Alloy.Mvc.Business.Rendering
             if (content is ICustomCssInContentArea customClassContent &&
                 !string.IsNullOrWhiteSpace(customClassContent.ContentAreaCssClass))
             {
-                cssClass += string.Format(" {0}", customClassContent.ContentAreaCssClass);
+                cssClass += $" {customClassContent.ContentAreaCssClass}";
             }
 
             return cssClass;

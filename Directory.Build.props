@@ -7,6 +7,8 @@
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+    <!-- CS0436: Temporary build warning when overriding display templates, e.g. Image.cshtml. -->
+    <NoWarn>$(NoWarn);CS0436</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,8 +20,4 @@
 
   <Import Project="$(BuildDirectory)codeanalysis.props" />
   <Import Project="$(BuildDirectory)version.props" />
-
-  <ItemGroup>
-    <Content Include=".template.config\**" />
-  </ItemGroup>
 </Project>

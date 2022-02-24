@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  db:
+    build:
+      dockerfile: ./Docker/db.dockerfile
+      context: . 
+    environment:
+      SA_PASSWORD: Qwerty12345!
+      DB_NAME: cms
+      DB_NAME_COMMERCE: commerce
+    ports:
+      - 6000:1433
+    volumes:
+      - ./App_Data:/var/opt/mssql/host_data
+    image: Commerce.Empty/db
+  web:
+    depends_on:
+      - db
+    build:
+      dockerfile: ./Docker/web.dockerfile
+      context: . 
+    environment:
+      ASPNETCORE_URLS: http://*:80
+      ASPNETCORE_ENVIRONMENT: Development
+      CONNECTIONSTRINGS__EPISERVERDB: Server=db;Database=cms;User Id=sa;Password=Qwerty12345!;
+      CONNECTIONSTRINGS__ECFSQLCONNECTION: Server=db;Database=commerce;User Id=sa;Password=Qwerty12345!;
+    ports:
+      - 5000:80
+    volumes:
+      - .:/src
+    image: Commerce.Empty/web

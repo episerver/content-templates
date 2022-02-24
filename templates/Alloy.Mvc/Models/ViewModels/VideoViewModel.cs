@@ -13,6 +13,6 @@ namespace Alloy.Mvc.Models.ViewModels
         /// <summary>
         /// Gets or sets the URL to a preview image for the video.
         /// </summary>
-        public string PreviewImageUrl { get; set; }
+        public string? PreviewImageUrl { get; set; }
     }
 }

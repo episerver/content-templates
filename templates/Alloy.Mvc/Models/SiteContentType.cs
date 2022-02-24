@@ -9,7 +9,7 @@ namespace Alloy.Mvc.Models
     {
         public SiteContentType()
         {
-            GroupName = Global.GroupNames.Default;
+            GroupName = Globals.GroupNames.Default;
         }
     }
 }

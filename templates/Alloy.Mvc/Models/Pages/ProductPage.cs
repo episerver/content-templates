@@ -12,8 +12,8 @@ namespace Alloy.Mvc.Models.Pages
     /// </summary>
     [SiteContentType(
         GUID = "17583DCD-3C11-49DD-A66D-0DEF0DD601FC",
-        GroupName = Global.GroupNames.Products)]
-    [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-product.png")]
+        GroupName = Globals.GroupNames.Products)]
+    [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-product.png")]
     [AvailableContentTypes(
         Availability = Availability.Specific,
         IncludeOn = new[] { typeof(StartPage) })]
@@ -21,7 +21,7 @@ namespace Alloy.Mvc.Models.Pages
     {
         [Required]
         [Display(Order = 305)]
-        [UIHint(Global.SiteUIHints.StringsCollection)]
+        [UIHint(Globals.SiteUIHints.StringsCollection)]
         [CultureSpecific]
         public virtual IList<string> UniqueSellingPoints { get; set; }
 
