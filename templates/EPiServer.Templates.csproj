@@ -26,6 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="**\*" />
     <None Include="$(SolutionDir)shared\icon.png" LinkBase="shared" Visible="false" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -44,6 +45,6 @@
   <ItemGroup>
     <Compile Remove="**\*" />
     <Content Include="**\*"
-             Exclude="EPiServer.Templates.csproj;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
+             Exclude="EPiServer.Templates.csproj;Cms.Item\*.*;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
   </ItemGroup>
 </Project>
