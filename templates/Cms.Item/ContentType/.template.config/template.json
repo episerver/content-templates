@@ -11,6 +11,9 @@
     "language": "C#",
     "type": "item"
   },
+  "guids": [
+    "CA56CED4-2CA9-4C5E-9EDE-2A5A6F1F06EF"
+  ],
   "primaryOutputs": [
     { "path": "MyContentData.cs" }
   ],
@@ -30,14 +33,6 @@
       "replaces": "PageData",
       "displayName": "Base type",
       "description": "The base type that the Content Type should inherit from. Can be PageData, BlockData or any other ContentData type."
-    },
-    "contentTypeGuid": {
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "CA56CED4-2CA9-4C5E-9EDE-2A5A6F1F06EF",
-      "parameters": {
-        "format": "D"
-      }
     }
   }
 }
