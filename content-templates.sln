@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPiServer.Templates", "templates\EPiServer.Templates.csproj", "{8B343E37-F699-461C-8755-8D371CC82EAC}"
 EndProject
@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alloy.Mvc", "templates\Alloy.Mvc\Alloy.Mvc.csproj", "{D26A321A-ED45-42C4-9792-1C64A969C70B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Empty", "templates\Cms.Empty\Cms.Empty.csproj", "{A64C6372-EC36-4F19-B2AD-8A2185AAC015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Empty", "templates\Cms.Empty\Cms.Empty.csproj", "{A64C6372-EC36-4F19-B2AD-8A2185AAC015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.Empty", "templates\Commerce.Empty\Commerce.Empty.csproj", "{9B5A3754-D23E-4032-A09D-5568F935F34F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commerce.Empty", "templates\Commerce.Empty\Commerce.Empty.csproj", "{9B5A3754-D23E-4032-A09D-5568F935F34F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8F2A1A07-7B50-4060-89B0-B53021C3F593}"
 	ProjectSection(SolutionItems) = preProject
@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Item", "templates\Cms.Item\Cms.Item.csproj", "{08ACA24C-AC25-4391-BDBA-D309EED6C80E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,15 +96,28 @@ Global
 		{9B5A3754-D23E-4032-A09D-5568F935F34F}.Release|x64.Build.0 = Release|Any CPU
 		{9B5A3754-D23E-4032-A09D-5568F935F34F}.Release|x86.ActiveCfg = Release|Any CPU
 		{9B5A3754-D23E-4032-A09D-5568F935F34F}.Release|x86.Build.0 = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|x64.Build.0 = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Debug|x86.Build.0 = Debug|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|x64.ActiveCfg = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|x64.Build.0 = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|x86.ActiveCfg = Release|Any CPU
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D26A321A-ED45-42C4-9792-1C64A969C70B} = {350B8822-08B0-47CE-9295-9D379C42A718}
-		{0FC00D98-1708-47C9-A126-B4AC4C4C5260} = {8F2A1A07-7B50-4060-89B0-B53021C3F593}
 		{A64C6372-EC36-4F19-B2AD-8A2185AAC015} = {350B8822-08B0-47CE-9295-9D379C42A718}
 		{9B5A3754-D23E-4032-A09D-5568F935F34F} = {350B8822-08B0-47CE-9295-9D379C42A718}
+		{0FC00D98-1708-47C9-A126-B4AC4C4C5260} = {8F2A1A07-7B50-4060-89B0-B53021C3F593}
+		{08ACA24C-AC25-4391-BDBA-D309EED6C80E} = {350B8822-08B0-47CE-9295-9D379C42A718}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6F4B71A0-BE63-44F5-856C-3831FB1C0943}
