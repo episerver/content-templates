@@ -43,6 +43,7 @@ The following templates are included in this repository and available through th
 ### Item Templates
 
 - epi-cms-contenttype
+- epi-cms-initializationmodule
 - epi-cms-job
 
 
