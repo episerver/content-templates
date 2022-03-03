@@ -1,6 +1,6 @@
 {
   "symbolInfo": {
-    "enablelDocker": {
+    "enableDocker": {
       "longName": "enable-docker",
       "shortName": ""
     },
