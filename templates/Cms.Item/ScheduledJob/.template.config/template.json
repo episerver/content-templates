@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "MyScheduledJob",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Cms.Item.ContentType",
+  "name": "Optimizely CMS Scheduled Job",
+  "shortName": "epi-cms-job",
+  "description": "Optimizely CMS Scheduled Job",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "guids": [
+    "3F7881B2-2451-4941-BB7C-5FAB9A6A799F"
+  ],
+  "primaryOutputs": [
+    { "path": "MyScheduledJob.cs" }
+  ],
+  "symbols": {
+    "namespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyAppNamespace",
+      "displayName": "Namespace",
+      "description": "Namespace for the generated code.",
+      "replaces": "MyAppNamespace"
+    }
+  }
+}
