@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "MyPageController",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Cms.Item.PageController",
+  "name": "Optimizely CMS Content Type Model",
+  "shortName": "epi-cms-pagecontroller",
+  "description": "Optimizely CMS Page Controller",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "primaryOutputs": [
+    { "path": "MyPageController.cs" }
+  ],
+  "symbols": {
+    "namespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyAppNamespace",
+      "displayName": "Namespace",
+      "description": "Namespace for the generated code.",
+      "replaces": "MyAppNamespace"
+    },
+    "contentType": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "PageData",
+      "replaces": "MyPageData",
+      "displayName": "Content Type Model",
+      "description": "The Content Type model that the Controller should handle."
+    }
+  }
+}
