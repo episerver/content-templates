@@ -4,7 +4,7 @@
   "sourceName": "MyContentComponent",
   "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Cms.Item.ContentComponent",
-  "name": "Optimizely CMS Content Type Model",
+  "name": "Optimizely CMS Content Component",
   "shortName": "epi-cms-contentcomponent",
   "description": "Optimizely CMS Content Component",
   "tags": {

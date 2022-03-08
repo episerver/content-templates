@@ -1,4 +1,5 @@
 using System;
+using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;

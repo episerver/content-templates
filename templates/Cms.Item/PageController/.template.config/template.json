@@ -4,7 +4,7 @@
   "sourceName": "MyPageController",
   "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Cms.Item.PageController",
-  "name": "Optimizely CMS Content Type Model",
+  "name": "Optimizely CMS Page Controller",
   "shortName": "epi-cms-pagecontroller",
   "description": "Optimizely CMS Page Controller",
   "tags": {

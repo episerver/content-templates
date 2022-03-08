@@ -3,7 +3,7 @@
   "author": "Episerver AB",
   "sourceName": "MyScheduledJob",
   "classifications": [ "Web" ],
-  "identity": "EPiServer.Templates.Cms.Item.ContentType",
+  "identity": "EPiServer.Templates.Cms.Item.ScheduledJob",
   "name": "Optimizely CMS Scheduled Job",
   "shortName": "epi-cms-job",
   "description": "Optimizely CMS Scheduled Job",
