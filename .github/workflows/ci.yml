@@ -34,10 +34,12 @@ jobs:
     name: Publish
     needs: build_test_pack
     runs-on: windows-latest
+    env:
+      nugetSource: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
           name: packages
       - name: Publish to Github Packages
-        run: dotnet nuget push *.nupkg --source 'https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json' --skip-duplicate -k ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push *.nupkg --source $env:nugetSource --skip-duplicate --api-key ${{ secrets.GITHUB_TOKEN }}
