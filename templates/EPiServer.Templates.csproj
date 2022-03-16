@@ -15,6 +15,7 @@
     <PackageId>EPiServer.Templates</PackageId>
     <PackageIcon>icon.png</PackageIcon>
     <PackageType>Template</PackageType>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageTags>$(PackageTags);dotnet-new;templates;Episerver;Optimizely</PackageTags>
     <PackageProjectUrl>https://github.com/episerver/content-templates</PackageProjectUrl>
     <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
