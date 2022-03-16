@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
     env:
       buildConfiguration: release
-      versionSuffix: ci-${{ github.RUN_NUMBER }}
+      versionSuffix: ${{ github.ref == 'refs/heads/develop' && 'pre-' ||  'ci-' }}${{github.RUN_NUMBER }}
     steps:
       - uses: actions/checkout@v2
       - name: Restore
@@ -39,6 +39,5 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: packages
-      - name: Publish packages
-        # run: dotnet nuget push *.nupkg --source 'nuget.example.com'
-        run: echo 'Packages are not published at the moment, they can however be downloaded from the artifacts'
+      - name: Publish to Github Packages
+        run: dotnet nuget push *.nupkg --source 'https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json' --skip-duplicate -k ${{ secrets.GITHUB_TOKEN }}
