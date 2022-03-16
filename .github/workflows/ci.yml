@@ -13,6 +13,7 @@ jobs:
     env:
       buildConfiguration: release
       versionSuffix: ${{ github.ref == 'refs/heads/develop' && 'pre-' ||  'ci-' }}${{github.RUN_NUMBER }}
+      DOTNET_NOLOGO: 1
     steps:
       - uses: actions/checkout@v2
       - name: Restore
@@ -36,6 +37,7 @@ jobs:
     runs-on: windows-latest
     env:
       nugetSource: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      DOTNET_NOLOGO: 1
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2
