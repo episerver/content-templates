@@ -45,3 +45,12 @@ jobs:
           name: packages
       - name: Publish to Github Packages
         run: dotnet nuget push *.nupkg --source $env:nugetSource --skip-duplicate --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Cleanup old Packages
+        uses: actions/delete-package-versions@v3
+        with: 
+          package-name: 'EPiServer.Templates'
+          # temporary set to 2 for testing purposes
+          min-versions-to-keep: 2
+          # 1-in-1-out
+          num-old-versions-to-delete: 1
+          delete-only-pre-release-versions: "true"
