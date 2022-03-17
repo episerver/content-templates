@@ -55,8 +55,7 @@ jobs:
         uses: actions/delete-package-versions@v3
         with: 
           package-name: 'EPiServer.Templates'
-          # temporary set to 3 for testing purposes
-          min-versions-to-keep: 3
+          min-versions-to-keep: 10
           # 1-in-1-out
           num-old-versions-to-delete: 1
           delete-only-pre-release-versions: "true"
