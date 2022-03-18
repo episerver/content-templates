@@ -23,7 +23,11 @@ namespace Alloy.Mvc.Business
         private readonly IDatabaseMode _databaseMode;
         private readonly CookieAuthenticationOptions _cookieAuthenticationOptions;
 
-        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver, IDatabaseMode databaseMode, IOptionsMonitor<CookieAuthenticationOptions> optionMonitor)
+        public PageViewContextFactory(
+            IContentLoader contentLoader,
+            UrlResolver urlResolver,
+            IDatabaseMode databaseMode,
+            IOptionsMonitor<CookieAuthenticationOptions> optionMonitor)
         {
             _contentLoader = contentLoader;
             _urlResolver = urlResolver;
@@ -67,14 +71,20 @@ namespace Alloy.Mvc.Business
         public virtual IContent GetSection(ContentReference contentLink)
         {
             var currentContent = _contentLoader.Get<IContent>(contentLink);
-            if (currentContent.ParentLink != null && currentContent.ParentLink.CompareToIgnoreWorkID(SiteDefinition.Current.StartPage))
+
+            static bool isSectionRoot(ContentReference contentReference) =>
+               ContentReference.IsNullOrEmpty(contentReference) ||
+               contentReference.Equals(SiteDefinition.Current.StartPage) ||
+               contentReference.Equals(SiteDefinition.Current.RootPage);
+
+            if (isSectionRoot(currentContent.ParentLink))
             {
                 return currentContent;
             }
 
             return _contentLoader.GetAncestors(contentLink)
                 .OfType<PageData>()
-                .SkipWhile(x => x.ParentLink == null || !x.ParentLink.CompareToIgnoreWorkID(SiteDefinition.Current.StartPage))
+                .SkipWhile(x => !isSectionRoot(x.ParentLink))
                 .FirstOrDefault();
         }
     }
