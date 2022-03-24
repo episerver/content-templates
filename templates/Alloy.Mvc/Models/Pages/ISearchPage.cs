@@ -1,4 +1,4 @@
-namespace Alloy.Mvc.Models.Pages
+namespace Alloy._1.Models.Pages
 {
     /// <summary>
     /// Marker interface for search implementation

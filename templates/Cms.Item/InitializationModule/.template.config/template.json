@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "MyInitializationModule",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Cms.Item.InitializationModule",
+  "name": "Optimizely CMS Initialization Module",
+  "shortName": "epi-cms-initializationmodule",
+  "description": "Optimizely CMS Initialization Module",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "primaryOutputs": [
+    { "path": "MyInitializationModule.cs" }
+  ],
+  "symbols": {
+    "namespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyAppNamespace",
+      "displayName": "Namespace",
+      "description": "Namespace for the generated code.",
+      "replaces": "MyAppNamespace"
+    },
+    "configurable": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Configure services in module",
+      "description": "Indicates if the module should include a method for configuring services."
+    }
+  }
+}

@@ -3,7 +3,7 @@ using System.Linq;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
 
-namespace Alloy.Mvc.Business.EditorDescriptors
+namespace Alloy._1.Business.EditorDescriptors
 {
     /// <summary>
     /// Provides a list of options corresponding to ContactPage pages on the site

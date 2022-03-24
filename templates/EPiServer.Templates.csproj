@@ -15,8 +15,11 @@
     <PackageId>EPiServer.Templates</PackageId>
     <PackageIcon>icon.png</PackageIcon>
     <PackageType>Template</PackageType>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageTags>$(PackageTags);dotnet-new;templates;Episerver;Optimizely</PackageTags>
     <PackageProjectUrl>https://github.com/episerver/content-templates</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <Product>Optimizely Digital Experience Platform</Product>
     <Description>Templates for the Optimizely Digital Experience Cloud</Description>
     <Company>Episerver AB</Company>
@@ -26,6 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="**\*" />
     <None Include="$(SolutionDir)shared\icon.png" LinkBase="shared" Visible="false" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -44,6 +48,6 @@
   <ItemGroup>
     <Compile Remove="**\*" />
     <Content Include="**\*"
-             Exclude="EPiServer.Templates.csproj;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
+             Exclude="EPiServer.Templates.csproj;Cms.Item\*.*;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
   </ItemGroup>
 </Project>

@@ -1,10 +1,10 @@
-using Alloy.Mvc.Models.Pages;
-using Alloy.Mvc.Models.ViewModels;
+using Alloy._1.Models.Pages;
+using Alloy._1.Models.ViewModels;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Alloy.Mvc.Business
+namespace Alloy._1.Business
 {
     /// <summary>
     /// Intercepts actions with view models of type IPageViewModel and populates the view models

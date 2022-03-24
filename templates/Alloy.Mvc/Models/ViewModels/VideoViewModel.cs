@@ -1,4 +1,4 @@
-namespace Alloy.Mvc.Models.ViewModels
+namespace Alloy._1.Models.ViewModels
 {
     /// <summary>
     /// View model for the video file
@@ -13,6 +13,6 @@ namespace Alloy.Mvc.Models.ViewModels
         /// <summary>
         /// Gets or sets the URL to a preview image for the video.
         /// </summary>
-        public string? PreviewImageUrl { get; set; }
+        public string PreviewImageUrl { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection;
 
-namespace Alloy.Mvc.Business.Channels
+namespace Alloy._1.Business.Channels
 {
     /// <summary>
     /// Defines the 'Web' content channel

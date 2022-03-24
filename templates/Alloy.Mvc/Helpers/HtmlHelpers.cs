@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Alloy.Mvc.Business;
+using Alloy._1.Business;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Alloy.Mvc.Helpers
+namespace Alloy._1.Helpers
 {
     public static class HtmlHelpers
     {

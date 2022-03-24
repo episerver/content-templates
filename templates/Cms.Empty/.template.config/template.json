@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "sourceName": "Cms.Empty",
+  "sourceName": "Cms.1",
   "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Cms.Empty",
   "name": "Optimizely CMS empty",
@@ -15,7 +15,7 @@
     {
       "modifiers": [
         {
-          "condition": "(!enablelDocker)",
+          "condition": "(!enableDocker)",
           "exclude": [
             "Directory.Build.props",
             "docker-compose.yml",
@@ -26,7 +26,7 @@
     }
   ],
   "symbols": {
-    "enablelDocker": {
+    "enableDocker": {
       "type": "parameter",
       "datatype": "bool",
       "defaultValue": "false",

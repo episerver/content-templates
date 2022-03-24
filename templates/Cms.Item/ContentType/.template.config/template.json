@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "MyContentData",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Cms.Item.ContentType",
+  "name": "Optimizely CMS Content Type Model",
+  "shortName": "epi-cms-contenttype",
+  "description": "Optimizely CMS Content Type model class",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "guids": [
+    "CA56CED4-2CA9-4C5E-9EDE-2A5A6F1F06EF"
+  ],
+  "primaryOutputs": [
+    { "path": "MyContentData.cs" }
+  ],
+  "symbols": {
+    "namespace": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyAppNamespace",
+      "displayName": "Namespace",
+      "description": "Namespace for the generated code.",
+      "replaces": "MyAppNamespace"
+    },
+    "baseType": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "PageData",
+      "replaces": "PageData",
+      "displayName": "Base type",
+      "description": "The base type that the Content Type should inherit from. Can be PageData, BlockData or any other ContentData type."
+    }
+  }
+}

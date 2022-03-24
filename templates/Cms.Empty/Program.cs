@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Cms.Empty
+namespace Cms._1
 {
     public class Program
     {
