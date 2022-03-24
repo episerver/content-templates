@@ -1,10 +1,10 @@
-using Alloy.Mvc.Models.Media;
-using Alloy.Mvc.Models.ViewModels;
+using Alloy._1.Models.Media;
+using Alloy._1.Models.ViewModels;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy.Mvc.Components
+namespace Alloy._1.Components
 {
     /// <summary>
     /// Controller for the image file.

@@ -1,10 +1,10 @@
-using Alloy.Mvc.Models.Pages;
-using Alloy.Mvc.Models.ViewModels;
+using Alloy._1.Models.Pages;
+using Alloy._1.Models.ViewModels;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy.Mvc.Controllers
+namespace Alloy._1.Controllers
 {
     public class StartPageController : PageControllerBase<StartPage>
     {

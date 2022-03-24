@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using Alloy.Mvc.Models.Pages;
+using Alloy._1.Models.Pages;
 using EPiServer.Core;
 using EPiServer.Web;
 using Microsoft.AspNetCore.Html;
 
-namespace Alloy.Mvc.Models.ViewModels
+namespace Alloy._1.Models.ViewModels
 {
     public class ContactBlockModel
     {

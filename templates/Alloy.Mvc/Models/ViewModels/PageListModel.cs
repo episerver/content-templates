@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Alloy.Mvc.Models.Blocks;
+using Alloy._1.Models.Blocks;
 using EPiServer.Core;
 
-namespace Alloy.Mvc.Models.ViewModels
+namespace Alloy._1.Models.ViewModels
 {
     public class PageListModel
     {

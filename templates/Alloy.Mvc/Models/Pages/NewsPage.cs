@@ -1,12 +1,12 @@
 using System.ComponentModel.DataAnnotations;
-using Alloy.Mvc.Business;
-using Alloy.Mvc.Models.Blocks;
+using Alloy._1.Business;
+using Alloy._1.Models.Blocks;
 using EPiServer.DataAbstraction;
 using EPiServer.Filters;
 using EPiServer.Framework.Localization;
 using EPiServer.ServiceLocation;
 
-namespace Alloy.Mvc.Models.Pages
+namespace Alloy._1.Models.Pages
 {
     /// <summary>
     /// Presents a news section including a list of the most recent articles on the site

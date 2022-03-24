@@ -1,6 +1,6 @@
 using EPiServer.Core;
 
-namespace Alloy.Mvc.Models.Blocks
+namespace Alloy._1.Models.Blocks
 {
     /// <summary>
     /// Base class for all block types on the site

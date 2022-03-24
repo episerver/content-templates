@@ -5,7 +5,7 @@ using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 
-namespace Alloy.Mvc.Models.Blocks
+namespace Alloy._1.Models.Blocks
 {
     /// <summary>
     /// Used to provide a composite property on the start page to set site logotype settings

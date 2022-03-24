@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Alloy.Mvc.Models.Blocks;
+using Alloy._1.Models.Blocks;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 
-namespace Alloy.Mvc.Models.Pages
+namespace Alloy._1.Models.Pages
 {
     /// <summary>
     /// Used to present a single product

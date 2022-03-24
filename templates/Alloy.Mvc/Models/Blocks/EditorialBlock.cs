@@ -3,7 +3,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 
-namespace Alloy.Mvc.Models.Blocks
+namespace Alloy._1.Models.Blocks
 {
     /// <summary>
     /// Used to insert editorial content edited using a rich-text editor

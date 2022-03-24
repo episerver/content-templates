@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using Alloy.Mvc.Business.Rendering;
+using Alloy._1.Business.Rendering;
 using EPiServer.Core;
 using EPiServer.Web;
 
-namespace Alloy.Mvc.Models.Pages
+namespace Alloy._1.Models.Pages
 {
     /// <summary>
     /// Represents contact details for a contact person

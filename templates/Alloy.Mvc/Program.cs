@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Alloy.Mvc
+namespace Alloy._1
 {
     public class Program
     {

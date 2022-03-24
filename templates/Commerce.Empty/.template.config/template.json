@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "sourceName": "Commerce.Empty",
+  "sourceName": "Commerce.1",
   "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Commerce.Empty",
   "name": "Optimizely Commerce empty",
