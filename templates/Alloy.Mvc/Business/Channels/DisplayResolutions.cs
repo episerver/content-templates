@@ -1,6 +1,6 @@
 using EPiServer.Framework.Localization;
 
-namespace Alloy.Mvc.Business.Channels
+namespace Alloy._1.Business.Channels
 {
     /// <summary>
     /// Defines resolution for desktop displays

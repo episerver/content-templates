@@ -1,7 +1,7 @@
 using EPiServer.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
-namespace Alloy.Mvc
+namespace Alloy._1
 {
     public class Globals
     {

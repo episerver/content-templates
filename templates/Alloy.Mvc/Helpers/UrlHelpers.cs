@@ -5,7 +5,7 @@ using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alloy.Mvc.Helpers
+namespace Alloy._1.Helpers
 {
     public static class UrlHelpers
     {

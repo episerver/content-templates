@@ -14,7 +14,7 @@ using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 
-namespace Alloy.Mvc.Models.Pages
+namespace Alloy._1.Models.Pages
 {
     [ContentType(
         GUID = "A7D46007-43E5-4401-9204-127040E79E09",

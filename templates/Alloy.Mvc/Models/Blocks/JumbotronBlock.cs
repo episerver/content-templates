@@ -5,7 +5,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
 
-namespace Alloy.Mvc.Models.Blocks
+namespace Alloy._1.Models.Blocks
 {
     /// <summary>
     /// Used for a primary message on a page, commonly used on start pages and landing pages

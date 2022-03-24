@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Alloy.Mvc.Models
+namespace Alloy._1.Models
 {
     public class LoginViewModel
     {

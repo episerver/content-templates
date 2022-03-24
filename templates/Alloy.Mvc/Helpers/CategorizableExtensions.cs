@@ -5,7 +5,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 
-namespace Alloy.Mvc.Helpers
+namespace Alloy._1.Helpers
 {
     /// <summary>
     /// Provides extension methods for categorizable content

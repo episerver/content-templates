@@ -1,11 +1,11 @@
 using System;
 using EPiServer;
 using EPiServer.Framework.DataAnnotations;
-using Alloy.Mvc.Models.Pages;
-using Alloy.Mvc.Models.ViewModels;
+using Alloy._1.Models.Pages;
+using Alloy._1.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy.Mvc.Controllers
+namespace Alloy._1.Controllers
 {
     /// <summary>
     /// Concrete controller that handles all page types that don't have their own specific controllers.

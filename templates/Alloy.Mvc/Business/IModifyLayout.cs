@@ -1,6 +1,6 @@
-using Alloy.Mvc.Models.ViewModels;
+using Alloy._1.Models.ViewModels;
 
-namespace Alloy.Mvc.Business
+namespace Alloy._1.Business
 {
     /// <summary>
     /// Defines a method which may be invoked by PageContextActionFilter allowing controllers

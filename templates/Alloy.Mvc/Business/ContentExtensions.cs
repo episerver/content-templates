@@ -5,7 +5,7 @@ using EPiServer.Filters;
 using EPiServer.Framework.Web;
 using EPiServer.ServiceLocation;
 
-namespace Alloy.Mvc.Business
+namespace Alloy._1.Business
 {
     /// <summary>
     /// Extension methods for content

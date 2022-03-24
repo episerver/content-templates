@@ -1,7 +1,7 @@
 using EPiServer.Shell;
-using Alloy.Mvc.Models.Pages;
+using Alloy._1.Models.Pages;
 
-namespace Alloy.Mvc.Business.UIDescriptors
+namespace Alloy._1.Business.UIDescriptors
 {
     /// <summary>
     /// Describes how the UI should appear for <see cref="ContainerPage"/> content.

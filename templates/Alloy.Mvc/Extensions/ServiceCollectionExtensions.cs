@@ -1,12 +1,12 @@
-using Alloy.Mvc.Business;
-using Alloy.Mvc.Business.Channels;
-using Alloy.Mvc.Business.Rendering;
+using Alloy._1.Business;
+using Alloy._1.Business.Channels;
+using Alloy._1.Business.Rendering;
 using EPiServer.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alloy.Mvc.Extensions
+namespace Alloy._1.Extensions
 {
     public static class ServiceCollectionExtensions
     {

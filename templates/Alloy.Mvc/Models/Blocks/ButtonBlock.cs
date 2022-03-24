@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using EPiServer;
 using EPiServer.DataAbstraction;
 
-namespace Alloy.Mvc.Models.Blocks
+namespace Alloy._1.Models.Blocks
 {
     /// <summary>
     /// Used to insert a link which is styled as a button
