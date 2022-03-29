@@ -1,7 +1,7 @@
 using System;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
-#if (configurable)
+#if configurable
 using EPiServer.ServiceLocation;
 using Microsoft.Extensions.DependencyInjection;
 #endif
@@ -10,7 +10,7 @@ namespace MyAppNamespace
 {
     [InitializableModule]
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
-#if (configurable)
+#if configurable
     public class MyInitializationModule : IConfigurableModule
     {
         public void ConfigureContainer(ServiceConfigurationContext context)

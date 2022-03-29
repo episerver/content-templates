@@ -37,6 +37,16 @@ namespace Alloy._1
                 .AddAlloy()
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
+
+            // Required by Wangkanai.Detection
+            services.AddDetection();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,6 +55,10 @@ namespace Alloy._1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Required by Wangkanai.Detection
+            app.UseDetection();
+            app.UseSession();
 
             app.UseStaticFiles();
             app.UseRouting();

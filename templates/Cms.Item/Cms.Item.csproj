@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>MyApp.Namespace</RootNamespace>
     <Nullable>warnings</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.3.2" />
+    <PackageReference Include="EPiServer.CMS" Version="12.4.0" />
   </ItemGroup>
-
 </Project>
