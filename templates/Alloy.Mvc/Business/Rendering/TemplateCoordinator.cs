@@ -1,13 +1,13 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
-using Alloy._1.Controllers;
-using Alloy._1.Models.Blocks;
-using Alloy._1.Models.Pages;
+using Alloy.Mvc._1.Controllers;
+using Alloy.Mvc._1.Models.Blocks;
+using Alloy.Mvc._1.Models.Pages;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 
-namespace Alloy._1.Business.Rendering
+namespace Alloy.Mvc._1.Business.Rendering
 {
     [ServiceConfiguration(typeof(IViewTemplateModelRegistrator))]
     public class TemplateCoordinator : IViewTemplateModelRegistrator

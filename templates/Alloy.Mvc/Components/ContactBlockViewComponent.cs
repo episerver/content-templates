@@ -1,7 +1,7 @@
-using Alloy._1.Helpers;
-using Alloy._1.Models.Blocks;
-using Alloy._1.Models.Pages;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Helpers;
+using Alloy.Mvc._1.Models.Blocks;
+using Alloy.Mvc._1.Models.Pages;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web;
@@ -9,7 +9,7 @@ using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy._1.Components
+namespace Alloy.Mvc._1.Components
 {
     public class ContactBlockViewComponent : BlockComponent<ContactBlock>
     {

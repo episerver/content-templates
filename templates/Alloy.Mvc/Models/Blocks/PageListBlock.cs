@@ -5,7 +5,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Filters;
 
-namespace Alloy._1.Models.Blocks
+namespace Alloy.Mvc._1.Models.Blocks
 {
     /// <summary>
     /// Used to insert a list of pages, for example a news list

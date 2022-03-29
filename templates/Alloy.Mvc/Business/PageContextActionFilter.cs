@@ -1,10 +1,10 @@
-using Alloy._1.Models.Pages;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Models.Pages;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Alloy._1.Business
+namespace Alloy.Mvc._1.Business
 {
     /// <summary>
     /// Intercepts actions with view models of type IPageViewModel and populates the view models
@@ -13,7 +13,7 @@ namespace Alloy._1.Business
     /// <remarks>
     /// This filter frees controllers for pages from having to care about common context needed by layouts
     /// and other page framework components allowing the controllers to focus on the specifics for the page types
-    /// and actions that they handle. 
+    /// and actions that they handle.
     /// </remarks>
     public class PageContextActionFilter : IResultFilter
     {

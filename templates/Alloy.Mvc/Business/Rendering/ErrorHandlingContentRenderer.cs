@@ -2,14 +2,14 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Alloy._1.Helpers;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Helpers;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Alloy._1.Business.Rendering
+namespace Alloy.Mvc._1.Business.Rendering
 {
     /// <summary>
     /// Wraps an MvcContentRenderer and adds error handling to ensure that blocks and other content

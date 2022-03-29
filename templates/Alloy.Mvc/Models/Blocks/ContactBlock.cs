@@ -5,7 +5,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
 
-namespace Alloy._1.Models.Blocks
+namespace Alloy.Mvc._1.Models.Blocks
 {
     /// <summary>
     /// Used to present contact information with a call-to-action link

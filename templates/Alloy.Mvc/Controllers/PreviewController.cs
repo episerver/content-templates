@@ -1,7 +1,7 @@
 using System.Linq;
-using Alloy._1.Business;
-using Alloy._1.Models.Pages;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Business;
+using Alloy.Mvc._1.Models.Pages;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
@@ -11,7 +11,7 @@ using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy._1.Controllers
+namespace Alloy.Mvc._1.Controllers
 {
     // Note: as the content area rendering on Alloy is customized we create ContentArea instances
     // which we render in the preview view in order to provide editors with a preview which is as

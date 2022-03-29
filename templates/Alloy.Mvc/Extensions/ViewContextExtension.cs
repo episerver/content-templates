@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alloy._1.Helpers
+namespace Alloy.Mvc._1.Helpers
 {
     /// <summary>
     /// Extension methods on request Context such as et/Set Node, Lang, Controller

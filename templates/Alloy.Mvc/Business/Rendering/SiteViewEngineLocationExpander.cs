@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Razor;
 using System.Collections.Generic;
 
-namespace Alloy._1.Business.Rendering
+namespace Alloy.Mvc._1.Business.Rendering
 {
     public class SiteViewEngineLocationExpander : IViewLocationExpander
     {

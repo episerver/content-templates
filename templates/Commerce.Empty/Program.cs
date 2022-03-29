@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Commerce._1
+namespace Commerce.Empty._1
 {
     public class Program
     {

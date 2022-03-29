@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
-using Alloy._1.Models.Blocks;
+using Alloy.Mvc._1.Models.Blocks;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 
-namespace Alloy._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages
 {
     /// <summary>
     /// Used for the site's start page and also acts as a container for site settings

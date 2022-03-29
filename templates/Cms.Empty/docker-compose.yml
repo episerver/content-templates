@@ -4,7 +4,7 @@ services:
   db:
     build:
       dockerfile: ./Docker/db.dockerfile
-      context: . 
+      context: .
     environment:
       SA_PASSWORD: Qwerty12345!
       DB_NAME: cms
@@ -12,13 +12,13 @@ services:
       - 6000:1433
     volumes:
       - ./App_Data:/var/opt/mssql/host_data
-    image: Cms.1/db
+    image: Cms.Empty.1/db
   web:
     depends_on:
       - db
     build:
       dockerfile: ./Docker/web.dockerfile
-      context: . 
+      context: .
     environment:
       ASPNETCORE_URLS: http://*:80
       ASPNETCORE_ENVIRONMENT: Development
@@ -27,5 +27,5 @@ services:
       - 5000:80
     volumes:
       - .:/src
-    image: Cms.1/web
+    image: Cms.Empty.1/web
     restart: on-failure

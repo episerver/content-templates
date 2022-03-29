@@ -1,6 +1,6 @@
 using System.Linq;
-using Alloy._1.Models.Pages;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Models.Pages;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Data;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
-namespace Alloy._1.Business
+namespace Alloy.Mvc._1.Business
 {
     [ServiceConfiguration]
     public class PageViewContextFactory

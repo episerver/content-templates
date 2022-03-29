@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using Alloy._1.Extensions;
+using Alloy.Mvc._1.Extensions;
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Alloy._1
+namespace Alloy.Mvc._1
 {
     public class Startup
     {

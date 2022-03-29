@@ -5,7 +5,7 @@ using EPiServer.Filters;
 using EPiServer.Framework.Web;
 using EPiServer.ServiceLocation;
 
-namespace Alloy._1.Business
+namespace Alloy.Mvc._1.Business
 {
     /// <summary>
     /// Extension methods for content
@@ -13,7 +13,7 @@ namespace Alloy._1.Business
     public static class ContentExtensions
     {
         /// <summary>
-        /// Filters content which should not be visible to the user. 
+        /// Filters content which should not be visible to the user.
         /// </summary>
         public static IEnumerable<T> FilterForDisplay<T>(this IEnumerable<T> contents, bool requirePageTemplate = false, bool requireVisibleInMenu = false)
             where T : IContent

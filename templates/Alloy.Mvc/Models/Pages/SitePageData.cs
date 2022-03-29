@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Alloy._1.Business.Rendering;
+using Alloy.Mvc._1.Business.Rendering;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 
-namespace Alloy._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages
 {
     /// <summary>
     /// Base class for all page types

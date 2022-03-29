@@ -3,9 +3,9 @@ using EPiServer.Core;
 using EPiServer.Core.Html.StringParsing;
 using EPiServer.Web.Mvc.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using static Alloy._1.Globals;
+using static Alloy.Mvc._1.Globals;
 
-namespace Alloy._1.Business.Rendering
+namespace Alloy.Mvc._1.Business.Rendering
 {
     /// <summary>
     /// Extends the default <see cref="ContentAreaRenderer"/> to apply custom CSS classes to each <see cref="ContentFragment"/>.

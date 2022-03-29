@@ -1,4 +1,4 @@
-namespace Alloy._1.Models.ViewModels
+namespace Alloy.Mvc._1.Models.ViewModels
 {
     /// <summary>
     /// View model for the image file

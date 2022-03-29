@@ -1,6 +1,6 @@
 using EPiServer.DataAbstraction;
 
-namespace Alloy._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages
 {
     /// <summary>
     /// Used primarily for publishing news articles on the website

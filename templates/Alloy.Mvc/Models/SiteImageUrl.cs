@@ -1,6 +1,6 @@
 using EPiServer.DataAnnotations;
 
-namespace Alloy._1.Models
+namespace Alloy.Mvc._1.Models
 {
     /// <summary>
     /// Attribute to set the default thumbnail for site page and block types

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Wangkanai.Detection.Models;
 using Wangkanai.Detection.Services;
 
-namespace Alloy._1.Business.Channels
+namespace Alloy.Mvc._1.Business.Channels
 {
     //<summary>
     // Defines the 'Mobile' content channel

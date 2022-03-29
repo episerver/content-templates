@@ -1,7 +1,7 @@
-using Alloy._1.Models.Pages;
+using Alloy.Mvc._1.Models.Pages;
 using EPiServer.Core;
 
-namespace Alloy._1.Models.ViewModels
+namespace Alloy.Mvc._1.Models.ViewModels
 {
     /// <summary>
     /// Defines common characteristics for view models for pages, including properties used by layout files.

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Alloy.1": {
+    "Alloy.Mvc.1": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5000/",

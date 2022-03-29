@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Alloy._1.Business;
-using Alloy._1.Models.Pages;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Business;
+using Alloy.Mvc._1.Models.Pages;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Security;
 using EPiServer.Web.Mvc;
@@ -9,7 +9,7 @@ using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alloy._1.Controllers
+namespace Alloy.Mvc._1.Controllers
 {
     /// <summary>
     /// All controllers that renders pages should inherit from this class so that we can

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Cms.1": {
+    "Cms.Empty.1": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5000/",

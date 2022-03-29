@@ -1,4 +1,4 @@
-using Alloy._1.Business.Rendering;
+using Alloy.Mvc._1.Business.Rendering;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
@@ -7,7 +7,7 @@ using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Alloy._1.Business.Initialization
+namespace Alloy.Mvc._1.Business.Initialization
 {
     /// <summary>
     /// Module for customizing templates and rendering.

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Episerver AB",
-  "sourceName": "Alloy.1",
+  "sourceName": "Alloy.Mvc.1",
   "classifications": [ "Web" ],
   "identity": "EPiServer.Templates.Alloy.Mvc",
   "name": "Optimizely Alloy MVC",

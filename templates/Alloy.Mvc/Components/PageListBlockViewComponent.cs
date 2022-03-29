@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
-using Alloy._1.Business;
-using Alloy._1.Models.Blocks;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Business;
+using Alloy.Mvc._1.Models.Blocks;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Filters;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy._1.Components
+namespace Alloy.Mvc._1.Components
 {
     public class PageListBlockViewComponent : BlockComponent<PageListBlock>
     {

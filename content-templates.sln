@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPiServer.Templates", "temp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{350B8822-08B0-47CE-9295-9D379C42A718}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alloy.Mvc", "templates\Alloy.Mvc\Alloy.1.csproj", "{D26A321A-ED45-42C4-9792-1C64A969C70B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alloy.Mvc", "templates\Alloy.Mvc\Alloy.Mvc.1.csproj", "{D26A321A-ED45-42C4-9792-1C64A969C70B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Empty", "templates\Cms.Empty\Cms.1.csproj", "{A64C6372-EC36-4F19-B2AD-8A2185AAC015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Empty", "templates\Cms.Empty\Cms.Empty.1.csproj", "{A64C6372-EC36-4F19-B2AD-8A2185AAC015}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commerce.Empty", "templates\Commerce.Empty\Commerce.1.csproj", "{9B5A3754-D23E-4032-A09D-5568F935F34F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commerce.Empty", "templates\Commerce.Empty\Commerce.Empty.1.csproj", "{9B5A3754-D23E-4032-A09D-5568F935F34F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8F2A1A07-7B50-4060-89B0-B53021C3F593}"
 	ProjectSection(SolutionItems) = preProject

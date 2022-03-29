@@ -2,7 +2,7 @@ using System;
 using EPiServer;
 using EPiServer.Core;
 
-namespace Alloy._1.Models.ViewModels
+namespace Alloy.Mvc._1.Models.ViewModels
 {
     public class ContentRenderingErrorModel
     {

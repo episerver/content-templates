@@ -1,8 +1,8 @@
-using Alloy._1.Models.Blocks;
+using Alloy.Mvc._1.Models.Blocks;
 using EPiServer.SpecializedProperties;
 using Microsoft.AspNetCore.Html;
 
-namespace Alloy._1.Models.ViewModels
+namespace Alloy.Mvc._1.Models.ViewModels
 {
     public class LayoutModel
     {

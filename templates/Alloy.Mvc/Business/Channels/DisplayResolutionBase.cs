@@ -1,7 +1,7 @@
 using EPiServer.Framework.Localization;
 using EPiServer.Web;
 
-namespace Alloy._1.Business.Channels
+namespace Alloy.Mvc._1.Business.Channels
 {
     /// <summary>
     /// Base class for all resolution definitions

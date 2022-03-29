@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0
 WORKDIR /src
 
 #Restore NuGet packages so they are cached when we start the container
-COPY ./Alloy.1.csproj .
+COPY ./Alloy.Mvc.1.csproj .
 COPY ./Directory.Build.props .
 COPY ./nuget.config .
 

@@ -1,6 +1,6 @@
-using Alloy._1.Business.Rendering;
+using Alloy.Mvc._1.Business.Rendering;
 
-namespace Alloy._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages
 {
     /// <summary>
     /// Used to logically group pages in the page tree

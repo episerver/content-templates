@@ -1,11 +1,11 @@
-using Alloy._1.Models.Media;
-using Alloy._1.Models.ViewModels;
+using Alloy.Mvc._1.Models.Media;
+using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer.Core;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alloy._1.Components
+namespace Alloy.Mvc._1.Components
 {
     /// <summary>
     /// Controller for the video file.

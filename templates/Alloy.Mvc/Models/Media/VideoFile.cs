@@ -4,7 +4,7 @@ using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web;
 
-namespace Alloy._1.Models.Media
+namespace Alloy.Mvc._1.Models.Media
 {
     [ContentType(GUID = "85468104-E06F-47E5-A317-FC9B83D3CBA6")]
     [MediaDescriptor(ExtensionString = "flv,mp4,webm")]

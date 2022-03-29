@@ -2,7 +2,7 @@ using System;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 
-namespace Alloy._1.Business
+namespace Alloy.Mvc._1.Business
 {
     /// <summary>
     /// Provides extension methods for types intended to be used when working with page types

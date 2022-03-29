@@ -3,7 +3,7 @@ using EPiServer.DataAnnotations;
 using EPiServer.Framework.Blobs;
 using EPiServer.Framework.DataAnnotations;
 
-namespace Alloy._1.Models.Media
+namespace Alloy.Mvc._1.Models.Media
 {
     [ContentType(GUID = "F522B459-EB27-462C-B216-989FC7FF9448")]
     [MediaDescriptor(ExtensionString = "svg")]

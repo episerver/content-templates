@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Commerce.1": {
+    "Commerce.Empty.1": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5000/",
