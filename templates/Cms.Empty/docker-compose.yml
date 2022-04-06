@@ -22,7 +22,7 @@ services:
     environment:
       ASPNETCORE_URLS: http://*:80
       ASPNETCORE_ENVIRONMENT: Development
-      CONNECTIONSTRINGS__EPISERVERDB: Server=db;Database=cms;User Id=sa;Password=Qwerty12345!;
+      CONNECTIONSTRINGS__EPISERVERDB: Server=db;Database=cms;User Id=sa;Password=Qwerty12345!;Encrypt=False;
     ports:
       - 5000:80
     volumes:
