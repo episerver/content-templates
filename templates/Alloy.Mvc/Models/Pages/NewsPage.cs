@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Alloy.Mvc._1.Business;
 using Alloy.Mvc._1.Models.Blocks;
-using EPiServer.DataAbstraction;
 using EPiServer.Filters;
 using EPiServer.Framework.Localization;
 using EPiServer.ServiceLocation;

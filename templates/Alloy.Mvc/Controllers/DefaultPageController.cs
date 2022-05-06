@@ -1,5 +1,3 @@
-using System;
-using EPiServer;
 using EPiServer.Framework.DataAnnotations;
 using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;

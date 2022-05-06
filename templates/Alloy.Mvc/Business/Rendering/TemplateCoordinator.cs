@@ -1,5 +1,3 @@
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 using Alloy.Mvc._1.Controllers;
 using Alloy.Mvc._1.Models.Blocks;

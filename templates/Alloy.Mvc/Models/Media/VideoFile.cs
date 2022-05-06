@@ -1,6 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web;
 

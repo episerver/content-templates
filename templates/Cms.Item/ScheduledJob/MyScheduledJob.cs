@@ -1,4 +1,3 @@
-using System;
 using EPiServer.DataAbstraction;
 using EPiServer.PlugIn;
 using EPiServer.Scheduler;

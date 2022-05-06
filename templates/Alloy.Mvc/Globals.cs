@@ -1,4 +1,3 @@
-using EPiServer.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
 namespace Alloy.Mvc._1;

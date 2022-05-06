@@ -1,5 +1,3 @@
-using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
 
 namespace Alloy.Mvc._1.Models.Media;

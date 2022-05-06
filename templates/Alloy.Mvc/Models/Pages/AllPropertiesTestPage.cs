@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
 using EPiServer.Framework.Serialization;
 using EPiServer.PlugIn;
 using EPiServer.ServiceLocation;

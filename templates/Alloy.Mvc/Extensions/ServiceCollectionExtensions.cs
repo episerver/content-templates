@@ -4,7 +4,6 @@ using Alloy.Mvc._1.Business.Rendering;
 using EPiServer.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Alloy.Mvc._1.Extensions;
 

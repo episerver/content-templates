@@ -1,5 +1,3 @@
-using EPiServer.DataAnnotations;
-
 namespace Alloy.Mvc._1.Models;
 
 /// <summary>

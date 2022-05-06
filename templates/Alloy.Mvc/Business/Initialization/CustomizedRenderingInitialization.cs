@@ -5,7 +5,6 @@ using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Alloy.Mvc._1.Business.Initialization;
 

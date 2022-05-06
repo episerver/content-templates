@@ -1,10 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
 using Alloy.Mvc._1.Business;
 using Alloy.Mvc._1.Models.Blocks;
 using Alloy.Mvc._1.Models.ViewModels;
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.Filters;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;

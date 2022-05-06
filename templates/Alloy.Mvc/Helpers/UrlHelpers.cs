@@ -1,9 +1,6 @@
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Alloy.Mvc._1.Helpers;
 

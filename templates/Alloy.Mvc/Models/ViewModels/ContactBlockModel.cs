@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using Alloy.Mvc._1.Models.Pages;
-using EPiServer.Core;
 using EPiServer.Web;
 using Microsoft.AspNetCore.Html;
 

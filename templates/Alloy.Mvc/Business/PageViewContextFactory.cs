@@ -1,15 +1,11 @@
-using System.Linq;
 using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.Data;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 

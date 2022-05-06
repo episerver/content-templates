@@ -1,5 +1,3 @@
-using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.Framework.Blobs;
 using EPiServer.Framework.DataAnnotations;
 

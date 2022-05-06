@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Alloy.Mvc._1.Models.Pages;
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.Filters;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Configuration;

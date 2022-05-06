@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Alloy.Mvc._1.Models.Pages;
-using EPiServer.Core;
 
 namespace Alloy.Mvc._1.Models.ViewModels;
 

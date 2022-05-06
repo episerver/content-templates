@@ -1,5 +1,3 @@
-using EPiServer;
-using EPiServer.Core;
 using EPiServer.Core.Html.StringParsing;
 using EPiServer.Web.Mvc.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;

@@ -1,9 +1,5 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Alloy.Mvc._1.Business.Rendering;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 

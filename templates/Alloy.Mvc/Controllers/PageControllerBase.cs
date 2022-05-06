@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Alloy.Mvc._1.Business;
 using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;
@@ -7,7 +6,6 @@ using EPiServer.Shell.Security;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Alloy.Mvc._1.Controllers;
 

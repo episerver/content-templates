@@ -1,11 +1,6 @@
-using System;
 using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 using Alloy.Mvc._1.Helpers;
 using Alloy.Mvc._1.Models.ViewModels;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

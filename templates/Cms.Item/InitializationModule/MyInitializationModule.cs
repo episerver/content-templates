@@ -1,4 +1,3 @@
-using System;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 #if configurable

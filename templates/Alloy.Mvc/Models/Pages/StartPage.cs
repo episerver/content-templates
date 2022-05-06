@@ -1,8 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using Alloy.Mvc._1.Models.Blocks;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 
 namespace Alloy.Mvc._1.Models.Pages;

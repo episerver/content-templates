@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Alloy.Mvc._1.Models.Pages;
 
 namespace Alloy.Mvc._1.Models.ViewModels;

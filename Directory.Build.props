@@ -7,8 +7,8 @@
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
-    <!-- CS0436: Temporary build warning when overriding display templates, e.g. Image.cshtml. -->
-    <NoWarn>$(NoWarn);CS0436</NoWarn>
+    <!-- CA1707: Removes warning about underscores in namespaces -->
+    <NoWarn>$(NoWarn); CA1707</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
