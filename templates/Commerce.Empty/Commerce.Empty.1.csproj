@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.4.0" />
-    <PackageReference Include="EPiServer.Commerce" Version="14.2.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.5.0" />
+    <PackageReference Include="EPiServer.Commerce" Version="14.2.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
