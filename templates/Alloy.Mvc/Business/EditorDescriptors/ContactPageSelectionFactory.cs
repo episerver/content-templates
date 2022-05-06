@@ -3,27 +3,26 @@ using System.Linq;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
 
-namespace Alloy.Mvc._1.Business.EditorDescriptors
+namespace Alloy.Mvc._1.Business.EditorDescriptors;
+
+/// <summary>
+/// Provides a list of options corresponding to ContactPage pages on the site
+/// </summary>
+/// <seealso cref="ContactPageSelector"/>
+[ServiceConfiguration]
+public class ContactPageSelectionFactory : ISelectionFactory
 {
-    /// <summary>
-    /// Provides a list of options corresponding to ContactPage pages on the site
-    /// </summary>
-    /// <seealso cref="ContactPageSelector"/>
-    [ServiceConfiguration]
-    public class ContactPageSelectionFactory : ISelectionFactory
+    private readonly ContentLocator _contentLocator;
+
+    public ContactPageSelectionFactory(ContentLocator contentLocator)
     {
-        private readonly ContentLocator _contentLocator;
+        _contentLocator = contentLocator;
+    }
 
-        public ContactPageSelectionFactory(ContentLocator contentLocator)
-        {
-            _contentLocator = contentLocator;
-        }
+    public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+    {
+        var contactPages = _contentLocator.GetContactPages();
 
-        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
-        {
-            var contactPages = _contentLocator.GetContactPages();
-
-            return new List<SelectItem>(contactPages.Select(c => new SelectItem { Value = c.PageLink, Text = c.Name }));
-        }
+        return new List<SelectItem>(contactPages.Select(c => new SelectItem { Value = c.PageLink, Text = c.Name }));
     }
 }

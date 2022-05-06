@@ -476,6 +476,8 @@ csharp_style_expression_bodied_accessors = when_on_single_line:suggestion
 csharp_style_expression_bodied_lambdas = true:suggestion
 csharp_style_expression_bodied_local_functions = true:suggestion
 
+csharp_style_namespace_declarations = file_scoped:suggestion
+
 # CA1051: Do not declare visible instance fields
 dotnet_diagnostic.CA1051.severity = suggestion
 

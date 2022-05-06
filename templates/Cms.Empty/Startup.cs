@@ -10,49 +10,48 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Cms.Empty._1
+namespace Cms.Empty._1;
+
+public class Startup
 {
-    public class Startup
+    private readonly IWebHostEnvironment _webHostingEnvironment;
+
+    public Startup(IWebHostEnvironment webHostingEnvironment)
     {
-        private readonly IWebHostEnvironment _webHostingEnvironment;
+        _webHostingEnvironment = webHostingEnvironment;
+    }
 
-        public Startup(IWebHostEnvironment webHostingEnvironment)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_webHostingEnvironment.IsDevelopment())
         {
-            _webHostingEnvironment = webHostingEnvironment;
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
+
+            services.Configure<SchedulerOptions>(options => options.Enabled = false);
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        services
+            .AddCmsAspNetIdentity<ApplicationUser>()
+            .AddCms()
+            .AddAdminUserRegistration()
+            .AddEmbeddedLocalization<Startup>();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            if (_webHostingEnvironment.IsDevelopment())
-            {
-                AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
-
-                services.Configure<SchedulerOptions>(options => options.Enabled = false);
-            }
-
-            services
-                .AddCmsAspNetIdentity<ApplicationUser>()
-                .AddCms()
-                .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
+            app.UseDeveloperExceptionPage();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapContent();
-            });
-        }
+            endpoints.MapContent();
+        });
     }
 }

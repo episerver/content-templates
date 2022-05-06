@@ -6,31 +6,30 @@ using EPiServer.Filters;
 using EPiServer.Framework.Localization;
 using EPiServer.ServiceLocation;
 
-namespace Alloy.Mvc._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages;
+
+/// <summary>
+/// Presents a news section including a list of the most recent articles on the site
+/// </summary>
+[SiteContentType(GUID = "638D8271-5CA3-4C72-BABC-3E8779233263")]
+[SiteImageUrl]
+public class NewsPage : StandardPage
 {
-    /// <summary>
-    /// Presents a news section including a list of the most recent articles on the site
-    /// </summary>
-    [SiteContentType(GUID = "638D8271-5CA3-4C72-BABC-3E8779233263")]
-    [SiteImageUrl]
-    public class NewsPage : StandardPage
+    [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 305)]
+    public virtual PageListBlock NewsList { get; set; }
+
+    public override void SetDefaultValues(ContentType contentType)
     {
-        [Display(
-            GroupName = SystemTabNames.Content,
-            Order = 305)]
-        public virtual PageListBlock NewsList { get; set; }
+        base.SetDefaultValues(contentType);
 
-        public override void SetDefaultValues(ContentType contentType)
-        {
-            base.SetDefaultValues(contentType);
-
-            NewsList.Count = 20;
-            NewsList.Heading = ServiceLocator.Current.GetInstance<LocalizationService>().GetString("/newspagetemplate/latestnews");
-            NewsList.IncludeIntroduction = true;
-            NewsList.IncludePublishDate = true;
-            NewsList.Recursive = true;
-            NewsList.PageTypeFilter = typeof(ArticlePage).GetPageType();
-            NewsList.SortOrder = FilterSortOrder.PublishedDescending;
-        }
+        NewsList.Count = 20;
+        NewsList.Heading = ServiceLocator.Current.GetInstance<LocalizationService>().GetString("/newspagetemplate/latestnews");
+        NewsList.IncludeIntroduction = true;
+        NewsList.IncludePublishDate = true;
+        NewsList.Recursive = true;
+        NewsList.PageTypeFilter = typeof(ArticlePage).GetPageType();
+        NewsList.SortOrder = FilterSortOrder.PublishedDescending;
     }
 }

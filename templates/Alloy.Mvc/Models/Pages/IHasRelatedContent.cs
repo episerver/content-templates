@@ -1,9 +1,8 @@
 using EPiServer.Core;
 
-namespace Alloy.Mvc._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages;
+
+public interface IHasRelatedContent
 {
-    public interface IHasRelatedContent
-    {
-        ContentArea RelatedContentArea { get; }
-    }
+    ContentArea RelatedContentArea { get; }
 }

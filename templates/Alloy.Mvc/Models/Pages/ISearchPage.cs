@@ -1,9 +1,8 @@
-namespace Alloy.Mvc._1.Models.Pages
+namespace Alloy.Mvc._1.Models.Pages;
+
+/// <summary>
+/// Marker interface for search implementation
+/// </summary>
+public interface ISearchPage
 {
-    /// <summary>
-    /// Marker interface for search implementation
-    /// </summary>
-    public interface ISearchPage
-    {
-    }
 }

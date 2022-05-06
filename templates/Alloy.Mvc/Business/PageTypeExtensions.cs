@@ -2,23 +2,22 @@ using System;
 using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 
-namespace Alloy.Mvc._1.Business
+namespace Alloy.Mvc._1.Business;
+
+/// <summary>
+/// Provides extension methods for types intended to be used when working with page types
+/// </summary>
+public static class PageTypeExtensions
 {
     /// <summary>
-    /// Provides extension methods for types intended to be used when working with page types
+    /// Returns the definition for a specific page type
     /// </summary>
-    public static class PageTypeExtensions
+    /// <param name="pageType"></param>
+    /// <returns></returns>
+    public static PageType GetPageType(this Type pageType)
     {
-        /// <summary>
-        /// Returns the definition for a specific page type
-        /// </summary>
-        /// <param name="pageType"></param>
-        /// <returns></returns>
-        public static PageType GetPageType(this Type pageType)
-        {
-            var pageTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository<PageType>>();
+        var pageTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository<PageType>>();
 
-            return pageTypeRepository.Load(pageType);
-        }
+        return pageTypeRepository.Load(pageType);
     }
 }
