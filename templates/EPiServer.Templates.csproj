@@ -7,6 +7,7 @@
     <NoDefaultExcludes>true</NoDefaultExcludes>
     <ContentTargetFolders>content</ContentTargetFolders>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <!-- Typical NuGet warning when packaging templates  -->
     <NoWarn>$(NoWarn);NU5100;NU5110;NU5111;NU5123</NoWarn>
   </PropertyGroup>
 
@@ -18,19 +19,21 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageTags>$(PackageTags);dotnet-new;templates;Episerver;Optimizely</PackageTags>
     <PackageProjectUrl>https://github.com/episerver/content-templates</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Product>Optimizely Digital Experience Platform</Product>
     <Description>Templates for the Optimizely Digital Experience Cloud</Description>
     <Company>Episerver AB</Company>
     <Authors>Episerver AB</Authors>
-    <Copyright>© 2021 by Episerver AB. All rights reserved</Copyright>
+    <Copyright>© 2022 by Episerver AB. All rights reserved</Copyright>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="**\*" />
     <None Include="$(SolutionDir)shared\icon.png" LinkBase="shared" Visible="false" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <!-- Shared items to include in every template -->
