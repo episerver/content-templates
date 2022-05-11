@@ -1,60 +1,67 @@
-using System;
-using System.IO;
-using Alloy._1.Extensions;
+using Alloy.Mvc._1.Extensions;
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
-namespace Alloy._1
+namespace Alloy.Mvc._1;
+
+public class Startup
 {
-    public class Startup
+    private readonly IWebHostEnvironment _webHostingEnvironment;
+
+    public Startup(IWebHostEnvironment webHostingEnvironment)
     {
-        private readonly IWebHostEnvironment _webHostingEnvironment;
+        _webHostingEnvironment = webHostingEnvironment;
+    }
 
-        public Startup(IWebHostEnvironment webHostingEnvironment)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (_webHostingEnvironment.IsDevelopment())
         {
-            _webHostingEnvironment = webHostingEnvironment;
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
+
+            services.Configure<SchedulerOptions>(options => options.Enabled = false);
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        services
+            .AddCmsAspNetIdentity<ApplicationUser>()
+            .AddCms()
+            .AddAlloy()
+            .AddAdminUserRegistration()
+            .AddEmbeddedLocalization<Startup>();
+
+        // Required by Wangkanai.Detection
+        services.AddDetection();
+
+        services.AddSession(options =>
         {
-            if (_webHostingEnvironment.IsDevelopment())
-            {
-                AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
+            options.IdleTimeout = TimeSpan.FromSeconds(10);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+    }
 
-                services.Configure<SchedulerOptions>(options => options.Enabled = false);
-            }
-
-            services
-                .AddCmsAspNetIdentity<ApplicationUser>()
-                .AddCms()
-                .AddAlloy()
-                .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        // Required by Wangkanai.Detection
+        app.UseDetection();
+        app.UseSession();
+
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseStaticFiles();
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapContent();
-            });
-        }
+            endpoints.MapContent();
+        });
     }
 }

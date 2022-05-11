@@ -1,31 +1,26 @@
-using System;
-using EPiServer;
-using EPiServer.Core;
+namespace Alloy.Mvc._1.Models.ViewModels;
 
-namespace Alloy._1.Models.ViewModels
+public class ContentRenderingErrorModel
 {
-    public class ContentRenderingErrorModel
+    public ContentRenderingErrorModel(IContentData contentData, Exception exception)
     {
-        public ContentRenderingErrorModel(IContentData contentData, Exception exception)
+        if (contentData is IContent content)
         {
-            if (contentData is IContent content)
-            {
-                ContentName = content.Name;
-            }
-            else
-            {
-                ContentName = string.Empty;
-            }
-
-            ContentTypeName = contentData.GetOriginalType().Name;
-
-            Exception = exception;
+            ContentName = content.Name;
+        }
+        else
+        {
+            ContentName = string.Empty;
         }
 
-        public string ContentName { get; set; }
+        ContentTypeName = contentData.GetOriginalType().Name;
 
-        public string ContentTypeName { get; set; }
-
-        public Exception Exception { get; set; }
+        Exception = exception;
     }
+
+    public string ContentName { get; set; }
+
+    public string ContentTypeName { get; set; }
+
+    public Exception Exception { get; set; }
 }

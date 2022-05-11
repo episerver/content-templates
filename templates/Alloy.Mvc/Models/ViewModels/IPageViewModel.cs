@@ -1,21 +1,19 @@
-using Alloy._1.Models.Pages;
-using EPiServer.Core;
+using Alloy.Mvc._1.Models.Pages;
 
-namespace Alloy._1.Models.ViewModels
+namespace Alloy.Mvc._1.Models.ViewModels;
+
+/// <summary>
+/// Defines common characteristics for view models for pages, including properties used by layout files.
+/// </summary>
+/// <remarks>
+/// Views which should handle several page types (T) can use this interface as model type rather than the
+/// concrete PageViewModel class, utilizing the that this interface is covariant.
+/// </remarks>
+public interface IPageViewModel<out T> where T : SitePageData
 {
-    /// <summary>
-    /// Defines common characteristics for view models for pages, including properties used by layout files.
-    /// </summary>
-    /// <remarks>
-    /// Views which should handle several page types (T) can use this interface as model type rather than the
-    /// concrete PageViewModel class, utilizing the that this interface is covariant.
-    /// </remarks>
-    public interface IPageViewModel<out T> where T : SitePageData
-    {
-        T CurrentPage { get; }
+    T CurrentPage { get; }
 
-        LayoutModel Layout { get; set; }
+    LayoutModel Layout { get; set; }
 
-        IContent Section { get; set; }
-    }
+    IContent Section { get; set; }
 }
