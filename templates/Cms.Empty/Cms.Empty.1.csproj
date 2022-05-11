@@ -4,6 +4,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="EPiServer"/>
+    <Using Include="EPiServer.Core"/>
+    <Using Include="EPiServer.DataAbstraction"/>
+    <Using Include="EPiServer.DataAnnotations"/>
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="EPiServer.CMS" Version="12.6.0" />
