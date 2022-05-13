@@ -4,7 +4,7 @@ namespace MyAppNamespace
 {
     public class MyRazorPageModel : RazorPageModel<MyPageData>
     {
-        public void OnGet()
+        public static void OnGet()
         {
         }
     }
