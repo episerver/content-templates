@@ -3,11 +3,12 @@
 @{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
 
 <div class="content">
-    <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
-    <p class="lead" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
+    <h1 epi-property="@Model.CurrentPage.PageImage">@Model.CurrentPage.PageName</h1>
+    <p class="lead" epi-property="@Model.CurrentPage.MetaDescription">@Model.CurrentPage.MetaDescription</p>
     <div class="clearfix">
-        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+        <div epi-property="@Model.CurrentPage.MainBody" />
     </div>
 </div>
 
-@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row" })
+<div class="row" epi-property="@Model.CurrentPage.MainContentArea" />
+

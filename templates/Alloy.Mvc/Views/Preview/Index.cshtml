@@ -7,7 +7,7 @@
         @await Html.PartialAsync("TemplateHint", string.Format(System.Globalization.CultureInfo.CurrentUICulture, LocalizationService.Current.GetString("/preview/heading"), Model.PreviewContent.Name, LocalizationService.Current.GetString(area.AreaName)))
 
         <div class="row preview">
-            @Html.DisplayFor(x => area.ContentArea, new { Tag = area.AreaTag })
+            <div epi-property="@area.ContentArea" epi-template-tag="@area.AreaTag" />
         </div>
     }
     else

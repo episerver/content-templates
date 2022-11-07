@@ -1,5 +1,5 @@
 @model PageViewModel<Alloy.Mvc._1.Models.Pages.StartPage>
 
 <div class="start">
-    @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row" })
+    <div epi-property="@Model.CurrentPage.MainContentArea" class="row" />
 </div>

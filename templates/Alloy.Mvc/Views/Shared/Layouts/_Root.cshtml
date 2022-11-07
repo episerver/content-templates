@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="~/css/style.min.css" />
     <link rel="stylesheet" href="~/css/theme.min.css" />
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
-    @Html.RequiredClientResources("Header")
+    <required-client-resources area="Header" />
 </head>
 
 <body>
@@ -49,8 +49,7 @@
     {
         await Html.RenderPartialAsync("Footer", Model);
     }
-
-    @Html.RequiredClientResources("Footer")
+    <required-client-resources area="Footer" />
     <script src="~/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

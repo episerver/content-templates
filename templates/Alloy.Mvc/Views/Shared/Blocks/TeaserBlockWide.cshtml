@@ -1,7 +1,7 @@
 @model TeaserBlock
 
 <div class="row align-items-center">
-    <div class="col-sm-12 col-lg-6" @Html.EditAttributes(x => x.Image)>
+    <div class="col-sm-12 col-lg-6" epi-property="@Model.Image">
         <img class="pb-3 pb-lg-0" src="@Url.ContentUrl(Model.Image)" />
     </div>
     <div class="col-sm-12 col-lg-6 text-lg-start">
@@ -11,8 +11,8 @@
             Url.PageLinkUrl(Model.Link),
             Model.Heading))
         {
-            <h2 @Html.EditAttributes(x => x.Heading)>@Model.Heading</h2>
-            <p @Html.EditAttributes(x => x.Text)>@Model.Text</p>
+            <h2 epi-property="@Model.Heading">@Model.Heading</h2>
+            <p epi-property="@Model.Text">@Model.Text</p>
         }
     </div>
 </div>

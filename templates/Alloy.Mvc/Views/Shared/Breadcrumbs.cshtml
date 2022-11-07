@@ -34,7 +34,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb d-none d-lg-flex">
         <li class="breadcrumb-item">
-            @Html.ContentLink(SiteDefinition.Current.StartPage)
+            <a epi-property="@SiteDefinition.Current.StartPage" />
         </li>
         @Html.MenuList(SiteDefinition.Current.StartPage, ItemTemplate, requireVisibleInMenu: false, requirePageTemplate: false)
     </ol>

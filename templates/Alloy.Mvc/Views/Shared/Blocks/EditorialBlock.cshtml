@@ -1,5 +1,3 @@
 @model EditorialBlock
 
-<div @Html.EditAttributes(x => x.MainBody)>
-    @Html.DisplayFor(x => Model.MainBody)
-</div>
+<div epi-property="@Model.MainBody" />
