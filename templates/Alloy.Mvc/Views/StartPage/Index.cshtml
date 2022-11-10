@@ -1,5 +1,7 @@
-@model PageViewModel<Alloy.Mvc._1.Models.Pages.StartPage>
+@inherits Alloy.Mvc._1.Views.CustomContentAreaItemCssRenderingBase<PageViewModel<Alloy.Mvc._1.Models.Pages.StartPage>>
 
 <div class="start">
-    <div epi-property="@Model.CurrentPage.MainContentArea" class="row" />
+    <div epi-property="@Model.CurrentPage.MainContentArea" class="row">
+        <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+    </div>
 </div>

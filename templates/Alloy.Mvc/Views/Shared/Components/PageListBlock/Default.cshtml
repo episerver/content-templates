@@ -18,6 +18,7 @@
             @if (Model.ShowPublishDate && page.StartPublish.HasValue)
             {
                 <p class="small date"><span epi-property="@(page.StartPublish)" /></p>
+                <p class="small date">@Html.DisplayFor(x => page.StartPublish)</p>
             }
 
             @if (Model.ShowIntroduction && page is SitePageData teaserPage)
@@ -46,6 +47,7 @@
                         @if (Model.ShowPublishDate && page.StartPublish.HasValue)
                         {
                             <p class="small date"><span epi-property="@(page.StartPublish)" /></p>
+                            <p class="small date">@Html.DisplayFor(x => page.StartPublish)</p>
                         }
                         @if (Model.ShowIntroduction && page is SitePageData teaserPage)
                         {

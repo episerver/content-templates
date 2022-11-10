@@ -1,4 +1,4 @@
-@model PageViewModel<ProductPage>
+@inherits Alloy.Mvc._1.Views.CustomContentAreaItemCssRenderingBase<PageViewModel<ProductPage>>
 
 @{ Layout = "~/Views/Shared/Layouts/_TwoPlusOne.cshtml"; }
 
@@ -10,7 +10,9 @@
     <div class="clearfix" epi-property="@Model.CurrentPage.MainBody" />
 </div>
 
-<div class="row" epi-property="@Model.CurrentPage.MainContentArea" />
+<div epi-property="@Model.CurrentPage.MainContentArea" class="row">
+    <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+</div>
 
 @section RelatedContent
 {
@@ -21,5 +23,9 @@
         <div epi-property="@Model.CurrentPage.UniqueSellingPoints" />
     </div>
 
-    <div epi-property="@Model.CurrentPage.RelatedContentArea" />
+    @(ViewData["Aside"] = true)
+
+    <div epi-property="@Model.CurrentPage.RelatedContentArea">
+        <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+    </div>
 }

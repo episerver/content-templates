@@ -1,4 +1,4 @@
-@model PageViewModel<StandardPage>
+@inherits Alloy.Mvc._1.Views.CustomContentAreaItemCssRenderingBase<PageViewModel<Alloy.Mvc._1.Models.Pages.StandardPage>>
 
 @{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
 
@@ -10,5 +10,6 @@
     </div>
 </div>
 
-<div class="row" epi-property="@Model.CurrentPage.MainContentArea" />
-
+<div epi-property="@Model.CurrentPage.MainContentArea" class="row">
+    <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+</div>
