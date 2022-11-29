@@ -1,3 +1,5 @@
 @model EditorialBlock
 
-<div epi-property="@Model.MainBody" />
+<div epi-property="@Model.MainBody">
+    @Html.Raw(@Model.MainBody)
+</div>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>disable</Nullable>
@@ -6,20 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="EPiServer"/>
-    <Using Include="EPiServer.Core"/>
-    <Using Include="EPiServer.DataAbstraction"/>
-    <Using Include="EPiServer.DataAnnotations"/>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.Cms.AspNetCore.TagHelpers" Version="12.9.0" />
-    <PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.9.0" />
-    <PackageReference Include="EPiServer.CMS.AspNetCore.Templating" Version="12.9.0" />
-    <PackageReference Include="EPiServer.CMS.AspNetCore.Mvc" Version="12.9.0" />
-    <PackageReference Include="EPiServer.Framework" Version="12.9.0" />
-    
-    <PackageReference Include="EPiServer.CMS" Version="12.9.0" />
+    <PackageReference Include="EPiServer.Cms.AspNetCore.TagHelpers" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS" Version="12.16.1" />
     <PackageReference Include="Wangkanai.Detection" Version="5.2.0" />
   </ItemGroup>
   
