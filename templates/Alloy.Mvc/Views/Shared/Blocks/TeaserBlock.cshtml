@@ -9,11 +9,10 @@
         Url.PageLinkUrl(Model.Link),
         Model.Heading))
     {
-        <div class="img-wrapper mb-3" @Html.EditAttributes(x => x.Image)>
+        <div class="img-wrapper mb-3" epi-property="@Model.Image">
             <img src="@Url.ContentUrl(Model.Image)" />
         </div>
-
-        <h2 @Html.EditAttributes(x => x.Heading)>@Model.Heading</h2>
-        <p @Html.EditAttributes(x => x.Text)>@Model.Text</p>
+        <h2 epi-property="@Model.Heading">@Model.Heading</h2>
+        <p epi-property="@Model.Text">@Model.Text</p>
     }
 </div>

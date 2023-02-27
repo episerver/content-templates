@@ -6,14 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="EPiServer"/>
-    <Using Include="EPiServer.Core"/>
-    <Using Include="EPiServer.DataAbstraction"/>
-    <Using Include="EPiServer.DataAnnotations"/>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.13.2" />
+    <PackageReference Include="EPiServer.Cms.AspNetCore.TagHelpers" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS" Version="12.16.1" />
     <PackageReference Include="Wangkanai.Detection" Version="5.2.0" />
   </ItemGroup>
   

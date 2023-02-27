@@ -1,27 +1,31 @@
-@model PageViewModel<ProductPage>
+@inherits Alloy.Mvc._1.Views.AlloyPageBase<PageViewModel<ProductPage>>
 
 @{ Layout = "~/Views/Shared/Layouts/_TwoPlusOne.cshtml"; }
 
 <div class="content">
-    <h1 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h1>
-    <p class="lead" @Html.EditAttributes(x => x.CurrentPage.MetaDescription)>@Model.CurrentPage.MetaDescription</p>
-    <div class="clearfix">
-        @Html.PropertyFor(m => m.CurrentPage.MainBody)
-    </div>
+    <h1 epi-property="@Model.CurrentPage.PageName">
+        @Model.CurrentPage.PageName
+    </h1>
+    <p class="lead" epi-property="@Model.CurrentPage.MetaDescription">@Model.CurrentPage.MetaDescription</p>
+    <div class="clearfix" epi-property="@Model.CurrentPage.MainBody" />
 </div>
 
-@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row" })
+<div epi-property="@Model.CurrentPage.MainContentArea" class="row">
+    <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+</div>
 
 @section RelatedContent
 {
-    <div @Html.EditAttributes(x => x.CurrentPage.PageImage)>
-        <img src="@Url.ContentUrl(Model.CurrentPage.PageImage)" />
-    </div>
+    <div epi-property="@Model.CurrentPage.PageImage" />
 
     <div class="block colorBox @string.Join(" ", @Model.CurrentPage.GetThemeCssClassNames())">
-        <h2 @Html.EditAttributes(x => x.CurrentPage.PageName)>@Model.CurrentPage.PageName</h2>
-        @Html.PropertyFor(x => x.CurrentPage.UniqueSellingPoints)
+        <h2 accesskey="@Model.CurrentPage.PageName">@Model.CurrentPage.PageName</h2>
+        <div epi-property="@Model.CurrentPage.UniqueSellingPoints" />
     </div>
 
-    @Html.PropertyFor(x => x.CurrentPage.RelatedContentArea, new { Aside = true })
+    @(ViewData["Aside"] = true)
+
+    <div epi-property="@Model.CurrentPage.RelatedContentArea">
+        <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
+    </div>
 }

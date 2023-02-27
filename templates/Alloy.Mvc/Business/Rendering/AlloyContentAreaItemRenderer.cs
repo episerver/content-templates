@@ -1,21 +1,18 @@
-using EPiServer.Core.Html.StringParsing;
-using EPiServer.Web.Mvc.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using EPiServer.Web;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using static Alloy.Mvc._1.Globals;
+using System.Text;
 
 namespace Alloy.Mvc._1.Business.Rendering;
 
-/// <summary>
-/// Extends the default <see cref="ContentAreaRenderer"/> to apply custom CSS classes to each <see cref="ContentFragment"/>.
-/// </summary>
-public class AlloyContentAreaRenderer : ContentAreaRenderer
+public class AlloyContentAreaItemRenderer
 {
-    protected override string GetContentAreaItemCssClass(IHtmlHelper htmlHelper, ContentAreaItem contentAreaItem)
-    {
-        var baseItemClass = base.GetContentAreaItemCssClass(htmlHelper, contentAreaItem);
-        var tag = GetContentAreaItemTemplateTag(htmlHelper, contentAreaItem);
+    private readonly IContentAreaLoader _contentAreaLoader;
 
-        return $"block {baseItemClass} {GetTypeSpecificCssClasses(contentAreaItem)} {GetCssClassForTag(tag)} {tag}";
+    public AlloyContentAreaItemRenderer(IContentAreaLoader contentAreaLoader)
+    {
+        _contentAreaLoader = contentAreaLoader;
     }
 
     /// <summary>
@@ -51,5 +48,23 @@ public class AlloyContentAreaRenderer : ContentAreaRenderer
         }
 
         return cssClass;
+    }
+
+    public void RenderContentAreaItemCss(ContentAreaItem contentAreaItem, TagHelperContext context, TagHelperOutput output)
+    {
+        var displayOption = _contentAreaLoader.LoadDisplayOption(contentAreaItem);
+        var cssClasses = new StringBuilder();
+
+        if (displayOption != null)
+        {
+            cssClasses.Append(displayOption.Tag);
+            cssClasses.Append((string)$" {GetCssClassForTag(displayOption.Tag)}");
+        }
+        cssClasses.Append((string)$" {GetTypeSpecificCssClasses(contentAreaItem)}");
+
+        foreach (var cssClass in cssClasses.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        {
+            output.AddClass(cssClass, System.Text.Encodings.Web.HtmlEncoder.Default);
+        }
     }
 }
