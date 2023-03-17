@@ -12,25 +12,31 @@ public class Globals
     [GroupDefinitions]
     public static class GroupNames
     {
-        [Display(Name = "Contact", Order = 1)]
-        public const string Contact = "Contact";
-
-        [Display(Name = "Default", Order = 2)]
+        [Display(Name = "Default", Order = 10)]
         public const string Default = "Default";
 
-        [Display(Name = "Metadata", Order = 3)]
+        [Display(Name = SystemTabNames.Content, Order = 20)]
+        public const string Content = SystemTabNames.Content;
+
+        [Display(Name = "Contact", Order = 30)]
+        public const string Contact = "Contact";
+
+        [Display(Name = "Metadata", Order = 40)]
         public const string MetaData = "Metadata";
 
-        [Display(Name = "News", Order = 4)]
+        [Display(Name = "News", Order = 50)]
         public const string News = "News";
 
-        [Display(Name = "Products", Order = 5)]
+        [Display(Name = "Products", Order = 60)]
         public const string Products = "Products";
 
-        [Display(Name = "SiteSettings", Order = 6)]
+        [Display(Name = SystemTabNames.Settings, Order = 70)]
+        public const string Settings = SystemTabNames.Settings;
+
+        [Display(Name = "SiteSettings", Order = 80)]
         public const string SiteSettings = "SiteSettings";
 
-        [Display(Name = "Specialized", Order = 7)]
+        [Display(Name = "Specialized", Order = 90)]
         public const string Specialized = "Specialized";
     }
 
