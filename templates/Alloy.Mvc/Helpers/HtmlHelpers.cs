@@ -106,7 +106,8 @@ public static class HtmlHelpers
     /// Returns a ConditionalLink object which when disposed will write a closing <![CDATA[ </a> ]]> tag
     /// to the response if the shouldWriteLink argument is true.
     /// </summary>
-    public static ConditionalLink BeginConditionalLink(this IHtmlHelper helper, bool shouldWriteLink, string url, string title = null, string cssClass = null)
+    public static ConditionalLink BeginConditionalLink(this IHtmlHelper helper, bool shouldWriteLink, string url,
+        string title = null, string cssClass = null, string linkTarget = null)
     {
         if (shouldWriteLink)
         {
@@ -123,6 +124,11 @@ public static class HtmlHelpers
                 linkTag.Attributes.Add("class", cssClass);
             }
 
+            if (!string.IsNullOrWhiteSpace(linkTarget))
+            {
+                linkTag.Attributes.Add("target", linkTarget);
+            }
+
             helper.ViewContext.Writer.Write(linkTag.RenderStartTag());
         }
         return new ConditionalLink(helper.ViewContext, shouldWriteLink);
@@ -137,7 +143,8 @@ public static class HtmlHelpers
     /// Overload which only executes the delegate for retrieving the URL if the link should be written.
     /// This may be used to prevent null reference exceptions by adding null checkes to the shouldWriteLink condition.
     /// </remarks>
-    public static ConditionalLink BeginConditionalLink(this IHtmlHelper helper, bool shouldWriteLink, Func<string> urlGetter, string title = null, string cssClass = null)
+    public static ConditionalLink BeginConditionalLink(this IHtmlHelper helper, bool shouldWriteLink,
+        Func<string> urlGetter, string title = null, string cssClass = null, string linkTarget = null)
     {
         var url = string.Empty;
 
@@ -146,7 +153,7 @@ public static class HtmlHelpers
             url = urlGetter();
         }
 
-        return helper.BeginConditionalLink(shouldWriteLink, url, title, cssClass);
+        return helper.BeginConditionalLink(shouldWriteLink, url, title, cssClass, linkTarget);
     }
 
     public class ConditionalLink : IDisposable

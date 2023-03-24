@@ -8,7 +8,7 @@
             <img class="pb-3 pb-lg-0" src="@Url.ContentUrl(Model.PageImage)" />
         </div>
         <div class="col-sm-12 col-lg-6">
-            @using (Html.BeginConditionalLink(Model.HasTemplate(), Url.PageLinkUrl(Model), Model.PageName))
+            @using (Html.BeginConditionalLink(Model.HasTemplate(), Url.PageLinkUrl(Model), Model.PageName, null, Url.PageLinkTarget(Model)))
             {
                 <h2>@Model.PageName</h2>
                 <p>@Model.TeaserText</p>
