@@ -3,7 +3,7 @@
 @model SitePageData
 
 <div>
-    @using (Html.BeginConditionalLink(Model.HasTemplate(), Url.PageLinkUrl(Model), Model.PageName))
+    @using (Html.BeginConditionalLink(Model.HasTemplate(), Url.PageLinkUrl(Model), Model.PageName, null, Url.PageLinkTarget(Model)))
     {
         <div class="img-wrapper mb-3">
             @Html.DisplayFor(m => m.PageImage)
