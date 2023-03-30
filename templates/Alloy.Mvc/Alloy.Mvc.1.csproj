@@ -13,8 +13,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.17.1" />
-    <PackageReference Include="EPiServer.CMS.AspNetCore.TagHelpers" Version="12.12.1" />
+    <PackageReference Include="EPiServer.CMS" Version="12.18.0" />
     <PackageReference Include="Wangkanai.Detection" Version="5.2.0" />
   </ItemGroup>
   
