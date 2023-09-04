@@ -1,0 +1,53 @@
+﻿query StartPage(
+  $locale: Locales = ALL,
+  $siteDefinitionStartpageId: Int!
+) {
+  StartPage(
+    locale: [$locale]
+    where: { ContentLink: { Id: { eq: $siteDefinitionStartpageId } } }
+  ) {
+    items {
+      MainContentArea {
+        ContentLink {
+          Expanded {
+            Name
+            __typename
+            ...ButtonBlock
+            ...ContactBlock
+            ...EditorialBlock
+            ...JumbotronBlock
+            ...PageListBlock
+            ...SiteLogotypeBlock
+            ...TeaserBlock
+          }
+        }
+      }
+      SiteLogotype {
+        Url
+        Title
+      }
+      RelativePath
+      ProductPageLinks {
+        ...LinkItemNode
+      }
+      CompanyInformationPageLinks {
+        ...LinkItemNode
+      }
+      NewsPageLinks {
+        ...LinkItemNode
+      }
+      CustomerZonePageLinks {
+        ...LinkItemNode
+      }
+      SearchPageLink {
+        Url
+      }
+      GlobalNewsPageLink {
+        Url
+      }
+      ContactsPageLink {
+        Url
+      }
+    }
+  }
+}

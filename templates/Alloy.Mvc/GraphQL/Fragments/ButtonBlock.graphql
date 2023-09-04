@@ -1,0 +1,4 @@
+﻿fragment ButtonBlock on ButtonBlock {
+  ButtonText
+  ButtonLink
+}

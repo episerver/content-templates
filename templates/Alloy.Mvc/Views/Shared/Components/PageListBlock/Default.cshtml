@@ -8,33 +8,33 @@
 
 <h2 epi-property="@Model.Heading">@Model.Heading</h2>
 
-@foreach (var page in Model.Pages)
+@foreach (var item in Model.ListResult.Items)
 {
     if (isAside)
     {
-        <div class="listResult @string.Join(" ", page.GetThemeCssClassNames())">
-            <h3>@Html.PageLink(page)</h3>
+        <div class="listResult @string.Join(" ", item.Category?.Select(x=>x.Name)?.GetThemeCssClassNames())">
+            <h3><a href="@item.RelativePath" alt="@item.Name">@item.Name</a></h3>
 
-            @if (Model.ShowPublishDate && page.StartPublish.HasValue)
+            @if (Model.ShowPublishDate)
             {
-                <p class="small date">@Html.DisplayFor(x => page.StartPublish)</p>
+                <p class="small date">@Html.DisplayFor(x => item.StartPublish)</p>
             }
 
-            @if (Model.ShowIntroduction && page is SitePageData teaserPage)
+            @if (Model.ShowIntroduction)
             {
-                <p>@teaserPage.TeaserText</p>
+                <p>@item.TeaserText</p>
             }
         </div>
     }
     else
     {
-        <div class="archive-item @string.Join(" ", page.GetThemeCssClassNames())">
-            <a href="@Url.PageLinkUrl(page)">
+        <div class="archive-item @string.Join(" ", item.Category?.Select(x=>x.Name)?.GetThemeCssClassNames())">
+            <a href="@item.RelativePath">
                 <div class="row">
                     <div class="col-4">
-                        @if (page is SitePageData sitePage && sitePage.PageImage != null)
+                        @if (item.PageImage?.Url != null)
                         {
-                            <img src="@Url.ContentUrl(sitePage.PageImage)" alt="@sitePage.Name" />
+                            <img src="@Url.ContentUrl(item.PageImage.Url)" alt="@item.Name" />
                         }
                         else
                         {
@@ -42,14 +42,14 @@
                         }
                     </div>
                     <div class="col-8 col-xl-6">
-                        <h3>@(page.Name)</h3>
-                        @if (Model.ShowPublishDate && page.StartPublish.HasValue)
+                        <h3>@(item.Name)</h3>
+                        @if (Model.ShowPublishDate && item.StartPublish.HasValue)
                         {
-                            <p class="small date">@Html.DisplayFor(x => page.StartPublish)</p>
+                            <p class="small date">@Html.DisplayFor(x => item.StartPublish)</p>
                         }
-                        @if (Model.ShowIntroduction && page is SitePageData teaserPage)
+                        @if (Model.ShowIntroduction)
                         {
-                            <p>@(teaserPage.TeaserText ?? teaserPage.MetaDescription)</p>
+                            <p>@(item.TeaserText ?? item.MetaDescription)</p>
                         }
                     </div>
                 </div>

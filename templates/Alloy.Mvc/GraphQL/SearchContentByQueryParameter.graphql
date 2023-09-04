@@ -1,0 +1,19 @@
+query SearchContentByQueryParameter(
+  $locale: Locales = ALL, 
+  $query: String
+) {
+    SitePageData(
+    locale: [$locale]
+    where: {
+        _fulltext: { match: $query }
+    }
+    orderBy: { _ranking: RELEVANCE }
+  ) {
+    items {
+      Name
+      RelativePath
+      TeaserText
+    }
+    total
+  }
+}

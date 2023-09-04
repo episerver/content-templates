@@ -4,6 +4,7 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using EPiServer.DependencyInjection;
 
 namespace Alloy.Mvc._1;
 
@@ -41,6 +42,14 @@ public class Startup
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
+
+        services.AddContentDeliveryApi();
+        services.AddContentGraph();
+
+        services
+            .AddContentGraphClient()
+            .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://cg.optimizely.com/content/v2?auth=eBrGunULiC5TziTCtiOLEmov2LijBf30obh0KmhcBlyTktGZ"));
+
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

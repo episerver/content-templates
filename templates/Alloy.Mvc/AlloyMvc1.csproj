@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Alloy.Mvc.1' " />
   <ItemGroup>
     <Using Include="EPiServer" />
     <Using Include="EPiServer.Core" />
@@ -13,11 +14,17 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.18.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.22.5" />
     <PackageReference Include="Wangkanai.Detection" Version="5.2.0" />
+    <PackageReference Include="Optimizely.ContentGraph.Cms" Version="3.2.0" />
+    <PackageReference Include="StrawberryShake.Server" Version="13.5.1" />
   </ItemGroup>
   
   <ItemGroup>
     <EmbeddedResource Include="Resources\Translations\**\*" />
   </ItemGroup>
+  <Target Name="Generate client" BeforeTargets="BeforeBuild">
+		<!--Exec Command="dotnet graphql update" /-->
+<Exec Command="dotnet graphql init https://cg.optimizely.com/content/v2?auth=eBrGunULiC5TziTCtiOLEmov2LijBf30obh0KmhcBlyTktGZ -n ContentGraphClient" />
+	</Target>
 </Project>

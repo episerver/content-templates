@@ -1,0 +1,18 @@
+query SearchContentByGenericWhereClause(
+  $locale: Locales = ALL, 
+  $where: SitePageDataWhereInput={},
+  $orderBy: SitePageDataOrderByInput = { _ranking: RELEVANCE }
+) {
+    SitePageData(
+    locale: [$locale]
+    where: $where
+    orderBy: $orderBy
+  ) {
+    items {
+      Name
+      RelativePath
+      TeaserText
+    }
+    total
+  }
+}

@@ -1,0 +1,10 @@
+﻿fragment JumbotronBlock on JumbotronBlock {
+  Image {
+    Url
+  }
+  ImageDescription
+  Heading
+  SubHeading
+  ButtonText
+  ButtonLink
+}

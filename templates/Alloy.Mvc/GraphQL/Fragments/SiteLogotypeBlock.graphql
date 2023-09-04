@@ -1,0 +1,4 @@
+﻿fragment SiteLogotypeBlock on SiteLogotypeBlock {
+  Url
+  Title
+}

@@ -1,0 +1,16 @@
+﻿fragment PageListBlock on PageListBlock {
+  Heading
+  IncludePublishDate
+  IncludeIntroduction
+  Count
+  SortOrder
+  Root {
+    Url
+  }
+  PageTypeFilter
+  CategoryFilter {
+    Id
+    Name
+  }
+  Recursive
+}

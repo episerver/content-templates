@@ -22,10 +22,16 @@ public static class CategorizableExtensions
         }
 
         // Although with some overhead, a HashSet allows us to ensure we never add a CSS class more than once
-        var cssClasses = new HashSet<string>();
         var categoryRepository = ServiceLocator.Current.GetInstance<CategoryRepository>();
+        var categoryNames = content.Category.Select(category => categoryRepository.Get(category).Name.ToLowerInvariant());
 
-        foreach (var categoryName in content.Category.Select(category => categoryRepository.Get(category).Name.ToLowerInvariant()))
+        return GetThemeCssClassNames(categoryNames);
+    }
+
+    public static string[] GetThemeCssClassNames(this IEnumerable<string> categoryNames)
+    {
+        var cssClasses = new HashSet<string>();
+        foreach (var categoryName in categoryNames)
         {
             switch (categoryName)
             {

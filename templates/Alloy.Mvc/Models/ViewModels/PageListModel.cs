@@ -1,4 +1,5 @@
 using Alloy.Mvc._1.Models.Blocks;
+using AlloyMvc1;
 
 namespace Alloy.Mvc._1.Models.ViewModels;
 
@@ -12,7 +13,8 @@ public class PageListModel
     }
     public string Heading { get; set; }
 
-    public IEnumerable<PageData> Pages { get; set; }
+    //public IEnumerable<PageData> Pages { get; set; }
+    public IPageListBlockRecursiveQuery_SitePageData ListResult { get; set; }
 
     public bool ShowIntroduction { get; set; }
 

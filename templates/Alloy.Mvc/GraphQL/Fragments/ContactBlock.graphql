@@ -1,0 +1,11 @@
+﻿fragment ContactBlock on ContactBlock {
+  Image {
+    Url
+  }
+  Heading
+  ContentLink {
+    Url
+  }
+  LinkText
+  LinkUrl
+}

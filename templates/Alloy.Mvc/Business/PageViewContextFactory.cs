@@ -1,7 +1,8 @@
-using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;
+using AlloyMvc1;
 using EPiServer.Data;
 using EPiServer.ServiceLocation;
+using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -19,44 +20,46 @@ public class PageViewContextFactory
     private readonly IDatabaseMode _databaseMode;
     private readonly CookieAuthenticationOptions _cookieAuthenticationOptions;
 
+    private readonly IContentGraphClient _contentGraphClient;
+    private readonly Lazy<LocalesSerializer> _lazyLocaleSerializer = new(() => new LocalesSerializer());
+
     public PageViewContextFactory(
         IContentLoader contentLoader,
         UrlResolver urlResolver,
         IDatabaseMode databaseMode,
+        IContentGraphClient contentGraphClient,
         IOptionsMonitor<CookieAuthenticationOptions> optionMonitor)
     {
         _contentLoader = contentLoader;
         _urlResolver = urlResolver;
         _databaseMode = databaseMode;
+        _contentGraphClient = contentGraphClient;
         _cookieAuthenticationOptions = optionMonitor.Get(IdentityConstants.ApplicationScheme);
     }
 
     public virtual LayoutModel CreateLayoutModel(ContentReference currentContentLink, HttpContext httpContext)
     {
-        var startPageContentLink = SiteDefinition.Current.StartPage;
-
-        // Use the content link with version information when editing the startpage,
-        // otherwise the published version will be used when rendering the props below.
-        if (currentContentLink.CompareToIgnoreWorkID(startPageContentLink))
-        {
-            startPageContentLink = currentContentLink;
-        }
-
-        var startPage = _contentLoader.Get<StartPage>(startPageContentLink);
+        var locale = _lazyLocaleSerializer.Value.Parse(httpContext.GetRequestedLanguage().Replace("-", "_"));
+        var startPage = _contentGraphClient.StartPage.ExecuteAsync(locale, SiteDefinition.Current.StartPage.ID).GetAwaiter().GetResult().Data.StartPage.Items.FirstOrDefault();
 
         return new LayoutModel
         {
-            Logotype = startPage.SiteLogotype,
-            LogotypeLinkUrl = new HtmlString(_urlResolver.GetUrl(SiteDefinition.Current.StartPage)),
-            ProductPages = startPage.ProductPageLinks,
-            CompanyInformationPages = startPage.CompanyInformationPageLinks,
-            NewsPages = startPage.NewsPageLinks,
-            CustomerZonePages = startPage.CustomerZonePageLinks,
+            Logotype = new Models.Blocks.SiteLogotypeBlock { Title = startPage.SiteLogotype.Title },
+            LogotypeLinkUrl = new HtmlString(startPage.RelativePath),
+            ProductPages = new LinkItemCollection(startPage.ProductPageLinks.Select(CreateLinkItem)),
+            CompanyInformationPages = new LinkItemCollection(startPage.CompanyInformationPageLinks.Select(CreateLinkItem)),
+            NewsPages = new LinkItemCollection(startPage.NewsPageLinks.Select(CreateLinkItem)),
+            CustomerZonePages = new LinkItemCollection(startPage.CustomerZonePageLinks.Select(CreateLinkItem)),
             LoggedIn = httpContext.User.Identity.IsAuthenticated,
             LoginUrl = new HtmlString(GetLoginUrl(currentContentLink)),
-            SearchActionUrl = new HtmlString(UrlResolver.Current.GetUrl(startPage.SearchPageLink)),
+            SearchActionUrl = new HtmlString(startPage.SearchPageLink.Url),
             IsInReadonlyMode = _databaseMode.DatabaseMode == DatabaseMode.ReadOnly
         };
+    }
+
+    private LinkItem CreateLinkItem(ILinkItemNode linkItemNode)
+    {
+        return new LinkItem { Title = linkItemNode.Title, Href = linkItemNode.Href, Target = linkItemNode.Target, Text = linkItemNode.Text };
     }
 
     private string GetLoginUrl(ContentReference returnToContentLink)

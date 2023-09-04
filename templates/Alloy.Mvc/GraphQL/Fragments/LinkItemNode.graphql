@@ -1,0 +1,9 @@
+﻿fragment LinkItemNode on LinkItemNode {
+  Href
+  Title
+  Target
+  Text
+  ContentLink {
+    Url
+  }
+}

@@ -1,0 +1,10 @@
+﻿fragment TeaserBlock on TeaserBlock {
+  Heading
+  Text
+  Image {
+    Url
+  }
+  Link {
+    Url
+  }
+}

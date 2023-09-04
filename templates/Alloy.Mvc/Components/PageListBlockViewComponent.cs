@@ -1,6 +1,6 @@
-using Alloy.Mvc._1.Business;
 using Alloy.Mvc._1.Models.Blocks;
 using Alloy.Mvc._1.Models.ViewModels;
+using AlloyMvc1;
 using EPiServer.Filters;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
@@ -9,30 +9,30 @@ namespace Alloy.Mvc._1.Components;
 
 public class PageListBlockViewComponent : BlockComponent<PageListBlock>
 {
-    private readonly ContentLocator _contentLocator;
     private readonly IContentLoader _contentLoader;
 
-    public PageListBlockViewComponent(ContentLocator contentLocator, IContentLoader contentLoader)
+    private readonly IContentGraphClient _contentGraphClient;
+    private readonly Lazy<LocalesSerializer> _lazyLocaleSerializer = new(() => new LocalesSerializer());
+
+    public PageListBlockViewComponent(IContentGraphClient contentGraphClient, IContentLoader contentLoader)
     {
-        _contentLocator = contentLocator;
+        _contentGraphClient = contentGraphClient;
         _contentLoader = contentLoader;
     }
 
     protected override IViewComponentResult InvokeComponent(PageListBlock currentContent)
     {
-        var pages = FindPages(currentContent);
+        var locale = currentContent is not ILocalizable localizableContent ? Locales.All : _lazyLocaleSerializer.Value.Parse(localizableContent.Language.TwoLetterISOLanguageName.Replace("-", "_"));
 
-        pages = Sort(pages, currentContent.SortOrder);
+        var rootGuid = _contentLoader.Get<IContent>(currentContent.Root).ContentGuid.ToString();
+        var pageTypes = new string[] { currentContent.PageTypeFilter.Name };
+        var categories = currentContent?.CategoryFilter?.Select(x => (int?)x).ToArray();
+        var sortOrder = GetSortOrder(currentContent.SortOrder);
 
-        if (currentContent.Count > 0)
-        {
-            pages = pages.Take(currentContent.Count);
-        }
+        var listResult = FilterPagesUsingMoreParameters(currentContent, locale, pageTypes, categories, sortOrder);
+        //var listResult = FilterPagesUsingWhere(currentContent, locale, pageTypes, categories, sortOrder);
 
-        var model = new PageListModel(currentContent)
-        {
-            Pages = pages.Cast<PageData>()
-        };
+        var model = new PageListModel(currentContent) { ListResult = listResult };
 
         ViewData.GetEditHints<PageListModel, PageListBlock>()
             .AddConnection(x => x.Heading, x => x.Heading);
@@ -40,48 +40,93 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         return View(model);
     }
 
-    private IEnumerable<PageData> FindPages(PageListBlock currentBlock)
+    private IPageListBlockRecursiveQuery_SitePageData FilterPagesUsingMoreParameters(PageListBlock currentContent, Locales locale, string[] pageTypes, int?[] categories, SitePageDataOrderByInput sortOrder)
     {
-        IEnumerable<PageData> pages;
-        var listRoot = currentBlock.Root;
+        var rootGuid = GetContentGuid(currentContent);
 
-        if (currentBlock.Recursive)
+        var listResult = _contentGraphClient.PageListBlockRecursiveQuery.ExecuteAsync(
+            locale,
+            rootGuid,
+            pageTypes,
+            categories,
+            currentContent.Count,
+            currentContent.IncludePublishDate,
+            currentContent.IncludeIntroduction,
+            sortOrder)
+            .GetAwaiter().GetResult();
+
+        return listResult.Data.SitePageData;
+    }
+
+    /*
+    private IPageListBlockWithWhereQuery_SitePageData FilterPagesUsingWhere(PageListBlock currentContent, Locales locale, string[] pageTypes, int?[] categories, SitePageDataOrderByInput sortOrder)
+    {
+        var andFilter = new List<SitePageDataWhereInput>
         {
-            if (currentBlock.PageTypeFilter != null)
-            {
-                pages = _contentLocator.FindPagesByPageType(listRoot, true, currentBlock.PageTypeFilter.ID);
-            }
-            else
-            {
-                pages = _contentLocator.GetAll<PageData>(listRoot);
-            }
+            new SitePageDataWhereInput { ContentType = new StringFilterInput { In = pageTypes } },
+            new SitePageDataWhereInput { Category = new CategoryModelWhereInput { Id = new IntFilterInput { In = categories } } }
+        };
+
+        if (currentContent.Recursive)
+        {
+            var rootGuid = GetContentGuid(currentContent);
+            andFilter.Add(new SitePageDataWhereInput { Ancestors = new StringFilterInput { Eq = rootGuid } });
         }
         else
         {
-            if (currentBlock.PageTypeFilter != null)
-            {
-                pages = _contentLoader
-                    .GetChildren<PageData>(listRoot)
-                    .Where(p => p.ContentTypeID == currentBlock.PageTypeFilter.ID);
-            }
-            else
-            {
-                pages = _contentLoader.GetChildren<PageData>(listRoot);
-            }
+            andFilter.Add(new SitePageDataWhereInput { ParentLink = new ContentModelReferenceWhereInput { Id = new IntFilterInput { Eq = currentContent.Root.ID } } });
         }
 
-        if (currentBlock.CategoryFilter != null && currentBlock.CategoryFilter.Any())
-        {
-            pages = pages.Where(x => x.Category.Intersect(currentBlock.CategoryFilter).Any());
-        }
+        var listResult = _contentGraphClient.PageListBlockWithWhereQuery.ExecuteAsync(
+            locale,
+            where: new SitePageDataWhereInput { _and = andFilter },
+            currentContent.Count,
+            currentContent.IncludePublishDate,
+            currentContent.IncludeIntroduction,
+            sortOrder)
+            .GetAwaiter().GetResult();
 
-        return pages;
+        return listResult.Data.SitePageData;
+    }
+    */
+
+    private string GetContentGuid(PageListBlock currentContent)
+    {
+        return _contentLoader.Get<IContent>(currentContent.Root).ContentGuid.ToString();
     }
 
-    private static IEnumerable<PageData> Sort(IEnumerable<PageData> pages, FilterSortOrder sortOrder)
+    private static SitePageDataOrderByInput GetSortOrder(FilterSortOrder sortOrder)
     {
-        var sortFilter = new FilterSort(sortOrder);
-        sortFilter.Sort(new PageDataCollection(pages.ToList()));
-        return pages;
+        switch (sortOrder)
+        {
+            case FilterSortOrder.ChangedDescending:
+            {
+                return new SitePageDataOrderByInput { Changed = OrderBy.Desc };
+            }
+            case FilterSortOrder.CreatedAscending:
+            {
+                return new SitePageDataOrderByInput { Created = OrderBy.Asc };
+            }
+            case FilterSortOrder.CreatedDescending:
+            {
+                return new SitePageDataOrderByInput { Created = OrderBy.Desc };
+            }
+            case FilterSortOrder.Index:
+            {
+                return new SitePageDataOrderByInput { _ranking = Ranking.Relevance };
+            }
+            case FilterSortOrder.PublishedAscending:
+            {
+                return new SitePageDataOrderByInput { StartPublish = OrderBy.Asc };
+            }
+            case FilterSortOrder.PublishedDescending:
+            {
+                return new SitePageDataOrderByInput { StartPublish = OrderBy.Desc };
+            }
+            default:
+            {
+                return new SitePageDataOrderByInput { Name = OrderBy.Asc };
+            }
+        }
     }
 }
