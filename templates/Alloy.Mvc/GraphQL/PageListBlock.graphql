@@ -1,4 +1,4 @@
-﻿query PageListBlockWithWhereQuery(
+﻿query PageListBlockQuery(
   $locale: Locales = ALL,
   $where: SitePageDataWhereInput={},
   $count: Int = 3,

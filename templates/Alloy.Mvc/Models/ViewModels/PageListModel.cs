@@ -13,8 +13,7 @@ public class PageListModel
     }
     public string Heading { get; set; }
 
-    //public IEnumerable<PageData> Pages { get; set; }
-    public IPageListBlockRecursiveQuery_SitePageData ListResult { get; set; }
+    public IPageListBlockQuery_SitePageData ListResult { get; set; }
 
     public bool ShowIntroduction { get; set; }
 

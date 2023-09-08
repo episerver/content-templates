@@ -25,6 +25,6 @@
   </ItemGroup>
   <Target Name="Generate client" BeforeTargets="BeforeBuild">
 		<!--Exec Command="dotnet graphql update" /-->
-<Exec Command="dotnet graphql init https://cg.optimizely.com/content/v2?auth=eBrGunULiC5TziTCtiOLEmov2LijBf30obh0KmhcBlyTktGZ -n ContentGraphClient" />
+        <Exec Command="dotnet graphql init https://cg.optimizely.com/content/v2?auth=eBrGunULiC5TziTCtiOLEmov2LijBf30obh0KmhcBlyTktGZ -n ContentGraphClient" />
 	</Target>
 </Project>

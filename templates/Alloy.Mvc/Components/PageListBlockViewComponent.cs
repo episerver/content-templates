@@ -29,8 +29,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         var categories = currentContent?.CategoryFilter?.Select(x => (int?)x).ToArray();
         var sortOrder = GetSortOrder(currentContent.SortOrder);
 
-        var listResult = FilterPagesUsingMoreParameters(currentContent, locale, pageTypes, categories, sortOrder);
-        //var listResult = FilterPagesUsingWhere(currentContent, locale, pageTypes, categories, sortOrder);
+        var listResult = FilterPages(currentContent, locale, pageTypes, categories, sortOrder);
 
         var model = new PageListModel(currentContent) { ListResult = listResult };
 
@@ -40,26 +39,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         return View(model);
     }
 
-    private IPageListBlockRecursiveQuery_SitePageData FilterPagesUsingMoreParameters(PageListBlock currentContent, Locales locale, string[] pageTypes, int?[] categories, SitePageDataOrderByInput sortOrder)
-    {
-        var rootGuid = GetContentGuid(currentContent);
-
-        var listResult = _contentGraphClient.PageListBlockRecursiveQuery.ExecuteAsync(
-            locale,
-            rootGuid,
-            pageTypes,
-            categories,
-            currentContent.Count,
-            currentContent.IncludePublishDate,
-            currentContent.IncludeIntroduction,
-            sortOrder)
-            .GetAwaiter().GetResult();
-
-        return listResult.Data.SitePageData;
-    }
-
-    /*
-    private IPageListBlockWithWhereQuery_SitePageData FilterPagesUsingWhere(PageListBlock currentContent, Locales locale, string[] pageTypes, int?[] categories, SitePageDataOrderByInput sortOrder)
+    private IPageListBlockQuery_SitePageData FilterPages(PageListBlock currentContent, Locales locale, string[] pageTypes, int?[] categories, SitePageDataOrderByInput sortOrder)
     {
         var andFilter = new List<SitePageDataWhereInput>
         {
@@ -77,7 +57,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
             andFilter.Add(new SitePageDataWhereInput { ParentLink = new ContentModelReferenceWhereInput { Id = new IntFilterInput { Eq = currentContent.Root.ID } } });
         }
 
-        var listResult = _contentGraphClient.PageListBlockWithWhereQuery.ExecuteAsync(
+        var listResult = _contentGraphClient.PageListBlockQuery.ExecuteAsync(
             locale,
             where: new SitePageDataWhereInput { _and = andFilter },
             currentContent.Count,
@@ -88,7 +68,6 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
 
         return listResult.Data.SitePageData;
     }
-    */
 
     private string GetContentGuid(PageListBlock currentContent)
     {

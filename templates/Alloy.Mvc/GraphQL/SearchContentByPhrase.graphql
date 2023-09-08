@@ -1,4 +1,4 @@
-query SearchContentByQueryParameter(
+query SearchContentByPhrase(
   $locale: Locales = ALL, 
   $query: String
 ) {
