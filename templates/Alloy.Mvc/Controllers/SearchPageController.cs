@@ -1,18 +1,17 @@
 using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;
-using AlloyMvc1;
+using AlloyMvc1.Business.OptiGraph;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alloy.Mvc._1.Controllers;
 
 public class SearchPageController : PageControllerBase<SearchPage>
 {
-    private readonly IContentGraphClient _contentGraphClient;
-    private readonly Lazy<LocalesSerializer> _lazyLocaleSerializer = new(() => new LocalesSerializer());
+    private readonly SearchHandler _searchHandler;
 
-    public SearchPageController(IContentGraphClient contentGraphClient)
+    public SearchPageController(SearchHandler searchHandler)
     {
-        _contentGraphClient = contentGraphClient;
+        _searchHandler = searchHandler;
     }
 
     public ViewResult Index(SearchPage currentPage, string q)
@@ -22,11 +21,8 @@ public class SearchPageController : PageControllerBase<SearchPage>
 
         if (q != null)
         {
-            // GraphQL don't support - in enums. All languages in the Locale enum has will have - replaced with _ for example en_Gb.
-            var locale = _lazyLocaleSerializer.Value.Parse(currentPage.Language.TwoLetterISOLanguageName.Replace("-", "_"));
-            var result = _contentGraphClient.SearchContentByPhrase.ExecuteAsync(locale, q).GetAwaiter().GetResult();
-
-            foreach (var item in result.Data.SitePageData.Items)
+            var result = _searchHandler.SearchSitePageData(q, currentPage.Language).GetAwaiter().GetResult();
+            foreach (var item in result.Items)
             {
 
                 searchHits.Add(new SearchContentModel.SearchHit()
@@ -37,7 +33,7 @@ public class SearchPageController : PageControllerBase<SearchPage>
                 });
             }
 
-            total = result.Data.SitePageData.Total.GetValueOrDefault();
+            total = result.Total.GetValueOrDefault();
         }
 
         var model = new SearchContentModel(currentPage)

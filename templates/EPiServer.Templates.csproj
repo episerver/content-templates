@@ -33,7 +33,7 @@
   <ItemGroup>
     <None Remove="**\*" />
     <None Include="$(SolutionDir)shared\icon.png" LinkBase="shared" Visible="false" Pack="true" PackagePath="" />
-    <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\"/>
+    <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <!-- Shared items to include in every template -->
@@ -50,7 +50,6 @@
   <!-- Include everything but do not compile anything when packing the templates -->
   <ItemGroup>
     <Compile Remove="**\*" />
-    <Content Include="**\*"
-             Exclude="EPiServer.Templates.csproj;Cms.Item\*.*;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
+    <Content Include="**\*" Exclude="EPiServer.Templates.csproj;Cms.Item\*.*;**\bin\**;**\obj\**;**\modules\**;**\*.user" />
   </ItemGroup>
 </Project>

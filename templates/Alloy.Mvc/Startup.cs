@@ -5,6 +5,8 @@ using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using EPiServer.DependencyInjection;
+using AlloyMvc1.Business.OptiGraph;
+using AlloyMvc1;
 
 namespace Alloy.Mvc._1;
 
@@ -43,9 +45,12 @@ public class Startup
             options.Cookie.IsEssential = true;
         });
 
+        // Opti Graph
         services.AddContentDeliveryApi();
         services.AddContentGraph();
-
+        services.AddSingleton<SearchHandler>();
+        services.AddSingleton<LocalesSerializer>();
+        services.AddSingleton<PageListBlockHandler>();
         services
             .AddContentGraphClient()
             .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://cg.optimizely.com/content/v2?auth=eBrGunULiC5TziTCtiOLEmov2LijBf30obh0KmhcBlyTktGZ"));

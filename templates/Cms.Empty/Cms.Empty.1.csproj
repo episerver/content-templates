@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="EPiServer"/>
-    <Using Include="EPiServer.Core"/>
-    <Using Include="EPiServer.DataAbstraction"/>
-    <Using Include="EPiServer.DataAnnotations"/>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
   </ItemGroup>
   
   <ItemGroup>

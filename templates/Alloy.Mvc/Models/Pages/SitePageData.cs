@@ -8,7 +8,8 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Base class for all page types
 /// </summary>
-public abstract class SitePageData : PageData, ICustomCssInContentArea
+[ContentType(AvailableInEditMode = false)]
+public class SitePageData : PageData, ICustomCssInContentArea
 {
     [Display(
         GroupName = Globals.GroupNames.MetaData,
