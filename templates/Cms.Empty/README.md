@@ -26,6 +26,12 @@ $ docker-compose up
 
 > Note that this Docker setup is just configured for local development. Follow this [guide to enable HTTPS](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md).
 
+#### Reclaiming Docker Image Space
+
+1. Backup the App_Data/\${DB_NAME}.mdf and App_Data/\${DB_NAME}.ldf DB restoration files for safety
+2. Run `docker compose down --rmi all` to remove containers, networks, and images associated with the specific project instance
+3. In the future, run `docker compose up` anytime you want to recreate the images and containers
+
 ### Any OS with external database server
 
 Prerequisities
