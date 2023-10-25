@@ -21,6 +21,7 @@ $ dotnet run
 Prerequisities
 - Docker
 - Enable Docker support when applying the template
+- Review the .env file and make changes where necessary to the Docker-related variables
 
 ```bash
 $ docker-compose up
