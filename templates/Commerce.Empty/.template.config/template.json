@@ -19,7 +19,8 @@
           "exclude": [
             "Directory.Build.props",
             "docker-compose.yml",
-            "Docker/**/*"
+            "Docker/**/*",
+            ".env"
           ]
         }
       ]
