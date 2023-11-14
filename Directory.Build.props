@@ -7,8 +7,10 @@
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- CA1707: Removes warning about underscores in namespaces -->
-    <NoWarn>$(NoWarn); CA1707</NoWarn>
+    <!-- CS1591: Removes warning about missing XML comments -->
+    <NoWarn>$(NoWarn); CA1707; CS1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
