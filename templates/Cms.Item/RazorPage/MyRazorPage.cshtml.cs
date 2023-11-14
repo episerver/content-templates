@@ -1,11 +1,10 @@
 using EPiServer.Web.Mvc;
 
-namespace MyAppNamespace
+namespace MyAppNamespace;
+
+public class MyRazorPageModel : RazorPageModel<MyPageData>
 {
-    public class MyRazorPageModel : RazorPageModel<MyPageData>
+    public static void OnGet()
     {
-        public static void OnGet()
-        {
-        }
     }
 }

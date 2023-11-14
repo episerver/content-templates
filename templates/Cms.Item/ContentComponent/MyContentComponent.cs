@@ -3,13 +3,12 @@ using EPiServer.Core;
 using EPiServer.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyAppNamespace
+namespace MyAppNamespace;
+
+public class MyContentComponent : PartialContentComponent<MyBlockData>
 {
-    public class MyContentComponent : PartialContentComponent<MyBlockData>
+    protected override IViewComponentResult InvokeComponent(MyBlockData currentContent)
     {
-        protected override IViewComponentResult InvokeComponent(MyBlockData currentContent)
-        {
-            return View(currentContent);
-        }
+        return View(currentContent);
     }
 }
