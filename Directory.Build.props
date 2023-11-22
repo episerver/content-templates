@@ -8,9 +8,10 @@
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <!-- CA1707: Removes warning about underscores in namespaces -->
-    <!-- CS1591: Removes warning about missing XML comments -->
-    <NoWarn>$(NoWarn); CA1707; CS1591</NoWarn>
+    <!-- CA1707: Identifiers should not contain underscores -->
+    <!-- CS1591: Missing XML comments -->
+    <!-- IDE0005: Using directive is unnecessary -->
+    <NoWarn>$(NoWarn);CA1707;CS1591;IDE0005</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
