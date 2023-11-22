@@ -16,7 +16,7 @@ public static class ViewContextExtension
     /// <param name="viewContext"></param>
     /// <returns></returns>
     public static bool IsPreviewMode(this ViewContext viewContext)
-        => viewContext.IsInEditMode() && (viewContext.ActionDescriptor as ControllerActionDescriptor)?.ControllerName == "Preview";
+        => viewContext.IsInEditMode() && viewContext.ActionDescriptor is ControllerActionDescriptor { ControllerName: "Preview" };
 
     /// <summary>
     /// Determines if the request context is in edit mode.

@@ -4,11 +4,11 @@ namespace Alloy.Mvc._1.Business.Rendering;
 
 public class SiteViewEngineLocationExpander : IViewLocationExpander
 {
-    private static readonly string[] AdditionalPartialViewFormats = new[]
-    {
+    private static readonly string[] AdditionalPartialViewFormats =
+    [
         TemplateCoordinator.BlockFolder + "{0}.cshtml",
         TemplateCoordinator.PagePartialsFolder + "{0}.cshtml"
-    };
+    ];
 
     public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)
     {

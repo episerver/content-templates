@@ -13,7 +13,7 @@ public class PreviewModel : PageViewModel<SitePageData>
 
     public IContent PreviewContent { get; set; }
 
-    public List<PreviewArea> Areas { get; set; }
+    public List<PreviewArea> Areas { get; set; } = [];
 
     public class PreviewArea
     {

@@ -13,22 +13,23 @@ namespace Alloy.Mvc._1.Models.Pages;
 [SiteImageUrl]
 [AvailableContentTypes(
     Availability.Specific,
-    Include = new[]
-    {
+    Include =
+    [
         typeof(ContainerPage),
         typeof(ProductPage),
         typeof(StandardPage),
         typeof(ISearchPage),
         typeof(LandingPage),
-        typeof(ContentFolder) }, // Pages we can create under the start page...
-    ExcludeOn = new[]
-    {
+        typeof(ContentFolder)
+    ], // Pages we can create under the start page...
+    ExcludeOn =
+    [
         typeof(ContainerPage),
         typeof(ProductPage),
         typeof(StandardPage),
         typeof(ISearchPage),
         typeof(LandingPage)
-    })] // ...and underneath those we can't create additional start pages
+    ])] // ...and underneath those we can't create additional start pages
 public class StartPage : SitePageData
 {
     [Display(

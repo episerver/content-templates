@@ -18,7 +18,7 @@ public static class CategorizableExtensions
     {
         if (content.Category == null)
         {
-            return Array.Empty<string>();
+            return [];
         }
 
         // Although with some overhead, a HashSet allows us to ensure we never add a CSS class more than once
@@ -43,6 +43,6 @@ public static class CategorizableExtensions
             }
         }
 
-        return cssClasses.ToArray();
+        return [.. cssClasses];
     }
 }
