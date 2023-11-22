@@ -3,6 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>MyApp.Namespace</RootNamespace>
     <Nullable>warnings</Nullable>
+    <NoWarn>$(NoWarn);CA1707;IDE0005</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
