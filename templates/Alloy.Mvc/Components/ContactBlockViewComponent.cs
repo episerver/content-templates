@@ -51,7 +51,7 @@ public class ContactBlockViewComponent : BlockComponent<ContactBlock>
         return View(model);
     }
 
-    private IHtmlContent GetLinkUrl(ContactBlock contactBlock)
+    private HtmlString GetLinkUrl(ContactBlock contactBlock)
     {
         if (contactBlock.LinkUrl != null && !contactBlock.LinkUrl.IsEmpty())
         {

@@ -8,7 +8,9 @@
     <ContentTargetFolders>content</ContentTargetFolders>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <!-- Typical NuGet warning when packaging templates  -->
-    <NoWarn>$(NoWarn);NU5100;NU5110;NU5111;NU5123</NoWarn>
+    <!-- CA1707: Identifiers should not contain underscores -->
+    <!-- IDE0005: Using directive is unnecessary -->
+    <NoWarn>$(NoWarn);NU5100;NU5110;NU5111;NU5123;CA1707;IDE0005</NoWarn>
   </PropertyGroup>
 
   <!-- Package information -->

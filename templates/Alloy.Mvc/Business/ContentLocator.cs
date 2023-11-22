@@ -60,7 +60,7 @@ public class ContentLocator
     }
 
     // Type specified through page type ID
-    private IEnumerable<PageData> FindPagesByPageTypeRecursively(PageReference pageLink, int pageTypeId)
+    private PageDataCollection FindPagesByPageTypeRecursively(PageReference pageLink, int pageTypeId)
     {
         var criteria = new PropertyCriteriaCollection
         {

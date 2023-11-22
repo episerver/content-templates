@@ -47,7 +47,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
 
         if (currentBlock.Recursive)
         {
-            if (currentBlock.PageTypeFilter != null)
+            if (currentBlock.PageTypeFilter is not null)
             {
                 pages = _contentLocator.FindPagesByPageType(listRoot, true, currentBlock.PageTypeFilter.ID);
             }
@@ -58,7 +58,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         }
         else
         {
-            if (currentBlock.PageTypeFilter != null)
+            if (currentBlock.PageTypeFilter is not null)
             {
                 pages = _contentLoader
                     .GetChildren<PageData>(listRoot)
@@ -70,7 +70,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
             }
         }
 
-        if (currentBlock.CategoryFilter != null && currentBlock.CategoryFilter.Any())
+        if (currentBlock.CategoryFilter is not null && !currentBlock.CategoryFilter.IsEmpty)
         {
             pages = pages.Where(x => x.Category.Intersect(currentBlock.CategoryFilter).Any());
         }
