@@ -2,7 +2,7 @@
 
 [![Continuous integration](https://github.com/episerver/content-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/episerver/content-templates/actions/workflows/ci.yml)
 
-This repository contains templates for Optimizely Digital Experience Cloud to be used with `dotnet new` and Visual Studio 17.8.0+.
+This repository contains templates for Optimizely Digital Experience Cloud to be used with `dotnet new` and Visual Studio 2022 17.8.0+.
 
 The templates in this repository are distributed as a NuGet package available from [NuGet.org](https://www.nuget.org/packages/EPiServer.Templates/) and can be installed using the `dotnet new` command.
 
