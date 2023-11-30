@@ -1,14 +1,17 @@
 <Project>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>9.0</LangVersion>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsPackable>false</IsPackable>
     <IncludeSymbols>false</IncludeSymbols>
     <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
-    <!-- CA1707: Removes warning about underscores in namespaces -->
-    <NoWarn>$(NoWarn); CA1707</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- CA1707: Identifiers should not contain underscores -->
+    <!-- CS1591: Missing XML comments -->
+    <!-- IDE0005: Using directive is unnecessary -->
+    <NoWarn>$(NoWarn);CA1707;CS1591;IDE0005</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

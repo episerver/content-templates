@@ -12,7 +12,7 @@ namespace Alloy.Mvc._1.Models.Pages;
 [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-product.png")]
 [AvailableContentTypes(
     Availability = Availability.Specific,
-    IncludeOn = new[] { typeof(StartPage) })]
+    IncludeOn = [typeof(StartPage)])]
 public class ProductPage : StandardPage, IHasRelatedContent
 {
     [Required]
@@ -25,6 +25,6 @@ public class ProductPage : StandardPage, IHasRelatedContent
         GroupName = SystemTabNames.Content,
         Order = 330)]
     [CultureSpecific]
-    [AllowedTypes(new[] { typeof(IContentData) }, new[] { typeof(JumbotronBlock) })]
+    [AllowedTypes([typeof(IContentData)], [typeof(JumbotronBlock)])]
     public virtual ContentArea RelatedContentArea { get; set; }
 }

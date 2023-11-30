@@ -1,5 +1,4 @@
 using EPiServer.ServiceLocation;
-using EPiServer.Shell.Navigation;
 using EPiServer.Web.Routing;
 using Microsoft.AspNetCore.Mvc;
 

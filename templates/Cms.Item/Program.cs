@@ -1,7 +1,6 @@
-namespace MyAppNamespace
+namespace MyAppNamespace;
+
+public class Program
 {
-    public class Program
-    {
-        public static void Main() { }
-    }
+    public static void Main() { }
 }

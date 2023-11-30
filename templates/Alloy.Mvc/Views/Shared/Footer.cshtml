@@ -5,19 +5,19 @@
         <div class="row">
             <div class="col-3">
                 <h3>@Html.Translate("/footer/products")</h3>
-                <div epi-property="@Model.Layout.ProductPages" />
+                <ul epi-property="@Model.Layout.ProductPages" />
             </div>
             <div class="col-3">
                 <h3>@Html.Translate("/footer/company")</h3>
-                <div epi-property="@Model.Layout.CompanyInformationPages" />
+                <ul epi-property="@Model.Layout.CompanyInformationPages" />
             </div>
             <div class="col-3">
                 <h3>@Html.Translate("/footer/news")</h3>
-                <div epi-property="@Model.Layout.NewsPages" />
+                <ul epi-property="@Model.Layout.NewsPages" />
             </div>
             <div class="col-3">
                 <h3>@Html.Translate("/footer/customerzone")</h3>
-                <div epi-property="@Model.Layout.CustomerZonePages" />
+                <ul epi-property="@Model.Layout.CustomerZonePages" />
                 <ul>
                     <li>
                         @if (Model.Layout.LoggedIn)

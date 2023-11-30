@@ -1,7 +1,7 @@
-using EPiServer.ServiceLocation;
 using Alloy.Mvc._1.Controllers;
 using Alloy.Mvc._1.Models.Blocks;
 using Alloy.Mvc._1.Models.Pages;
+using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 
@@ -40,7 +40,7 @@ public class TemplateCoordinator : IViewTemplateModelRegistrator
         viewTemplateModelRegistrator.Add(typeof(TeaserBlock), new TemplateModel
         {
             Name = "TeaserBlockWide",
-            Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
+            Tags = [Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth],
             AvailableWithoutTag = false,
         });
 
@@ -56,7 +56,7 @@ public class TemplateCoordinator : IViewTemplateModelRegistrator
         {
             Name = "PageWide",
             Inherit = true,
-            Tags = new[] { Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth },
+            Tags = [Globals.ContentAreaTags.WideWidth, Globals.ContentAreaTags.FullWidth],
             AvailableWithoutTag = false,
             Path = PagePartialPath("PageWide.cshtml")
         });
@@ -65,7 +65,7 @@ public class TemplateCoordinator : IViewTemplateModelRegistrator
         {
             Name = "NoRenderer",
             Inherit = true,
-            Tags = new[] { Globals.ContentAreaTags.NoRenderer },
+            Tags = [Globals.ContentAreaTags.NoRenderer],
             AvailableWithoutTag = false,
             Path = BlockPath("NoRenderer.cshtml")
         });

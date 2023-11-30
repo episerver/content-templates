@@ -18,6 +18,7 @@ namespace Alloy.Mvc._1.Business;
 public class PageContextActionFilter : IResultFilter
 {
     private readonly PageViewContextFactory _contextFactory;
+
     public PageContextActionFilter(PageViewContextFactory contextFactory)
     {
         _contextFactory = contextFactory;
@@ -41,10 +42,7 @@ public class PageContextActionFilter : IResultFilter
 
             model.Layout = layoutModel;
 
-            if (model.Section == null)
-            {
-                model.Section = _contextFactory.GetSection(currentContentLink);
-            }
+            model.Section ??= _contextFactory.GetSection(currentContentLink);
         }
     }
 
