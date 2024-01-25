@@ -23,7 +23,7 @@
         <div epi-property="@Model.CurrentPage.UniqueSellingPoints" />
     </div>
 
-    @(ViewData["Aside"] = true)
+    @{ ViewData["Aside"] = true; }
 
     <div epi-property="@Model.CurrentPage.RelatedContentArea">
         <div epi-property-item class="block" epi-on-item-rendered="OnItemRendered" />
