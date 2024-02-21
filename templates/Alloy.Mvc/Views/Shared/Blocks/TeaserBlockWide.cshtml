@@ -8,7 +8,7 @@
         @*Link the teaser block only if a link has been set and not displayed in preview*@
         @using (Html.BeginConditionalLink(
             !ContentReference.IsNullOrEmpty(Model.Link) && !(Html.ViewContext.IsPreviewMode()),
-            Url.PageLinkUrl(Model.Link),
+            Url.ContentUrl(Model.Link),
             Model.Heading))
         {
             <h2 epi-property="@Model.Heading">@Model.Heading</h2>
