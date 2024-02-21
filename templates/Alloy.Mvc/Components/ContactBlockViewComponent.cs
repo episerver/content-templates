@@ -1,9 +1,9 @@
-using Alloy.Mvc._1.Helpers;
 using Alloy.Mvc._1.Models.Blocks;
 using Alloy.Mvc._1.Models.Pages;
 using Alloy.Mvc._1.Models.ViewModels;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
+using EPiServer.Web.Mvc.Html;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 
@@ -62,7 +62,7 @@ public class ContactBlockViewComponent : BlockComponent<ContactBlock>
             var linkMap = _permanentLinkMapper.Find(new UrlBuilder(linkUrl));
             if (linkMap != null && !ContentReference.IsNullOrEmpty(linkMap.ContentReference))
             {
-                return new HtmlString(Url.PageLinkUrl(linkMap.ContentReference));
+                return new HtmlString(Url.ContentUrl(linkMap.ContentReference));
             }
 
             return new HtmlString(contactBlock.LinkUrl.ToString());
