@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.27.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.29.0" />
     <PackageReference Include="EPiServer.Commerce" Version="14.15.3" />
   </ItemGroup>
 
