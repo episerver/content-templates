@@ -45,6 +45,11 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         IEnumerable<PageData> pages;
         var listRoot = currentBlock.Root;
 
+        if (ContentReference.IsNullOrEmpty(listRoot))
+        {
+            return Enumerable.Empty<PageData>();
+        }
+
         if (currentBlock.Recursive)
         {
             if (currentBlock.PageTypeFilter is not null)
