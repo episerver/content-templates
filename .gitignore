@@ -21,3 +21,6 @@ modules/
 thumbs.db
 ehthumbs.db
 desktop.ini
+
+# Jetbrains IDE
+.idea/
