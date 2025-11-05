@@ -22,7 +22,7 @@ Prerequisities
 - Review the .env file and make changes where necessary to the Docker-related variables
 
 ```bash
-$ docker-compose up
+$ docker compose up
 ````
 
 > Note that this Docker setup is just configured for local development. Follow this [guide to enable HTTPS](https://github.com/dotnet/dotnet-docker/blob/main/samples/run-aspnetcore-https-development.md).
