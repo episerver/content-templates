@@ -9,19 +9,19 @@ for i in {1..100}; do
     if test -f /var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf; then
         echo "Restoring CMS DB from .mdf/.ldf"
 
-        /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE ${DB_NAME} ON (NAME=${DB_NAME}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=${DB_NAME}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.ldf') FOR ATTACH;"
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE [${DB_NAME}] ON (NAME=[${DB_NAME}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=[${DB_NAME}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf') FOR ATTACH;" -C
         let cmsresult=$?
     else
-        /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE ${DB_NAME} ON (NAME=${DB_NAME}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=${DB_NAME}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.ldf')"
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE [${DB_NAME}] ON (NAME=[${DB_NAME}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=[${DB_NAME}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf');" -C
         let cmsresult=$?
     fi
 
     if test -f /var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.mdf; then
         echo "Restoring Commerce DB from .mdf/.ldf"
-        /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME_COMMERCE}') CREATE DATABASE ${DB_NAME_COMMERCE} ON (NAME=${DB_NAME_COMMERCE}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.mdf') LOG ON (NAME=${DB_NAME_COMMERCE}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.ldf') FOR ATTACH;"
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME_COMMERCE}') CREATE DATABASE [${DB_NAME_COMMERCE}] ON (NAME=[${DB_NAME_COMMERCE}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.mdf') LOG ON (NAME=[${DB_NAME_COMMERCE}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}_log.ldf') FOR ATTACH;" -C
         let commerceresult=$?
     else
-        /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME_COMMERCE}') CREATE DATABASE ${DB_NAME_COMMERCE} ON (NAME=${DB_NAME_COMMERCE}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.mdf') LOG ON (NAME=${DB_NAME_COMMERCE}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.ldf')"
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME_COMMERCE}') CREATE DATABASE [${DB_NAME_COMMERCE}] ON (NAME=[${DB_NAME_COMMERCE}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}.mdf') LOG ON (NAME=[${DB_NAME_COMMERCE}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME_COMMERCE}_log.ldf')" -C
         let commerceresult=$?
     fi
 
