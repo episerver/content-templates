@@ -7,10 +7,10 @@ let result=1
 for i in {1..100}; do
     if test -f /var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf; then
         echo "Restoring from .mdf/.ldf"
-        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE ${DB_NAME} ON (NAME=${DB_NAME}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=${DB_NAME}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf') FOR ATTACH;" -C
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE [${DB_NAME}] ON (NAME=[${DB_NAME}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=[${DB_NAME}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf') FOR ATTACH;" -C
         let result=$?
     else
-        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE ${DB_NAME} ON (NAME=${DB_NAME}_data, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=${DB_NAME}_log, FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf')" -C
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = '${DB_NAME}') CREATE DATABASE [${DB_NAME}] ON (NAME=[${DB_NAME}_data], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}.mdf') LOG ON (NAME=[${DB_NAME}_log], FILENAME='/var/opt/mssql/host_data/${DB_DIRECTORY}/${DB_NAME}_log.ldf');" -C
         let result=$?
     fi
     if [ $result -eq 0 ]; then
