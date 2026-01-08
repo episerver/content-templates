@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -13,7 +13,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="12.31.2" />
+    <PackageReference Include="EPiServer.CMS" Version="13.0.0-preview2-pre-35" />
+    <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.0.0-preview2-pre-35" />
   </ItemGroup>
   
   <ItemGroup>

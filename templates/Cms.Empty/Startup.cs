@@ -3,6 +3,7 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using EPiServer.DependencyInjection;
 
 namespace Cms.Empty._1;
 
@@ -26,7 +27,18 @@ public class Startup
 
         services
             .AddCmsAspNetIdentity<ApplicationUser>()
-            .AddCms()
+            .AddSegmentTelemetry()
+            .AddCmsHost()
+            .AddCmsCore()
+            .AddCmsHtmlHelpers()
+            .AddCmsTagHelpers()
+            .AddCmsUI()
+            .AddAdmin()
+            .AddTinyMce()
+            .AddCmsImageSharpImageLibrary()
+            .AddVisitorGroupsMvc()
+            .AddVisitorGroupsUI()
+            // .AddCms()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
     }
