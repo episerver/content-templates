@@ -25,6 +25,7 @@
     <Project Path="templates/Cms.Empty/Cms.Empty.1.csproj" />
     <Project Path="templates/Cms.Item/Cms.Item.csproj" />
     <Project Path="templates/Commerce.Empty/Commerce.Empty.1.csproj" />
+    <Project Path="templates/Stride.Mvc/Stride.Mvc.1.csproj" />
   </Folder>
   <Project Path="templates/EPiServer.Templates.csproj" />
 </Solution>

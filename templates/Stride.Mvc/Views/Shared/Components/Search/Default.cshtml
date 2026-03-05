@@ -1,0 +1,38 @@
+<div id="search-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Search">
+    <div id="search-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+    <div class="relative z-10 flex items-start justify-center pt-[15vh] px-4">
+        <div id="search-dialog" class="w-full max-w-xl bg-background2 border border-foreground/10 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-5 py-4 border-b border-foreground/10">
+                <i data-lucide="search" class="w-5 h-5 text-foreground/40 flex-shrink-0"></i>
+                <input id="search-input"
+                       type="text"
+                       placeholder="Search pages, news, events..."
+                       autocomplete="off"
+                       class="flex-1 bg-transparent text-base text-foreground placeholder:text-foreground/40 outline-none" />
+                <kbd class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium text-foreground/40 bg-foreground/5 rounded border border-foreground/10">ESC</kbd>
+            </div>
+
+            <div id="search-results" class="max-h-[50vh] overflow-y-auto scrollbar-thin p-2">
+                <div id="search-empty" class="px-4 py-8 text-center text-foreground/40 text-sm">
+                    Start typing to search...
+                </div>
+                <div id="search-loading" class="hidden px-4 py-8 text-center text-foreground/40 text-sm">
+                    Searching...
+                </div>
+                <div id="search-list" class="hidden"></div>
+                <div id="search-no-results" class="hidden px-4 py-8 text-center text-foreground/40 text-sm">
+                    No results found
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between px-5 py-3 border-t border-foreground/10 text-[11px] text-foreground/30">
+                <div class="flex items-center gap-3">
+                    <span class="inline-flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-foreground/5 rounded border border-foreground/10">&uarr;</kbd><kbd class="px-1.5 py-0.5 bg-foreground/5 rounded border border-foreground/10">&darr;</kbd> navigate</span>
+                    <span class="inline-flex items-center gap-1"><kbd class="px-1.5 py-0.5 bg-foreground/5 rounded border border-foreground/10">&crarr;</kbd> open</span>
+                </div>
+                <span id="search-count" class="hidden"></span>
+            </div>
+        </div>
+    </div>
+</div>

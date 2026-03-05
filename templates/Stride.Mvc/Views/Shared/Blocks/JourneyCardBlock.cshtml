@@ -1,0 +1,67 @@
+@model JourneyCardBlock
+
+@{
+    var variantClass = Model.Variant switch
+    {
+        "map" => "bg-slate-50",
+        "metric" => "bg-white",
+        "list" => "bg-white",
+        "tile" => "bg-white",
+        _ => "bg-white"
+    };
+}
+
+<div class="journey-card @variantClass rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200 h-full">
+    @if (!string.IsNullOrEmpty(Model.Badge))
+    {
+        <span class="inline-block px-3 py-1 text-xs font-semibold bg-blue-100 text-blue-700 rounded-full mb-4" epi-property="Badge">@Model.Badge</span>
+    }
+
+    <h4 class="text-xl font-bold text-slate-900 mb-3 leading-tight" epi-property="Title">@Model.Title</h4>
+
+    @if (Model.Variant == "tile" && Model.Copy != null)
+    {
+        <div class="text-slate-600 leading-relaxed" epi-property="Copy">
+            @Html.PropertyFor(x => x.Copy)
+        </div>
+    }
+
+    @if (Model.Variant == "map")
+    {
+        <div class="bg-white rounded-lg p-8 text-center mt-4 border border-slate-200">
+            <svg class="w-20 h-20 mx-auto text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+            </svg>
+            <p class="text-slate-500 mt-3 text-sm">Route mapping</p>
+        </div>
+    }
+
+    @if (Model.Variant == "metric" && Model.Stats != null && Model.Stats.Items != null && Model.Stats.Items.Any())
+    {
+        <div class="grid grid-cols-2 gap-4 mt-4" epi-property="Stats">
+            @foreach (var item in Model.Stats.Items)
+            {
+                <div class="text-center p-3 bg-slate-50 rounded-lg">
+                    @Html.PropertyFor(x => x.Stats, new { item })
+                </div>
+            }
+        </div>
+    }
+
+    @if (Model.Variant == "list" && Model.Items != null && Model.Items.Items != null && Model.Items.Items.Any())
+    {
+        <ul class="space-y-3 mt-4" epi-property="Items">
+            @foreach (var item in Model.Items.Items)
+            {
+                <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-slate-700">
+                        @Html.PropertyFor(x => x.Items, new { item })
+                    </span>
+                </li>
+            }
+        </ul>
+    }
+</div>

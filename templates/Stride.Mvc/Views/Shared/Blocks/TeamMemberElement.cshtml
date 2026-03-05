@@ -1,0 +1,39 @@
+@model TeamMemberElement
+
+<div class="border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-colors h-full">
+    @if (Model.Image != null && !ContentReference.IsNullOrEmpty(Model.Image))
+    {
+        <div class="aspect-video overflow-hidden">
+            <img src="@Url.ContentUrl(Model.Image)" alt="@Model.Name" class="w-full h-full object-cover" epi-property="Image" />
+        </div>
+    }
+
+    <div class="p-5">
+        <h4 class="text-lg font-bold mb-2" epi-property="Name">@Model.Name</h4>
+
+        @if (Model.Bio != null && !Model.Bio.IsEmpty)
+        {
+            <div class="text-sm text-foreground/60 mb-3" epi-property="Bio">
+                @Html.PropertyFor(x => x.Bio)
+            </div>
+        }
+
+        <div class="text-sm space-y-1">
+            @if (!string.IsNullOrEmpty(Model.Email))
+            {
+                <div class="flex items-center gap-2" epi-property="Email">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-foreground/40"></i>
+                    <a href="mailto:@Model.Email" class="text-key1 hover:underline">@Model.Email</a>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Phone))
+            {
+                <div class="flex items-center gap-2" epi-property="Phone">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-foreground/40"></i>
+                    <a href="tel:@Model.Phone" class="text-key1 hover:underline">@Model.Phone</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

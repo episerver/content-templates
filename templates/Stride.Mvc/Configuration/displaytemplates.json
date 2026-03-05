@@ -1,0 +1,144 @@
+[
+    {
+        "Key": "defaultComponent",
+        "Name": "Default",
+        "NodeType": "Component",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "margin",
+                "Name": "Spacing",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "none", "Name": "No spacing" },
+                    { "Key": "small", "Name": "Small" },
+                    { "Key": "medium", "Name": "Medium" },
+                    { "Key": "large", "Name": "Large" }
+                ]
+            },
+            {
+                "Key": "alignment",
+                "Name": "Alignment",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "left", "Name": "Left" },
+                    { "Key": "center", "Name": "Center" },
+                    { "Key": "right", "Name": "Right" }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "cardComponent",
+        "Name": "Card",
+        "NodeType": "Component",
+        "Settings": [
+            {
+                "Key": "color",
+                "Name": "Color scheme",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "primary", "Name": "Primary" },
+                    { "Key": "secondary", "Name": "Secondary" },
+                    { "Key": "success", "Name": "Success" },
+                    { "Key": "warning", "Name": "Warning" },
+                    { "Key": "info", "Name": "Info" }
+                ]
+            },
+            {
+                "Key": "shadow",
+                "Name": "Drop shadow",
+                "Editor": "select", 
+                "Choices": [
+                    { "Key": "none", "Name": "No shadow" },
+                    { "Key": "small", "Name": "Small shadow" },
+                    { "Key": "medium", "Name": "Medium shadow" },
+                    { "Key": "large", "Name": "Large shadow" }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultSection",
+        "Name": "Default",
+        "BaseType": "Section",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "none", "Name": "No padding" },
+                    { "Key": "small", "Name": "Small" },
+                    { "Key": "medium", "Name": "Medium" },
+                    { "Key": "large", "Name": "Large" },
+                    { "Key": "xlarge", "Name": "Extra Large" }
+                ]
+            },
+            {
+                "Key": "backgroundColor",
+                "Name": "Background",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "none", "Name": "None" },
+                    { "Key": "light", "Name": "Light" },
+                    { "Key": "dark", "Name": "Dark" },
+                    { "Key": "primary", "Name": "Primary" },
+                    { "Key": "secondary", "Name": "Secondary" }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "fullSection",
+        "Name": "Full width",
+        "BaseType": "Section",
+        "Settings": [
+            {
+                "Key": "containerWidth",
+                "Name": "Container Width",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "standard", "Name": "Standard" },
+                    { "Key": "wide", "Name": "Wide" },
+                    { "Key": "fluid", "Name": "Full width" }
+                ]
+            },
+            {
+                "Key": "backgroundColor",
+                "Name": "Background",
+                "Editor": "select",
+                "Choices": [
+                    { "Key": "none", "Name": "None" },
+                    { "Key": "light", "Name": "Light" },
+                    { "Key": "dark", "Name": "Dark" },
+                    { "Key": "primary", "Name": "Primary" },
+                    { "Key": "gradient", "Name": "Gradient" }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "carouselSection",
+        "Name": "Carousel",
+        "BaseType": "Section",
+        "Settings": [
+            {
+                "Key": "autoPlay",
+                "Name": "Auto play",
+                "Editor": "boolean"
+            },
+            {
+                "Key": "showDots",
+                "Name": "Show navigation dots",
+                "Editor": "boolean"
+            },
+            {
+                "Key": "showArrows",
+                "Name": "Show navigation arrows", 
+                "Editor": "boolean"
+            }
+        ]
+    }
+]

@@ -1,0 +1,299 @@
+[
+    {
+        "Key": "defaultHeroSection",
+        "Name": "Default Hero",
+        "BaseType": "Section",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "height",
+                "Name": "Hero Height",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "small",
+                        "Name": "Small (400px)"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium (600px)"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large (800px)"
+                    },
+                    {
+                        "Key": "fullscreen",
+                        "Name": "Fullscreen"
+                    }
+                ]
+            },
+            {
+                "Key": "textAlignment",
+                "Name": "Text Alignment",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "left",
+                        "Name": "Left"
+                    },
+                    {
+                        "Key": "center",
+                        "Name": "Center"
+                    },
+                    {
+                        "Key": "right",
+                        "Name": "Right"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultFeatureGridSection",
+        "Name": "Default Feature Grid",
+        "BaseType": "Section",
+        "Settings": [
+            {
+                "Key": "layoutFormat",
+                "Name": "Layout Format",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "twoCols",
+                        "Name": "Two Columns - Left: section label + heading (2 break lines), Right: description (1 break line above)"
+                    },
+                    {
+                        "Key": "stacked",
+                        "Name": "Stacked - Section label (1 break line), heading & description below (no break lines)"
+                    }
+                ]
+            },
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultJourneySection",
+        "Name": "Default Journey",
+        "BaseType": "Section",
+        "Settings": [
+            {
+                "Key": "layoutFormat",
+                "Name": "Layout Format",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "twoCols",
+                        "Name": "Two Columns - Left: section label + heading (2 break lines), Right: description (1 break line above)"
+                    },
+                    {
+                        "Key": "stacked",
+                        "Name": "Stacked - Section label (1 break line), heading & description below (no break lines)"
+                    }
+                ]
+            },
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultProductContentSection",
+        "Name": "Default Product Content",
+        "BaseType": "Section",
+        "Settings": [
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultRow",
+        "Name": "Default Row",
+        "NodeType": "Row",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "spacing",
+                "Name": "Column Spacing",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultColumn",
+        "Name": "Default Column",
+        "NodeType": "Column",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultComponent",
+        "Name": "Default",
+        "BaseType": "Block",
+        "IsDefault": true,
+        "Settings": [
+            {
+                "Key": "margin",
+                "Name": "Spacing",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "No spacing"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultButton",
+        "Name": "Button Style",
+        "NodeType": "Component",
+        "Settings": [
+            {
+                "Key": "variant",
+                "Name": "Button Variant",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "primary",
+                        "Name": "Primary (Dark)"
+                    },
+                    {
+                        "Key": "blue",
+                        "Name": "Blue"
+                    },
+                    {
+                        "Key": "outline",
+                        "Name": "Outline (Transparent)"
+                    },
+                    {
+                        "Key": "secondary",
+                        "Name": "Secondary"
+                    },
+                    {
+                        "Key": "ghost",
+                        "Name": "Ghost"
+                    }
+                ]
+            }
+        ]
+    }
+]

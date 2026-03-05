@@ -1,0 +1,97 @@
+@using EPiServer.Applications
+
+@inject IApplicationResolver ApplicationResolver
+@inject IContentLoader ContentLoader
+
+@model IPageViewModel<PageData>
+
+@{
+    var application = await ApplicationResolver.GetByContextAsync(CancellationToken.None);
+    var routableApplication = application as IRoutableApplication;
+    var startPage = routableApplication?.EntryPoint ?? ContentReference.StartPage;
+
+    var navItems = Enumerable.Empty<IContent>();
+    if (startPage != null && !ContentReference.IsNullOrEmpty(startPage))
+    {
+        navItems = ContentLoader.GetChildren<IContent>(startPage)
+            .Where(c => c is PageData pd && pd.VisibleInMenu)
+            .OrderBy(c => (c as PageData)?.SortIndex ?? 0);
+    }
+}
+
+<header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
+    <div class="container mx-auto flex items-center justify-between md:py-5 py-6">
+        <a href="@Url.ContentUrl(startPage)" title="Stride">
+            <img src="~/gfx/logotype.png" alt="Stride" class="h-5" />
+        </a>
+
+        <div class="flex gap-6">
+            <nav class="hidden lg:flex items-center gap-6 translate-y-0.5">
+                @foreach (var item in navItems)
+                {
+                    var isSelected = Model.CurrentPage.ContentLink.CompareToIgnoreWorkID(item.ContentLink);
+                    <a href="@Url.ContentUrl(item.ContentLink)"
+                       class="text-sm font-semibold transition-colors @(isSelected ? "opacity-100" : "opacity-80 hover:opacity-100")">
+                        @item.Name
+                    </a>
+                }
+            </nav>
+
+            <div class="flex items-center gap-4 translate-y-0.5">
+                <button onclick="window.openSearch && window.openSearch()" class="p-1 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Search (Ctrl+K)">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                </button>
+                <button id="mobile-menu-toggle" class="lg:hidden p-1" aria-label="Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+@* Mobile Menu Panel *@
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[60] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<nav id="mobile-menu" class="fixed top-0 right-0 h-full w-[300px] max-w-[85vw] bg-background2 z-[70] translate-x-full transition-transform duration-300 ease-out shadow-2xl">
+    <div class="flex items-center justify-between p-6 border-b border-foreground/10">
+        <span class="text-sm font-bold uppercase tracking-wider text-foreground/40">Menu</span>
+        <button id="mobile-menu-close" class="p-1" aria-label="Close menu">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+    </div>
+    <div class="p-6 overflow-y-auto h-[calc(100%-73px)]">
+        @foreach (var item in navItems)
+        {
+            var children = ContentLoader.GetChildren<IContent>(item.ContentLink)
+                .Where(c => c is PageData pd && pd.VisibleInMenu)
+                .OrderBy(c => (c as PageData)?.SortIndex ?? 0)
+                .ToList();
+
+            if (children.Any())
+            {
+                <div class="mobile-nav-group">
+                    <button class="mobile-nav-toggle flex items-center justify-between w-full py-3 text-lg font-semibold border-b border-foreground/10"
+                            onclick="this.parentElement.classList.toggle('open')">
+                        @item.Name
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+                    </button>
+                    <div class="mobile-nav-children pl-4 overflow-hidden max-h-0 transition-all duration-300">
+                        @foreach (var child in children)
+                        {
+                            <a href="@Url.ContentUrl(child.ContentLink)"
+                               class="block py-2 text-base text-foreground/70 hover:text-foreground mobile-nav-link">
+                                @child.Name
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a href="@Url.ContentUrl(item.ContentLink)"
+                   class="block py-3 text-lg font-semibold border-b border-foreground/10 mobile-nav-link">
+                    @item.Name
+                </a>
+            }
+        }
+    </div>
+</nav>

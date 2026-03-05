@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# Tailwind output
+wwwroot/css/output.css
+
+# Build outputs
+bin/
+obj/
+
+# IDE
+.vs/
+.vscode/
+
+# Database files
+App_Data/*.mdf
+App_Data/*.ldf
+App_Data/blobs/
+
+# User-specific files
+*.user
+*.suo
+
+# NuGet
+*.nupkg
+packages/
+
+# Logs
+*.log

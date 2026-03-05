@@ -1,0 +1,70 @@
+@model IPageViewModel<PageData>
+
+<footer class="pt-20 pb-12 bg-background md:px-12 relative z-10">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between pb-20 border-b border-dashed mb-20 border-foreground/15 gap-6">
+            <h2 class="text-2xl md:text-2xl font-bold tracking-tight">Ready to reach your peak?</h2>
+            <div class="flex gap-4">
+                <a href="#" class="cursor-pointer rounded-md px-6 py-3 font-semibold uppercase tracking-wider text-sm transition-all border-2 border-key1 bg-key1 text-white hover:-translate-y-0.5 duration-100">
+                    Get Started
+                </a>
+                <a href="#" class="cursor-pointer rounded-md px-6 py-3 font-semibold uppercase tracking-wider text-sm transition-all border-2 border-foreground hover:-translate-y-0.5 duration-100">
+                    Download App
+                </a>
+            </div>
+        </div>
+
+        <a href="/" title="Stride">
+            <img src="~/gfx/logotype.png" alt="Stride" class="h-5" />
+        </a>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pt-16 text-sm text-foreground2">
+            <div class="col-span-1">
+                <div class="space-y-2">
+                    <p class="font-bold text-foreground uppercase text-xs tracking-wider mb-2">Stride</p>
+                    <p>100 Market St</p>
+                    <p>San Francisco, CA 94103, USA</p>
+                    <p class="mt-4">Contact us</p>
+                    <p>Phone: +1 415 555 0123</p>
+                </div>
+            </div>
+
+            <div class="col-span-1">
+                <h4 class="font-bold text-foreground uppercase text-xs tracking-wider mb-4">Products</h4>
+                <ul class="space-y-2">
+                    <li><p>Features</p></li>
+                    <li><p>Challenges</p></li>
+                    <li><p>Subscriptions</p></li>
+                </ul>
+            </div>
+
+            <div class="col-span-1">
+                <h4 class="font-bold text-foreground uppercase text-xs tracking-wider mb-4">Resources</h4>
+                <ul class="space-y-2">
+                    <li><p>News</p></li>
+                    <li><p>Events</p></li>
+                </ul>
+            </div>
+
+            <div class="col-span-1">
+                <h4 class="font-bold text-foreground uppercase text-xs tracking-wider mb-4">Company</h4>
+                <ul class="space-y-2">
+                    @if (Model.Layout.LoggedIn)
+                    {
+                        <li>@Html.ContentLink(LocalizationService.Current.GetString("/footer/logout"), "Logout")</li>
+                    }
+                    else if (!Model.Layout.IsInReadonlyMode)
+                    {
+                        <li><a class="hover:text-foreground" href="@Model.Layout.LoginUrl" title="@Html.Translate("/footer/login")">@Html.Translate("/footer/login")</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 mt-12 pt-8 text-center text-sm text-foreground2 flex gap-1 items-center justify-center">
+            <p class="opacity-50">Powered by</p>
+            <img src="~/gfx/optimizely-icon.png" alt="Optimizely" width="28" height="28" />
+            <p>Optimizely CMS</p>
+        </div>
+    </div>
+</footer>
