@@ -1,0 +1,17 @@
+@model Stride.Mvc.Models.Sections.ProductContentSection
+
+<div class="product-content-section container mx-auto px-6 py-6 lg:grid lg:grid-cols-12 lg:gap-6">
+    <aside class="lg:col-start-9 lg:col-span-4 lg:row-start-1 lg:row-span-full mb-12 lg:mb-0">
+        <div class="lg:sticky lg:top-32">
+            @await Component.InvokeAsync("Sidebar")
+        </div>
+    </aside>
+
+    <epi-grid class="lg:col-span-8">
+        <epi-row class="mb-4 flex flex-wrap gap-6 items-start">
+            <epi-column class="flex-1 min-w-0">
+                <epi-component class="w-full" />
+            </epi-column>
+        </epi-row>
+    </epi-grid>
+</div>

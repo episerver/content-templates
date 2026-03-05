@@ -1,0 +1,11 @@
+@model Stride.Mvc.Models.Elements.ImageElement
+
+@if (Model != null && Model.Image != null && !ContentReference.IsNullOrEmpty(Model.Image))
+{
+    <img
+        src="@Url.ContentUrl(Model.Image)"
+        alt="@(Model.AltText ?? "")"
+        class="w-full h-auto"
+        epi-property="Image"
+    />
+}

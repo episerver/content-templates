@@ -1,0 +1,74 @@
+@model DetailPageViewModel<EventPage>
+@using Stride.Mvc.Models.Pages
+@using Stride.Mvc.Models.ViewModels
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+@* Date label *@
+<span class="text-xs font-bold uppercase tracking-wider text-key1 mb-4 block font-mono">
+    @Model.CurrentPage.EventDate.ToString("MMMM d, yyyy")
+</span>
+
+@* Title *@
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4" epi-property="@Model.CurrentPage.Title">
+    @Model.CurrentPage.Title
+</h1>
+
+@* Location *@
+@if (!string.IsNullOrEmpty(Model.CurrentPage.Location))
+{
+    <p class="text-foreground/60 flex items-center gap-2 mb-8" epi-property="@Model.CurrentPage.Location">
+        <i data-lucide="map-pin" class="w-4 h-4"></i>
+        @Model.CurrentPage.Location
+    </p>
+}
+
+@* Description *@
+@if (Model.CurrentPage.Description != null && !Model.CurrentPage.Description.IsEmpty)
+{
+    <div class="text-lg font-semibold leading-relaxed mb-8" epi-property="@Model.CurrentPage.Description">
+        @Html.PropertyFor(m => m.CurrentPage.Description)
+    </div>
+}
+
+@* Main Content *@
+@if (Model.CurrentPage.MainContent != null && !Model.CurrentPage.MainContent.IsEmpty)
+{
+    <div class="prose prose-lg max-w-none mb-12" epi-property="@Model.CurrentPage.MainContent">
+        @Html.PropertyFor(m => m.CurrentPage.MainContent)
+    </div>
+}
+
+@* Other Events *@
+@if (Model.RelatedItems.Any())
+{
+    <div class="mt-16">
+        <h2 class="text-3xl font-bold mb-8">Other Events</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            @foreach (var evt in Model.RelatedItems)
+            {
+                <a href="@Url.ContentUrl(evt.ContentLink)" class="group block border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-colors bg-foreground/[0.02] backdrop-blur-[3px]">
+                    <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-2 block font-mono">
+                        @evt.EventDate.ToString("MMMM d, yyyy")
+                    </span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-key1 transition-colors">
+                        @evt.Title
+                    </h3>
+                    @if (!string.IsNullOrEmpty(evt.Location))
+                    {
+                        <p class="text-sm text-foreground/60 flex items-center gap-1 mb-2">
+                            <i data-lucide="map-pin" class="w-3 h-3"></i>
+                            @evt.Location
+                        </p>
+                    }
+                    @if (evt.Description != null && !evt.Description.IsEmpty)
+                    {
+                        <p class="text-sm text-foreground/60">
+                            @System.Text.RegularExpressions.Regex.Replace(evt.Description.ToHtmlString(), "<[^>]*>", "")
+                        </p>
+                    }
+                </a>
+            }
+        </div>
+    </div>
+}

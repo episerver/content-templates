@@ -1,0 +1,20 @@
+@model Stride.Mvc.Models.Blocks.FeatureElement
+
+<div class="p-6 border border-foreground/15 rounded-2xl bg-card backdrop-blur-[3px] h-full flex flex-col">
+    <div class="flex gap-2 items-center mb-3">
+        @if (!string.IsNullOrEmpty(Model.Icon))
+        {
+            <div class="text-slate-900 flex-shrink-0" epi-property="Icon">
+                <i data-lucide="@Model.Icon" class="w-5 h-5"></i>
+            </div>
+        }
+        <h4 class="text-xl font-semibold text-slate-900" epi-property="Heading">@Model.Heading</h4>
+    </div>
+
+    @if (Model.Description != null && !Model.Description.IsEmpty)
+    {
+        <div class="text-slate-900 text-sm leading-relaxed" epi-property="Description">
+            @Html.PropertyFor(x => x.Description)
+        </div>
+    }
+</div>

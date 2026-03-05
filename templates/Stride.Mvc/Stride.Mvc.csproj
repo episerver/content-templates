@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>true</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="EPiServer" />
+    <Using Include="EPiServer.Core" />
+    <Using Include="EPiServer.DataAbstraction" />
+    <Using Include="EPiServer.DataAnnotations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<PackageReference Include="EPiServer.CMS" Version="12.31.2" />-->
+    <PackageReference Include="EPiServer.Cms" Version="13.0.0-preview4-ci-186" />
+    <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.0.0-preview4-ci-186" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Translations\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="displaytemplates.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Tailwind CSS Build Integration -->
+  <PropertyGroup>
+    <TailwindInputFile>Assets\css\input.css</TailwindInputFile>
+    <TailwindOutputFile>wwwroot\css\output.css</TailwindOutputFile>
+    <TailwindConfigFile>tailwind.config.js</TailwindConfigFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Watch Tailwind input files for changes -->
+    <TailwindContentFiles Include="Views\**\*.cshtml" />
+    <TailwindContentFiles Include="Components\**\*.cs" />
+    <TailwindContentFiles Include="Models\**\*.cs" />
+  </ItemGroup>
+
+  <Target Name="CheckTailwindInstalled" BeforeTargets="BuildTailwindCSS">
+    <!-- Check if node_modules exists, if not run npm install -->
+    <Exec Command="node --version" ContinueOnError="true" IgnoreExitCode="true" StandardOutputImportance="low">
+      <Output TaskParameter="ExitCode" PropertyName="NodeExitCode" />
+    </Exec>
+    <Error Condition="'$(NodeExitCode)' != '0'" Text="Node.js is not installed or not in PATH. Please install Node.js to build Tailwind CSS." />
+
+    <PropertyGroup>
+      <NodeModulesExists Condition="Exists('node_modules\tailwindcss')">true</NodeModulesExists>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="Installing npm dependencies..." Condition="'$(NodeModulesExists)' != 'true'" />
+    <Exec Command="npm install" Condition="'$(NodeModulesExists)' != 'true'" StandardOutputImportance="low" />
+  </Target>
+
+  <Target Name="BuildTailwindCSS" BeforeTargets="BeforeBuild;BeforeRebuild"
+          Inputs="$(TailwindInputFile);$(TailwindConfigFile);@(TailwindContentFiles)"
+          Outputs="$(TailwindOutputFile)">
+    <Message Importance="high" Text="Building Tailwind CSS..." />
+    <Exec Command="npm run build:css" StandardOutputImportance="low" />
+    <Touch Files="$(TailwindOutputFile)" AlwaysCreate="true" />
+    <Message Importance="high" Text="Tailwind CSS build complete: $(TailwindOutputFile)" />
+  </Target>
+
+  <Target Name="CleanTailwindCSS" BeforeTargets="Clean">
+    <Delete Files="$(TailwindOutputFile)" />
+    <Message Importance="high" Text="Cleaned Tailwind CSS output." />
+  </Target>
+</Project>

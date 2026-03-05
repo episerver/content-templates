@@ -1,0 +1,96 @@
+@model Stride.Mvc.Models.Sections.JourneySection
+
+<epi-grid class="journey-section relative">
+    <epi-styles>
+        <epi-style name="padding">
+            <epi-style-map value="none" class="pt-0" />
+            <epi-style-map value="small" class="pt-12" />
+            <epi-style-map value="medium" class="pt-16" />
+            <epi-style-map value="large" class="pt-20" />
+        </epi-style>
+    </epi-styles>
+
+    @if (Model != null && (!string.IsNullOrEmpty(Model.Eyebrow) || !string.IsNullOrEmpty(Model.Title) || !string.IsNullOrEmpty(Model.Description)))
+    {
+        <div class="container mx-auto px-6 mb-6">
+            @if (Model.LayoutFormat == "twoCols")
+            {
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                    <div>
+                        @if (!string.IsNullOrEmpty(Model.Eyebrow))
+                        {
+                            <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative">
+                                <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="Eyebrow">
+                                    @Model.Eyebrow
+                                </span>
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Title))
+                        {
+                            <div class="pb-6">
+                                <h2 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight" epi-property="Title">
+                                    @Model.Title
+                                </h2>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="flex flex-col">
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 md:block hidden"></div>
+                            <p class="text-base lg:text-lg text-slate-900 leading-relaxed" epi-property="Description">
+                                @Model.Description
+                            </p>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="flex flex-col">
+                    @if (!string.IsNullOrEmpty(Model.Eyebrow))
+                    {
+                        <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative max-w-half-col">
+                            <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="Eyebrow">
+                                @Model.Eyebrow
+                            </span>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Title))
+                    {
+                        <h2 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight max-w-half-col" epi-property="Title">
+                            @Model.Title
+                        </h2>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <div class="max-w-half-col">
+                            <p class="text-base lg:text-lg text-slate-900 leading-relaxed" epi-property="Description">
+                                @Model.Description
+                            </p>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start md:pt-14 pt-6">
+        <epi-styles>
+            <epi-style name="spacing">
+                <epi-style-map value="none" class="gap-0" />
+                <epi-style-map value="small" class="gap-4" />
+                <epi-style-map value="medium" class="gap-6" />
+                <epi-style-map value="large" class="gap-8" />
+            </epi-style>
+        </epi-styles>
+
+        <epi-column class="grow basis-0 min-w-0 flex flex-col">
+            <epi-component class="w-full flex-1"/>
+        </epi-column>
+    </epi-row>
+</epi-grid>

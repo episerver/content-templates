@@ -1,0 +1,43 @@
+@model Stride.Mvc.Models.Elements.HeadingElement
+
+@{
+    var level = Model?.Level ?? "h2";
+    var classes = level switch
+    {
+        "h1" => "text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight",
+        "h2" => "text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-tight",
+        "h3" => "text-3xl lg:text-4xl font-bold text-slate-900 leading-snug",
+        "h4" => "text-2xl lg:text-3xl font-semibold text-slate-900 leading-snug",
+        "h5" => "text-lg lg:text-xl font-semibold text-slate-600 leading-relaxed",
+        "h6" => "text-base lg:text-lg font-medium text-slate-500 leading-relaxed",
+        _ => "text-4xl font-bold text-slate-900"
+    };
+}
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Text))
+{
+    @switch (level)
+    {
+        case "h1":
+            <h1 class="@classes" epi-property="Text">@Model.Text</h1>
+            break;
+        case "h2":
+            <h2 class="@classes" epi-property="Text">@Model.Text</h2>
+            break;
+        case "h3":
+            <h3 class="@classes" epi-property="Text">@Model.Text</h3>
+            break;
+        case "h4":
+            <h4 class="@classes" epi-property="Text">@Model.Text</h4>
+            break;
+        case "h5":
+            <h5 class="@classes" epi-property="Text">@Model.Text</h5>
+            break;
+        case "h6":
+            <h6 class="@classes" epi-property="Text">@Model.Text</h6>
+            break;
+        default:
+            <h2 class="@classes" epi-property="Text">@Model.Text</h2>
+            break;
+    }
+}

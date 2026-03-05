@@ -1,0 +1,134 @@
+@model Stride.Mvc.Models.Sections.FeatureGridSection
+
+
+<epi-grid class="feature-grid-section relative">
+    <epi-styles>
+        <epi-style name="padding">
+            <epi-style-map value="none" class="pt-0" />
+            <epi-style-map value="small" class="pt-12" />
+            <epi-style-map value="medium" class="pt-16" />
+            <epi-style-map value="large" class="pt-20" />
+        </epi-style>
+    </epi-styles>
+
+    @{
+        var hasSideImage = Model?.SideImage != null && !ContentReference.IsNullOrEmpty(Model.SideImage);
+    }
+
+    @if (Model != null && (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
+    {
+        <div class="container mx-auto px-6 @(hasSideImage ? "" : "mb-6")">
+            @if (Model.LayoutFormat == "twoCols")
+            {
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                    <div class="space-y-6">
+                        @if (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel))
+                        {
+                            <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative">
+                                @if (!string.IsNullOrEmpty(Model.SectionNumber))
+                                {
+                                    <span class="absolute text-background2 bg-foreground px-1" epi-property="SectionNumber">
+                                        @Model.SectionNumber
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.SectionLabel))
+                                {
+                                    <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
+                                        @Model.SectionLabel
+                                    </span>
+                                }
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Heading))
+                        {
+                            <div class="pb-6">
+                                <h2 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight" epi-property="Heading">
+                                    @Model.Heading
+                                </h2>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="flex flex-col">
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 md:block hidden"></div>
+                            <p class="text-base lg:text-lg text-slate-900 leading-relaxed" epi-property="Description">
+                                @Model.Description
+                            </p>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="md:flex gap-6 items-start">
+                    <div class="basis-0 grow">
+                        @if (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel))
+                        {
+                            <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative max-w-half-col">
+                                @if (!string.IsNullOrEmpty(Model.SectionNumber))
+                                {
+                                    <span class="absolute text-background2 bg-foreground px-1" epi-property="SectionNumber">
+                                        @Model.SectionNumber
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.SectionLabel))
+                                {
+                                    <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
+                                        @Model.SectionLabel
+                                    </span>
+                                }
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Heading))
+                        {
+                            <h2 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight mb-4" epi-property="Heading">
+                                @Model.Heading
+                            </h2>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            <p class="text-lg leading-relaxed text-foreground mt-5 max-w-2xl" epi-property="Description">
+                                @Model.Description
+                            </p>
+                        }
+                    </div>
+
+                    @if (hasSideImage)
+                    {
+                        <div class="basis-0 grow scroll-fade-up"
+                             style="-webkit-mask-image: linear-gradient(#000 40%, transparent 75%);">
+                            <img src="@Url.ContentUrl(Model.SideImage)"
+                                 alt=""
+                                 class="object-cover object-top aspect-square"
+                                 epi-property="SideImage" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="basis-0 grow"></div>
+                    }
+                </div>
+            }
+        </div>
+    }
+
+    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start @(hasSideImage ? "md:pt-4" : "md:pt-14") pt-6">
+        <epi-styles>
+            <epi-style name="spacing">
+                <epi-style-map value="none" class="gap-0" />
+                <epi-style-map value="small" class="gap-4" />
+                <epi-style-map value="medium" class="gap-6" />
+                <epi-style-map value="large" class="gap-8" />
+            </epi-style>
+        </epi-styles>
+
+        <epi-column class="grow basis-0 min-w-0 flex flex-col">
+            <epi-component class="w-full flex-1"/>
+        </epi-column>
+    </epi-row>
+</epi-grid>

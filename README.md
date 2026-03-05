@@ -2,7 +2,7 @@
 
 [![Continuous integration](https://github.com/episerver/content-templates/actions/workflows/ci.yml/badge.svg)](https://github.com/episerver/content-templates/actions/workflows/ci.yml)
 
-This repository contains templates for Optimizely Digital Experience Cloud to be used with `dotnet new` and Visual Studio 2022 17.8.0+.
+This repository contains templates for Optimizely Digital Experience Cloud to be used with `dotnet new` and Visual Studio 2026.
 
 The templates in this repository are distributed as a NuGet package available from [NuGet.org](https://www.nuget.org/packages/EPiServer.Templates/) and can be installed using the `dotnet new` command.
 
@@ -10,21 +10,21 @@ The templates in this repository are distributed as a NuGet package available fr
 $ dotnet new -i EPiServer.Templates
 ```
 
-Once installed, these templates will also be available in Visual Studio 17.8.0+.
+Once installed, these templates will also be available in Visual Studio 2026.
 Note that Visual Studio currently only supports *Project Templates* and not *Item Templates*.
 
 To generate code based on the template simply execute the following.
 
 ```bash
-$ dotnet new epi-alloy-mvc
+$ dotnet new epi-stride-mvc
 ```
 
-Replace `epi-alloy-mvc` with the name of the template you want to use. 
+Replace `epi-stride-mvc` with the name of the template you want to use. 
 
 See below for a list of available templates and details on each individual template. For direct access to documentation on each template, execute:
 
 ```bash
-$ dotnet new epi-alloy-mvc --help
+$ dotnet new epi-stride-mvc --help
 ```
 
 For further documentation on how to work with `dotnet new` see https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new.
@@ -36,6 +36,7 @@ The following templates are included in this repository and available through th
 ### Project Templates
 
 - epi-alloy-mvc
+- epi-stride-mvc
 - epi-cms-empty
 - epi-commerce-empty
 

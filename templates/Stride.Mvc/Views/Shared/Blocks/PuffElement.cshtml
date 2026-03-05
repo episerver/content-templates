@@ -1,0 +1,39 @@
+@model PuffElement
+
+<div class="border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-colors h-full group">
+    @if (Model.Image != null && !ContentReference.IsNullOrEmpty(Model.Image))
+    {
+        <div class="aspect-video overflow-hidden">
+            <img src="@Url.ContentUrl(Model.Image)"
+                 alt="@Model.Title"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 epi-property="Image" />
+        </div>
+    }
+
+    <div class="p-6 flex flex-col">
+        @if (!string.IsNullOrEmpty(Model.Title))
+        {
+            <h3 class="text-xl font-bold mb-3 leading-tight" epi-property="Title">@Model.Title</h3>
+        }
+
+        @if (Model.Description != null)
+        {
+            <div class="text-foreground/60 leading-relaxed mb-4 flex-grow" epi-property="Description">
+                @Html.PropertyFor(x => x.Description)
+            </div>
+        }
+
+        @if (Model.Link != null && !string.IsNullOrEmpty(Model.Link?.ToString()))
+        {
+            <div class="mt-auto">
+                <a href="@Model.Link"
+                   class="inline-flex items-center gap-2 text-key1 hover:text-key1/80 font-semibold transition-colors group-hover:gap-3 duration-200"
+                   epi-property="Link">
+                    Learn more
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        }
+    </div>
+</div>

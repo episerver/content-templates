@@ -1,0 +1,46 @@
+@model ListingPageViewModel<NewsListingPage, NewsArticlePage>
+@using Stride.Mvc.Models.Pages
+@using Stride.Mvc.Models.ViewModels
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-12" epi-property="@Model.CurrentPage.Heading">
+    @(string.IsNullOrEmpty(Model.CurrentPage.Heading) ? "News" : Model.CurrentPage.Heading)
+</h1>
+
+@if (Model.Items.Any())
+{
+    <div class="space-y-10">
+        @foreach (var article in Model.Items)
+        {
+            <a href="@Url.ContentUrl(article.ContentLink)" class="group grid grid-cols-2 gap-6 items-start">
+                @if (article.FeaturedImage != null && !ContentReference.IsNullOrEmpty(article.FeaturedImage))
+                {
+                    <div class="aspect-[3/2] rounded-lg overflow-hidden">
+                        <img src="@Url.ContentUrl(article.FeaturedImage)"
+                             alt="@article.Title"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                }
+                <div class="min-w-0">
+                    <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-1 block font-mono">
+                        @article.PublishDate.ToString("MMMM d, yyyy")
+                    </span>
+                    <h3 class="text-lg font-bold mb-2 group-hover:text-key1 transition-colors">
+                        @article.Title
+                    </h3>
+                    @if (article.Summary != null && !article.Summary.IsEmpty)
+                    {
+                        <p class="text-sm text-foreground/60 line-clamp-2">
+                            @System.Text.RegularExpressions.Regex.Replace(article.Summary.ToHtmlString(), "<[^>]*>", "")
+                        </p>
+                    }
+                </div>
+            </a>
+        }
+    </div>
+}
+else
+{
+    <p class="text-foreground/60">No news articles yet.</p>
+}

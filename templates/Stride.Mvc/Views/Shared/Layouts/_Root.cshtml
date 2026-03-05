@@ -1,0 +1,83 @@
+@using EPiServer.Framework.Web.Mvc.Html
+@using EPiServer.VisualBuilder
+
+@model IPageViewModel<PageData>
+@{
+    var siteData = Model.CurrentPage is SitePageData ? (SitePageData)Model.CurrentPage : null;
+    var isExperience = Model.CurrentPage is ExperienceData;
+}
+
+<!DOCTYPE html>
+<html lang="@(Model.CurrentPage.Language)">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@(siteData?.MetaTitle ?? Model.CurrentPage.PageName)</title>
+    @if (siteData?.MetaKeywords != null && siteData?.MetaKeywords.Count > 0)
+    {
+        <meta name="keywords" content="@string.Join(",", siteData?.MetaKeywords)" />
+    }
+    @if (!string.IsNullOrWhiteSpace(siteData?.MetaDescription))
+    {
+        <meta name="description" content="@siteData?.MetaDescription" />
+    }
+    @Html.CanonicalLink()
+    @Html.AlternateLinks()
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/output.css" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <required-client-resources area="Header" />
+</head>
+
+<body class="bg-background2 min-h-screen">
+    @if (Model.Layout.IsInReadonlyMode)
+    {
+        await Html.RenderPartialAsync("Readonly", Model);
+    }
+
+    @await Html.RenderEPiServerQuickNavigatorAsync()
+
+    @Html.FullRefreshPropertiesMetaData()
+
+    @if (!Model.Layout.HideHeader)
+    {
+        await Html.RenderPartialAsync("Header", Model);
+    }
+
+    @* Background gradient overlays - matching boilerplate *@
+    <div class="-top-[25%] translate-x-[-50%] z-50 fixed pointer-events-none bg-[radial-gradient(rgba(20,184,166,0.15)_0%,transparent_70%)] w-[880px] h-[1040px]"></div>
+    <div class="top-[25%] right-0 translate-x-[50%] z-50 fixed pointer-events-none bg-[radial-gradient(rgba(20,184,166,0.15)_0%,transparent_70%)] w-[880px] h-[1040px]"></div>
+
+    @* Decorative grid background *@
+    @await Html.PartialAsync("_DecoGrid")
+
+    @if (isExperience)
+    {
+        <div class="pb-20">
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+        <div class="container mx-auto px-4 max-w-7xl py-8">
+            @RenderBody()
+        </div>
+    }
+
+    @if (!Model.Layout.HideFooter)
+    {
+        await Html.RenderPartialAsync("Footer", Model);
+    }
+
+    @* Search modal — rendered once, available site-wide *@
+    @await Component.InvokeAsync("Search")
+
+    <required-client-resources area="Footer" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="~/js/site.js"></script>
+    <script src="~/js/search.js"></script>
+</body>
+</html>

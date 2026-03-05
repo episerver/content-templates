@@ -1,0 +1,13 @@
+@model Stride.Mvc.Models.Elements.HighlightElement
+
+<div class="space-y-3">
+    <h3 class="text-2xl font-bold text-slate-900" epi-property="Title">
+        @Model.Title
+    </h3>
+    @if (Model.Body != null && !Model.Body.IsEmpty)
+    {
+        <div class="text-slate-600 text-base leading-relaxed" epi-property="Body">
+            @Html.PropertyFor(m => m.Body)
+        </div>
+    }
+</div>

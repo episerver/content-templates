@@ -1,0 +1,18 @@
+@model IPageViewModel<SitePageData>
+
+@{ Layout = "~/Views/Shared/Layouts/_Root.cshtml"; }
+
+<div class="container mx-auto pt-32 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        @* Sidebar Navigation — sticky, hidden on mobile *@
+        <aside class="hidden lg:block lg:col-span-3">
+            @{await Html.RenderPartialAsync("SubNavigation", Model);}
+        </aside>
+
+        @* Main Content Area *@
+        <div class="lg:col-span-8 lg:col-start-5">
+            @{await Html.RenderPartialAsync("Breadcrumbs", Model);}
+            @RenderBody()
+        </div>
+    </div>
+</div>

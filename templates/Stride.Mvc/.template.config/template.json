@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Episerver AB",
+  "sourceName": "Stride.Mvc",
+  "classifications": [ "Web" ],
+  "identity": "EPiServer.Templates.Stride.Mvc",
+  "name": "Optimizely Stride MVC",
+  "shortName": "epi-stride-mvc",
+  "description": "Modern CMS template with Visual Builder, Tailwind CSS, and traditional page/block patterns for Optimizely CMS.",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!enableDocker)",
+          "exclude": [
+            "Directory.Build.props",
+            "docker-compose.yml",
+            "Docker/**/*",
+            ".env"
+          ]
+        },
+        {
+          "exclude": [
+            "node_modules/**",
+            "bin/**",
+            "obj/**",
+            "modules/**",
+            "package-lock.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "symbols": {
+    "enableDocker": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "displayName": "Enable Docker support",
+      "description": "Enable Docker support"
+    },
+    "saPassword": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "Qwerty12345!",
+      "displayName": "Password SA database account",
+      "description": "The password the SA database account should have",
+      "replaces": "Qwerty12345!"
+    }
+  }
+}

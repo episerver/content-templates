@@ -1,0 +1,51 @@
+@model IPageViewModel<PageData>
+
+@{
+    HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
+    {
+        var isActive = item.Selected && item.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink);
+
+        <li class="list-none">
+            <a href="@Url.ContentUrl(item.Page.ContentLink)"
+               class="group relative block font-semibold text-foreground/90 hover:text-foreground transition-colors py-2">
+                @item.Page.PageName
+                <span class="absolute -z-10 border border-foreground/5 opacity-0 group-hover:opacity-100 duration-100 -inset-4 top-0 bottom-0 rounded bg-foreground/[0.04] backdrop-blur-[3px] @(isActive ? "!opacity-100 border-l-4 !border-l-key1" : "")"></span>
+            </a>
+            @if (item.Selected)
+            {
+                <ul class="flex flex-col gap-1 list-none m-0 p-0">
+                    @Html.MenuList(item.Page.ContentLink, SubItemTemplate)
+                </ul>
+            }
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+
+    HelperResult SubItemTemplate(HtmlHelpers.MenuItem item)
+    {
+        var isActive = item.Selected && item.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink);
+
+        <li class="list-none">
+            <a href="@Url.ContentUrl(item.Page.ContentLink)"
+               class="group relative block pl-3 text-sm font-semibold text-foreground/70 hover:text-foreground transition-colors py-2">
+                @item.Page.PageName
+                <span class="absolute -z-10 border border-foreground/5 opacity-0 group-hover:opacity-100 duration-100 -inset-4 top-0 bottom-0 rounded bg-foreground/[0.04] backdrop-blur-[3px] @(isActive ? "!opacity-100 border-l-4 !border-l-key1" : "")"></span>
+            </a>
+            @if (item.Selected)
+            {
+                <ul class="flex flex-col gap-1 pl-3 list-none m-0 p-0">
+                    @Html.MenuList(item.Page.ContentLink, SubItemTemplate)
+                </ul>
+            }
+        </li>
+        return new HelperResult(w => Task.CompletedTask);
+    }
+}
+
+<nav class="subnav sticky top-32 flex flex-col gap-1">
+    @Html.MenuList(Model.Section.ContentLink, ItemTemplate)
+</nav>
+
+<style>
+    .subnav ul { list-style: none; margin: 0; padding: 0; }
+</style>
