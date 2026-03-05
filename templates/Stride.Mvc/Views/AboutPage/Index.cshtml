@@ -1,0 +1,26 @@
+@model IPageViewModel<AboutPage>
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-12" epi-property="@Model.CurrentPage.Heading">
+    @Model.CurrentPage.Heading
+</h1>
+
+@if (Model.CurrentPage.IntroText != null && !Model.CurrentPage.IntroText.IsEmpty)
+{
+    <div class="text-xl leading-relaxed text-foreground/80 mb-8" epi-property="@Model.CurrentPage.IntroText">
+        @Html.PropertyFor(m => m.CurrentPage.IntroText)
+    </div>
+}
+
+@if (Model.CurrentPage.MainBody != null && !Model.CurrentPage.MainBody.IsEmpty)
+{
+    <div class="prose prose-lg max-w-none mb-8" epi-property="@Model.CurrentPage.MainBody">
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+    </div>
+}
+
+@if (Model.CurrentPage.MainContentArea != null && Model.CurrentPage.MainContentArea.Items.Any())
+{
+    @Html.PropertyFor(m => m.CurrentPage.MainContentArea)
+}

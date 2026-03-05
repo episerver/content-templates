@@ -1,0 +1,36 @@
+@model ListingPageViewModel<EventListingPage, EventPage>
+@using Stride.Mvc._1.Models.Pages
+@using Stride.Mvc._1.Models.ViewModels
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-12" epi-property="@Model.CurrentPage.Heading">
+    @(string.IsNullOrEmpty(Model.CurrentPage.Heading) ? "Events" : Model.CurrentPage.Heading)
+</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    @foreach (var evt in Model.Items)
+    {
+        <a href="@Url.ContentUrl(evt.ContentLink)" class="group block border border-foreground/10 rounded-lg p-6 hover:border-foreground/20 transition-colors bg-foreground/[0.02] backdrop-blur-[3px]">
+            <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-2 block">
+                @evt.EventDate.ToString("MMMM d, yyyy")
+            </span>
+            <h3 class="text-lg font-bold mb-2 group-hover:text-key1 transition-colors">
+                @evt.Title
+            </h3>
+            @if (!string.IsNullOrEmpty(evt.Location))
+            {
+                <p class="text-sm text-foreground/60 flex items-center gap-1">
+                    <i data-lucide="map-pin" class="w-3 h-3"></i>
+                    @evt.Location
+                </p>
+            }
+            @if (evt.Description != null && !evt.Description.IsEmpty)
+            {
+                <div class="text-sm text-foreground/60 mt-2">
+                    @System.Text.RegularExpressions.Regex.Replace(evt.Description.ToHtmlString(), "<[^>]*>", "")
+                </div>
+            }
+        </a>
+    }
+</div>

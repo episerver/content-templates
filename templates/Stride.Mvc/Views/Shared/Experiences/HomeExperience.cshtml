@@ -1,0 +1,10 @@
+@model PageViewModel<HomeExperience>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+    ViewBag.HideDefaultContentAreas = true;
+}
+
+<div class="home-experience relative">
+    <experience-renderer experience="@Model.CurrentPage"></experience-renderer>
+</div>

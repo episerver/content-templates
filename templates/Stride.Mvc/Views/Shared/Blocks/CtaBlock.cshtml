@@ -1,0 +1,8 @@
+@model CtaBlock
+
+@if (Model.PuffCards != null && Model.PuffCards.Items.Any())
+{
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        @Html.PropertyFor(x => x.PuffCards)
+    </div>
+}

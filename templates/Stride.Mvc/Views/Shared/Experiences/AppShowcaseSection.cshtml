@@ -1,0 +1,111 @@
+@model Stride.Mvc._1.Models.Sections.AppShowcaseSection
+
+
+<epi-grid class="app-showcase-section">
+    <epi-styles>
+        <epi-style name="padding">
+            <epi-style-map value="none" class="pt-0" />
+            <epi-style-map value="small" class="pt-12" />
+            <epi-style-map value="medium" class="pt-16" />
+            <epi-style-map value="large" class="pt-20" />
+        </epi-style>
+    </epi-styles>
+
+    @* Section header — stacked layout (number, heading, description in one column) *@
+    @if (Model != null && (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
+    {
+        <div class="container mx-auto px-6 mb-6">
+            <div class="md:flex gap-6 items-start">
+                <div class="basis-0 grow">
+                    @if (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel))
+                    {
+                        <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative max-w-half-col">
+                            @if (!string.IsNullOrEmpty(Model.SectionNumber))
+                            {
+                                <span class="absolute text-background2 bg-foreground px-1" epi-property="SectionNumber">
+                                    @Model.SectionNumber
+                                </span>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.SectionLabel))
+                            {
+                                <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
+                                    @Model.SectionLabel
+                                </span>
+                            }
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Heading))
+                    {
+                        <h2 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight tracking-tight mb-4" epi-property="Heading">
+                            @Model.Heading
+                        </h2>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <p class="text-lg leading-relaxed text-foreground mt-5 max-w-2xl" epi-property="Description">
+                            @Model.Description
+                        </p>
+                    }
+                </div>
+                <div class="basis-0 grow"></div>
+            </div>
+        </div>
+    }
+
+    @{
+        var hasScreenshot1 = Model?.Screenshot1 != null && !ContentReference.IsNullOrEmpty(Model.Screenshot1);
+        var hasScreenshot2 = Model?.Screenshot2 != null && !ContentReference.IsNullOrEmpty(Model.Screenshot2);
+        var hasScreenshot3 = Model?.Screenshot3 != null && !ContentReference.IsNullOrEmpty(Model.Screenshot3);
+        var hasAnyScreenshot = hasScreenshot1 || hasScreenshot2 || hasScreenshot3;
+    }
+
+    @if (hasAnyScreenshot)
+    {
+        <div class="md:pt-[45rem] md:-mt-[30rem] mt-6 md:-mb-[25rem] -mb-20 relative"
+             style="-webkit-mask-image: linear-gradient(black 60%, transparent 70%);">
+            <div class="flex gap-6 items-start container">
+                @if (hasScreenshot1)
+                {
+                    <div class="basis-0 grow scroll-fade-up scroll-delay-1">
+                        <div class="w-full relative aspect-[1/2.02] md:mt-[20%] scroll-parallax" data-parallax-speed="1">
+                            <img src="@Url.ContentUrl(Model.Screenshot1)" alt="App screenshot 1"
+                                 class="absolute -left-[32.9%] !max-w-[166%] md:-top-[10%] select-none pointer-events-none"
+                                 draggable="false"
+                                 epi-property="Screenshot1" />
+                        </div>
+                    </div>
+                }
+                @if (hasScreenshot2)
+                {
+                    <div class="basis-0 grow scroll-fade-up scroll-delay-2">
+                        <div class="w-full relative aspect-[1/2.02] md:mt-[10%] scroll-parallax" data-parallax-speed="0.9">
+                            <img src="@Url.ContentUrl(Model.Screenshot2)" alt="App screenshot 2"
+                                 class="absolute -left-[32.9%] !max-w-[166%] md:-top-[10%] select-none pointer-events-none"
+                                 draggable="false"
+                                 epi-property="Screenshot2" />
+                        </div>
+                    </div>
+                }
+                @if (hasScreenshot3)
+                {
+                    <div class="basis-0 grow scroll-fade-up scroll-delay-3">
+                        <div class="w-full relative aspect-[1/2.02] scroll-parallax" data-parallax-speed="0.8">
+                            <img src="@Url.ContentUrl(Model.Screenshot3)" alt="App screenshot 3"
+                                 class="absolute -left-[32.9%] !max-w-[166%] md:-top-[10%] select-none pointer-events-none"
+                                 draggable="false"
+                                 epi-property="Screenshot3" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <epi-row class="hidden">
+        <epi-column>
+            <epi-component/>
+        </epi-column>
+    </epi-row>
+</epi-grid>

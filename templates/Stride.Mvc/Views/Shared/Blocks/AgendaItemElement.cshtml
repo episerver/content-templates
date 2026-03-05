@@ -1,0 +1,10 @@
+@model AgendaItemElement
+
+<div class="flex gap-4 p-3 border-l-4 border-key1 bg-foreground/[0.03] rounded-r-md">
+    <div class="min-w-[80px] font-bold text-key1" epi-property="Time">
+        @Model.Time
+    </div>
+    <div class="text-foreground/80" epi-property="Description">
+        @Model.Description
+    </div>
+</div>

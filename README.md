@@ -16,15 +16,15 @@ Note that Visual Studio currently only supports *Project Templates* and not *Ite
 To generate code based on the template simply execute the following.
 
 ```bash
-$ dotnet new epi-alloy-mvc
+$ dotnet new epi-stride-mvc
 ```
 
-Replace `epi-alloy-mvc` with the name of the template you want to use. 
+Replace `epi-stride-mvc` with the name of the template you want to use. 
 
 See below for a list of available templates and details on each individual template. For direct access to documentation on each template, execute:
 
 ```bash
-$ dotnet new epi-alloy-mvc --help
+$ dotnet new epi-stride-mvc --help
 ```
 
 For further documentation on how to work with `dotnet new` see https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new.
@@ -36,6 +36,7 @@ The following templates are included in this repository and available through th
 ### Project Templates
 
 - epi-alloy-mvc
+- epi-stride-mvc
 - epi-cms-empty
 - epi-commerce-empty
 

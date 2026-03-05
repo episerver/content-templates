@@ -1,0 +1,51 @@
+@model JourneyBlock
+
+@{
+    var reverseClass = Model.ReverseLayout ? "flex-row-reverse" : "";
+}
+
+<section class="py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-8 @reverseClass">
+            <div class="w-full lg:w-1/2">
+                @if (!string.IsNullOrEmpty(Model.Eyebrow))
+                {
+                    <span class="eyebrow text-primary" epi-property="Eyebrow">@Model.Eyebrow</span>
+                }
+
+                <h2 class="text-4xl font-bold leading-tight mt-2 mb-3" epi-property="Title">@Model.Title</h2>
+
+                @if (Model.Description != null)
+                {
+                    <div class="text-lg leading-relaxed text-foreground/60 mb-4" epi-property="Description">
+                        @Html.PropertyFor(x => x.Description)
+                    </div>
+                }
+
+                @if (Model.Highlights != null && Model.Highlights.Items.Any())
+                {
+                    <div class="mb-4" epi-property="Highlights">
+                        @foreach (var item in Model.Highlights.Items)
+                        {
+                            @Html.PropertyFor(x => x.Highlights, new { item })
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="w-full lg:w-1/2">
+                @if (Model.JourneyCards != null && Model.JourneyCards.Items.Any())
+                {
+                    <div class="flex flex-col gap-4" epi-property="JourneyCards">
+                        @foreach (var item in Model.JourneyCards.Items)
+                        {
+                            <div>
+                                @Html.PropertyFor(x => x.JourneyCards, new { item })
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

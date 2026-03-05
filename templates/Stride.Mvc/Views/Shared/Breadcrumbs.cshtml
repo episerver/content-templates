@@ -1,0 +1,46 @@
+@using EPiServer.Applications
+
+@inject IApplicationResolver ApplicationResolver
+
+@{
+    HelperResult ItemTemplate(HtmlHelpers.MenuItem breadCrumbItem)
+    {
+        if (breadCrumbItem.Selected)
+        {
+            if (breadCrumbItem.Page.HasTemplate() && !breadCrumbItem.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink))
+            {
+                <li class="flex items-center gap-2">
+                    <span class="text-foreground/40">/</span>
+                    @Html.PageLink(breadCrumbItem.Page, null, new { @class = "hover:text-foreground transition-colors" })
+                </li>
+            }
+            else
+            {
+                <li class="flex items-center gap-2">
+                    <span class="text-foreground/40">/</span>
+                    <span class="text-foreground">@breadCrumbItem.Page.PageName</span>
+                </li>
+            }
+
+            if (!breadCrumbItem.Page.ContentLink.CompareToIgnoreWorkID(Model.CurrentPage.ContentLink))
+            {
+                @Html.MenuList(breadCrumbItem.Page.ContentLink, ItemTemplate)
+            }
+        }
+
+        return new HelperResult(w => Task.CompletedTask);
+    }
+
+    var application = await ApplicationResolver.GetByContextAsync(CancellationToken.None);
+    var routableApplication = application as IRoutableApplication;
+    var startPage = routableApplication?.EntryPoint ?? ContentReference.StartPage;
+}
+
+<nav aria-label="breadcrumb" class="mb-8">
+    <ol class="hidden lg:flex items-center gap-2 text-sm text-foreground/60 list-none m-0 p-0 [&_ul]:list-none [&_ul]:contents">
+        <li>
+            <a href="@Url.ContentUrl(startPage)" class="hover:text-foreground transition-colors">Home</a>
+        </li>
+        @Html.MenuList(startPage, ItemTemplate, requireVisibleInMenu: false, requirePageTemplate: false)
+    </ol>
+</nav>

@@ -1,0 +1,12 @@
+@model Stride.Mvc._1.Models.Blocks.ListItemElement
+
+<div class="flex items-start text-[0.95rem] leading-relaxed">
+    <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2 mt-1 flex-shrink-0"></i>
+    <div>
+        <span class="font-medium" epi-property="Label">@Model.Label</span>
+        @if (!string.IsNullOrEmpty(Model.Meta))
+        {
+            <span class="text-foreground/50 text-sm ml-2" epi-property="Meta">@Model.Meta</span>
+        }
+    </div>
+</div>

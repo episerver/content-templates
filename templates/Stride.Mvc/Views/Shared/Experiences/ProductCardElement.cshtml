@@ -1,0 +1,52 @@
+@model Stride.Mvc._1.Models.Blocks.ProductCardElement
+
+@{
+    var linkUrl = Model.Link != null && !string.IsNullOrEmpty(Model.Link.ToString())
+        ? Url.ContentUrl(Model.Link)
+        : "#";
+}
+
+<a href="@linkUrl" class="group no-underline h-full border border-foreground/15 rounded-2xl bg-card backdrop-blur-[3px] transition-all hover:!border-foreground/10 flex flex-col justify-between relative">
+    <div class="relative aspect-[664/635] w-full -mb-40 rounded-3xl overflow-hidden -mt-12"
+         style="-webkit-mask-image: linear-gradient(#000 50%, transparent 80%);">
+        @if (Model.Image != null && !ContentReference.IsNullOrEmpty(Model.Image))
+        {
+            <img
+                src="@Url.ContentUrl(Model.Image)"
+                alt="@Model.Title"
+                class="w-full h-full object-cover object-top scale-[1.15] mt-24 group-hover:-translate-y-6 group-hover:scale-[1.2] transition-transform duration-500"
+                epi-property="Image"
+            />
+        }
+        else
+        {
+            <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300"></div>
+        }
+    </div>
+
+    <div class="p-8 flex flex-col justify-end min-h-[220px] z-30">
+        @if (!string.IsNullOrEmpty(Model.Icon) || !string.IsNullOrEmpty(Model.ProductType))
+        {
+            <div class="flex items-center gap-2 mb-1">
+                @if (!string.IsNullOrEmpty(Model.Icon))
+                {
+                    <i data-lucide="@Model.Icon" class="w-4 h-4 text-foreground"></i>
+                }
+                @if (!string.IsNullOrEmpty(Model.ProductType))
+                {
+                    <span class="text-xs text-foreground font-medium uppercase tracking-wider" epi-property="ProductType">
+                        @Model.ProductType
+                    </span>
+                }
+            </div>
+        }
+
+        <h3 class="text-xl font-bold text-foreground !mb-0" epi-property="Title">@Model.Title</h3>
+
+        <span class="text-foreground/50 group-hover:text-foreground absolute right-6 bottom-6 transition-all border border-foreground/5 group-hover:bg-background p-3 rounded-full">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </span>
+    </div>
+</a>

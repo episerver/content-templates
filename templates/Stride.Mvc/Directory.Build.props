@@ -1,0 +1,15 @@
+<Project>
+  <!-- This makes sure bin and obj isn't shared between the host and the container -->
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/obj/**/*</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/bin/**/*</DefaultItemExcludes>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(DOTNET_RUNNING_IN_CONTAINER)' == 'true' ">
+    <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)/obj/container/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildProjectDirectory)/bin/container/</BaseOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(DOTNET_RUNNING_IN_CONTAINER)' != 'true' ">
+    <BaseIntermediateOutputPath>$(MSBuildProjectDirectory)/obj/host/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildProjectDirectory)/bin/host/</BaseOutputPath>
+  </PropertyGroup>
+</Project>

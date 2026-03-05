@@ -1,0 +1,73 @@
+@model DetailPageViewModel<NewsArticlePage>
+@using Stride.Mvc._1.Models.Pages
+@using Stride.Mvc._1.Models.ViewModels
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+<span class="text-xs font-bold uppercase tracking-wider text-key1 mb-4 block font-mono">
+    @Model.CurrentPage.PublishDate.ToString("MMMM d, yyyy")
+</span>
+
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-8" epi-property="@Model.CurrentPage.Title">
+    @Model.CurrentPage.Title
+</h1>
+
+@if (Model.CurrentPage.FeaturedImage != null && !ContentReference.IsNullOrEmpty(Model.CurrentPage.FeaturedImage))
+{
+    <div class="aspect-video rounded-lg overflow-hidden mb-8">
+        <img src="@Url.ContentUrl(Model.CurrentPage.FeaturedImage)"
+             alt="@Model.CurrentPage.Title"
+             class="w-full h-full object-cover"
+             epi-property="@Model.CurrentPage.FeaturedImage" />
+    </div>
+}
+
+@if (Model.CurrentPage.Summary != null && !Model.CurrentPage.Summary.IsEmpty)
+{
+    <div class="text-lg font-semibold leading-relaxed mb-8" epi-property="@Model.CurrentPage.Summary">
+        @Html.PropertyFor(m => m.CurrentPage.Summary)
+    </div>
+}
+
+@if (Model.CurrentPage.MainContent != null && !Model.CurrentPage.MainContent.IsEmpty)
+{
+    <div class="prose prose-lg max-w-none mb-12" epi-property="@Model.CurrentPage.MainContent">
+        @Html.PropertyFor(m => m.CurrentPage.MainContent)
+    </div>
+}
+
+@if (Model.RelatedItems.Any())
+{
+    <div class="mt-16">
+        <h2 class="text-3xl font-bold mb-8">Other News</h2>
+        <div class="space-y-10">
+            @foreach (var article in Model.RelatedItems)
+            {
+                <a href="@Url.ContentUrl(article.ContentLink)" class="group grid grid-cols-2 gap-6 items-start">
+                    @if (article.FeaturedImage != null && !ContentReference.IsNullOrEmpty(article.FeaturedImage))
+                    {
+                        <div class="aspect-[3/2] rounded-lg overflow-hidden">
+                            <img src="@Url.ContentUrl(article.FeaturedImage)"
+                                 alt="@article.Title"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        </div>
+                    }
+                    <div class="min-w-0">
+                        <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-1 block font-mono">
+                            @article.PublishDate.ToString("MMMM d, yyyy")
+                        </span>
+                        <h3 class="text-lg font-bold mb-2 group-hover:text-key1 transition-colors">
+                            @article.Title
+                        </h3>
+                        @if (article.Summary != null && !article.Summary.IsEmpty)
+                        {
+                            <p class="text-sm text-foreground/60 line-clamp-2">
+                                @System.Text.RegularExpressions.Regex.Replace(article.Summary.ToHtmlString(), "<[^>]*>", "")
+                            </p>
+                        }
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+}

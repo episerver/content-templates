@@ -1,0 +1,8 @@
+@model FeatureGridBlock
+
+@if (Model.Features != null && Model.Features.Items.Any())
+{
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" epi-property="Features">
+        @Html.PropertyFor(x => x.Features)
+    </div>
+}

@@ -1,0 +1,47 @@
+@model Stride.Mvc._1.Components.SidebarViewModel
+
+<div class="space-y-12 z-10">
+    @* Events section *@
+    @if (Model.UpcomingEvents.Any())
+    {
+        <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-6 block">Events</span>
+            <div class="space-y-6">
+                @foreach (var evt in Model.UpcomingEvents)
+                {
+                    <a href="@Url.ContentUrl(evt.ContentLink)" class="group block -mx-4 px-4 py-3 rounded-lg hover:bg-foreground/5 transition-colors">
+                        <h4 class="text-lg font-bold mb-1 text-foreground/80">
+                            @evt.Title
+                        </h4>
+                        <p class="text-sm text-foreground/60">
+                            @{ var evtText = evt.Description != null ? System.Text.RegularExpressions.Regex.Replace(evt.Description.ToHtmlString(), "<[^>]*>", "") : null; }
+                            @(evtText != null ? (evtText.Length > 100 ? evtText.Substring(0, 100) + "..." : evtText) : evt.EventDate.ToString("MMMM d, yyyy"))
+                        </p>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+
+    @* News section *@
+    @if (Model.RecentNews.Any())
+    {
+        <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-key1 mb-6 block">News</span>
+            <div class="space-y-6">
+                @foreach (var news in Model.RecentNews)
+                {
+                    <a href="@Url.ContentUrl(news.ContentLink)" class="group block -mx-4 px-4 py-3 rounded-lg hover:bg-foreground/5 transition-colors">
+                        <h4 class="text-lg font-bold mb-1 text-foreground/80">
+                            @news.Title
+                        </h4>
+                        <p class="text-sm text-foreground/60">
+                            @{ var newsText = news.Summary != null ? System.Text.RegularExpressions.Regex.Replace(news.Summary.ToHtmlString(), "<[^>]*>", "") : null; }
+                            @(newsText != null ? (newsText.Length > 100 ? newsText.Substring(0, 100) + "..." : newsText) : news.PublishDate.ToString("MMMM d, yyyy"))
+                        </p>
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
