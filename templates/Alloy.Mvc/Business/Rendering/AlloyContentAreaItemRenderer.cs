@@ -6,14 +6,8 @@ using System.Text;
 
 namespace Alloy.Mvc._1.Business.Rendering;
 
-public class AlloyContentAreaItemRenderer
+public class AlloyContentAreaItemRenderer(IContentAreaLoader contentAreaLoader)
 {
-    private readonly IContentAreaLoader _contentAreaLoader;
-
-    public AlloyContentAreaItemRenderer(IContentAreaLoader contentAreaLoader)
-    {
-        _contentAreaLoader = contentAreaLoader;
-    }
 
     /// <summary>
     /// Gets a CSS class used for styling based on a tag name (ie a Bootstrap class name)
@@ -52,7 +46,7 @@ public class AlloyContentAreaItemRenderer
 
     public void RenderContentAreaItemCss(ContentAreaItem contentAreaItem, TagHelperContext context, TagHelperOutput output)
     {
-        var displayOption = _contentAreaLoader.LoadDisplayOption(contentAreaItem);
+        var displayOption = contentAreaLoader.LoadDisplayOption(contentAreaItem);
         var cssClasses = new StringBuilder();
 
         if (displayOption != null)

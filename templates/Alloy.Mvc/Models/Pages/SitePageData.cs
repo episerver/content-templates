@@ -23,7 +23,7 @@ public abstract class SitePageData : PageData, ICustomCssInContentArea
             // Use explicitly set meta title, otherwise fall back to page name
             return !string.IsNullOrWhiteSpace(metaTitle)
                    ? metaTitle
-                   : PageName;
+                   : Name;
         }
         set => this.SetPropertyValue(p => p.MetaTitle, value);
     }

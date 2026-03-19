@@ -2,13 +2,8 @@ using Alloy.Mvc._1.Models.Pages;
 
 namespace Alloy.Mvc._1.Models.ViewModels;
 
-public class SearchContentModel : PageViewModel<SearchPage>
+public class SearchContentModel(SearchPage currentPage) : PageViewModel<SearchPage>(currentPage)
 {
-    public SearchContentModel(SearchPage currentPage)
-        : base(currentPage)
-    {
-    }
-
     public bool SearchServiceDisabled { get; set; }
 
     public string SearchedQuery { get; set; }

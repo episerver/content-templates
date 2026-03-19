@@ -7,17 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alloy.Mvc._1.Components;
 
-public class PageListBlockViewComponent : BlockComponent<PageListBlock>
+public class PageListBlockViewComponent(
+    ContentLocator contentLocator,
+    IContentLoader contentLoader) : BlockComponent<PageListBlock>
 {
-    private readonly ContentLocator _contentLocator;
-    private readonly IContentLoader _contentLoader;
-
-    public PageListBlockViewComponent(ContentLocator contentLocator, IContentLoader contentLoader)
-    {
-        _contentLocator = contentLocator;
-        _contentLoader = contentLoader;
-    }
-
     protected override IViewComponentResult InvokeComponent(PageListBlock currentContent)
     {
         var pages = FindPages(currentContent);
@@ -54,24 +47,24 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
         {
             if (currentBlock.PageTypeFilter is not null)
             {
-                pages = _contentLocator.FindPagesByPageType(listRoot, true, currentBlock.PageTypeFilter.ID);
+                pages = contentLocator.FindPagesByPageType(listRoot, true, currentBlock.PageTypeFilter.ID);
             }
             else
             {
-                pages = _contentLocator.GetAll<PageData>(listRoot);
+                pages = contentLocator.GetAll<PageData>(listRoot);
             }
         }
         else
         {
             if (currentBlock.PageTypeFilter is not null)
             {
-                pages = _contentLoader
+                pages = contentLoader
                     .GetChildren<PageData>(listRoot)
                     .Where(p => p.ContentTypeID == currentBlock.PageTypeFilter.ID);
             }
             else
             {
-                pages = _contentLoader.GetChildren<PageData>(listRoot);
+                pages = contentLoader.GetChildren<PageData>(listRoot);
             }
         }
 
@@ -86,7 +79,7 @@ public class PageListBlockViewComponent : BlockComponent<PageListBlock>
     private static IEnumerable<PageData> Sort(IEnumerable<PageData> pages, FilterSortOrder sortOrder)
     {
         var sortFilter = new FilterSort(sortOrder);
-        sortFilter.Sort(new PageDataCollection(pages.ToList()));
+        sortFilter.Sort([.. pages.ToList()]);
         return pages;
     }
 }
