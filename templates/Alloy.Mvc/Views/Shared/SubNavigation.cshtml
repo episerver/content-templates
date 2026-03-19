@@ -4,7 +4,7 @@
     HelperResult ItemTemplate(HtmlHelpers.MenuItem item)
     {
         <li class="nav-item">
-            <a href="@Url.ContentUrl(item.Page.PageLink)" class="nav-link @(item.Selected ? " active" : null)">
+            <a href="@Url.ContentUrl(item.Page.ContentLink)" class="nav-link @(item.Selected ? " active" : null)">
                 @item.Page.PageName
             </a>
             @if (item.Selected)

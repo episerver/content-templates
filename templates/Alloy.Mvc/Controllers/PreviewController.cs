@@ -21,27 +21,19 @@ namespace Alloy.Mvc._1.Controllers;
     AvailableWithoutTag = false)]
 [VisitorGroupImpersonation]
 [RequireClientResources]
-public class PreviewController : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
+public class PreviewController(
+    IContentLoader contentLoader,
+    TemplateResolver templateResolver,
+    DisplayOptions displayOptions) : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
 {
-    private readonly IContentLoader _contentLoader;
-    private readonly TemplateResolver _templateResolver;
-    private readonly DisplayOptions _displayOptions;
-
-    public PreviewController(IContentLoader contentLoader, TemplateResolver templateResolver, DisplayOptions displayOptions)
-    {
-        _contentLoader = contentLoader;
-        _templateResolver = templateResolver;
-        _displayOptions = displayOptions;
-    }
-
     public IActionResult Index(IContent currentContent)
     {
-        //As the layout requires a page for title etc we "borrow" the start page
-        var startPage = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage);
+        // As the layout requires a page for title etc we "borrow" the start page
+        var startPage = contentLoader.Get<StartPage>(ContentReference.StartPage);
 
         var model = new PreviewModel(startPage, currentContent);
 
-        var supportedDisplayOptions = _displayOptions
+        var supportedDisplayOptions = displayOptions
             .Select(x => new { x.Tag, x.Name, Supported = SupportsTag(currentContent, x.Tag) })
             .ToList();
 
@@ -73,7 +65,7 @@ public class PreviewController : ActionControllerBase, IRenderTemplate<BlockData
 
     private bool SupportsTag(IContent content, string tag)
     {
-        var templateModel = _templateResolver.Resolve(
+        var templateModel = templateResolver.Resolve(
             HttpContext,
             content.GetOriginalType(),
             content,

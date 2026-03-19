@@ -8,19 +8,12 @@ namespace Alloy.Mvc._1.Business.EditorDescriptors;
 /// </summary>
 /// <seealso cref="ContactPageSelector"/>
 [ServiceConfiguration]
-public class ContactPageSelectionFactory : ISelectionFactory
+public class ContactPageSelectionFactory(ContentLocator contentLocator) : ISelectionFactory
 {
-    private readonly ContentLocator _contentLocator;
-
-    public ContactPageSelectionFactory(ContentLocator contentLocator)
-    {
-        _contentLocator = contentLocator;
-    }
-
     public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
     {
-        var contactPages = _contentLocator.GetContactPages();
+        var contactPages = contentLocator.GetContactPages();
 
-        return new List<SelectItem>(contactPages.Select(c => new SelectItem { Value = c.PageLink, Text = c.Name }));
+        return new List<SelectItem>(contactPages.Select(c => new SelectItem { Value = c.ContentLink, Text = c.Name }));
     }
 }

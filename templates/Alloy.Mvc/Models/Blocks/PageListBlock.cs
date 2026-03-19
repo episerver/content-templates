@@ -50,8 +50,9 @@ public class PageListBlock : SiteBlockData
     [Display(
         GroupName = SystemTabNames.Content,
         Order = 5)]
+    [AllowedTypes(typeof(PageData))]
     [Required]
-    public virtual PageReference Root { get; set; }
+    public virtual ContentReference Root { get; set; }
 
     [Display(
         GroupName = SystemTabNames.Content,
