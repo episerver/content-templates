@@ -23,8 +23,8 @@ public class CustomizedRenderingInitialization : IConfigurableModule
     }
 
     public void Initialize(InitializationEngine context) =>
-        context.Locate.Advanced.GetInstance<ITemplateResolverEvents>().TemplateResolved += TemplateCoordinator.OnTemplateResolved;
+        context.Services.GetRequiredService<ITemplateResolverEvents>().TemplateResolved += TemplateCoordinator.OnTemplateResolved;
 
     public void Uninitialize(InitializationEngine context) =>
-        context.Locate.Advanced.GetInstance<ITemplateResolverEvents>().TemplateResolved -= TemplateCoordinator.OnTemplateResolved;
+        context.Services.GetRequiredService<ITemplateResolverEvents>().TemplateResolved -= TemplateCoordinator.OnTemplateResolved;
 }

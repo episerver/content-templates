@@ -7,7 +7,7 @@ namespace Alloy.Mvc._1.Business.EditorDescriptors;
 /// Registers an editor to select a ContactPage for a PageReference property using a dropdown
 /// </summary>
 [EditorDescriptorRegistration(
-    TargetType = typeof(PageReference),
+    TargetType = typeof(ContentReference),
     UIHint = Globals.SiteUIHints.Contact)]
 public class ContactPageSelector : EditorDescriptor
 {

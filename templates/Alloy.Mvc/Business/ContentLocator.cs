@@ -3,28 +3,19 @@ using Alloy.Mvc._1.Models.Pages;
 using EPiServer.Filters;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Configuration;
-using EPiServer.Web;
 
 namespace Alloy.Mvc._1.Business;
 
 [ServiceConfiguration(Lifecycle = ServiceInstanceScope.Singleton)]
-public class ContentLocator
+public class ContentLocator(
+    IContentLoader contentLoader,
+    IContentProviderManager providerManager,
+    IPageCriteriaQueryService pageCriteriaQueryService)
 {
-    private readonly IContentLoader _contentLoader;
-    private readonly IContentProviderManager _providerManager;
-    private readonly IPageCriteriaQueryService _pageCriteriaQueryService;
-
-    public ContentLocator(IContentLoader contentLoader, IContentProviderManager providerManager, IPageCriteriaQueryService pageCriteriaQueryService)
-    {
-        _contentLoader = contentLoader;
-        _providerManager = providerManager;
-        _pageCriteriaQueryService = pageCriteriaQueryService;
-    }
-
     public virtual IEnumerable<T> GetAll<T>(ContentReference rootLink)
         where T : PageData
     {
-        var children = _contentLoader.GetChildren<PageData>(rootLink);
+        var children = contentLoader.GetChildren<PageData>(rootLink);
         foreach (var child in children)
         {
             if (child is T childOfRequestedTyped)
@@ -45,7 +36,7 @@ public class ContentLocator
     /// <param name="recursive"></param>
     /// <param name="pageTypeId">ID of the page type to filter by</param>
     /// <returns></returns>
-    public IEnumerable<PageData> FindPagesByPageType(PageReference pageLink, bool recursive, int pageTypeId)
+    public IEnumerable<PageData> FindPagesByPageType(ContentReference pageLink, bool recursive, int pageTypeId)
     {
         if (ContentReference.IsNullOrEmpty(pageLink))
         {
@@ -54,13 +45,13 @@ public class ContentLocator
 
         var pages = recursive
             ? FindPagesByPageTypeRecursively(pageLink, pageTypeId)
-            : _contentLoader.GetChildren<PageData>(pageLink);
+            : contentLoader.GetChildren<PageData>(pageLink);
 
         return pages;
     }
 
     // Type specified through page type ID
-    private PageDataCollection FindPagesByPageTypeRecursively(PageReference pageLink, int pageTypeId)
+    private PageDataCollection FindPagesByPageTypeRecursively(ContentReference pageLink, int pageTypeId)
     {
         var criteria = new PropertyCriteriaCollection
         {
@@ -74,9 +65,9 @@ public class ContentLocator
         };
 
         // Include content providers serving content beneath the page link specified for the search
-        if (_providerManager.ProviderMap.CustomProvidersExist)
+        if (providerManager.ProviderMap.CustomProvidersExist)
         {
-            var contentProvider = _providerManager.ProviderMap.GetProvider(pageLink);
+            var contentProvider = providerManager.ProviderMap.GetProvider(pageLink);
 
             if (contentProvider.HasCapability(ContentProviderCapabilities.Search))
             {
@@ -88,7 +79,7 @@ public class ContentLocator
             }
         }
 
-        return _pageCriteriaQueryService.FindPagesWithCriteria(pageLink, criteria);
+        return pageCriteriaQueryService.FindPagesWithCriteria(pageLink, criteria);
     }
 
     /// <summary>
@@ -97,13 +88,13 @@ public class ContentLocator
     /// <returns></returns>
     public IEnumerable<ContactPage> GetContactPages()
     {
-        var contactsRootPageLink = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage).ContactsPageLink;
+        var contactsRootPageLink = contentLoader.Get<StartPage>(ContentReference.StartPage).ContactsPageLink;
 
         if (ContentReference.IsNullOrEmpty(contactsRootPageLink))
         {
             throw new MissingConfigurationException("No contact page root specified in site settings, unable to retrieve contact pages");
         }
 
-        return _contentLoader.GetChildren<ContactPage>(contactsRootPageLink).OrderBy(p => p.PageName);
+        return contentLoader.GetChildren<ContactPage>(contactsRootPageLink).OrderBy(p => p.PageName);
     }
 }
