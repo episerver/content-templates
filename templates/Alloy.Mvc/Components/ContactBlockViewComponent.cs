@@ -9,23 +9,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Alloy.Mvc._1.Components;
 
-public class ContactBlockViewComponent : BlockComponent<ContactBlock>
+public class ContactBlockViewComponent(
+    IContentLoader contentLoader,
+    IPermanentLinkMapper permanentLinkMapper) : BlockComponent<ContactBlock>
 {
-    private readonly IContentLoader _contentLoader;
-    private readonly IPermanentLinkMapper _permanentLinkMapper;
-
-    public ContactBlockViewComponent(IContentLoader contentLoader, IPermanentLinkMapper permanentLinkMapper)
-    {
-        _contentLoader = contentLoader;
-        _permanentLinkMapper = permanentLinkMapper;
-    }
-
     protected override IViewComponentResult InvokeComponent(ContactBlock currentContent)
     {
         ContactPage contactPage = null;
         if (!ContentReference.IsNullOrEmpty(currentContent.ContactPageLink))
         {
-            contactPage = _contentLoader.Get<ContactPage>(currentContent.ContactPageLink);
+            contactPage = contentLoader.Get<ContactPage>(currentContent.ContactPageLink);
         }
 
         var linkUrl = GetLinkUrl(currentContent);
@@ -59,7 +52,7 @@ public class ContactBlockViewComponent : BlockComponent<ContactBlock>
 
             // If the url maps to a page on the site we convert it from the internal (permanent, GUID-like) format
             // to the human readable and pretty public format
-            var linkMap = _permanentLinkMapper.Find(new UrlBuilder(linkUrl));
+            var linkMap = permanentLinkMapper.Find(new UrlBuilder(linkUrl));
             if (linkMap != null && !ContentReference.IsNullOrEmpty(linkMap.ContentReference))
             {
                 return new HtmlString(Url.ContentUrl(linkMap.ContentReference));

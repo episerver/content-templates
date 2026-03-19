@@ -2,16 +2,11 @@ using Alloy.Mvc._1.Models.Pages;
 
 namespace Alloy.Mvc._1.Models.ViewModels;
 
-public class PreviewModel : PageViewModel<SitePageData>
+public class PreviewModel(
+    SitePageData currentPage,
+    IContent previewContent) : PageViewModel<SitePageData>(currentPage)
 {
-    public PreviewModel(SitePageData currentPage, IContent previewContent)
-        : base(currentPage)
-    {
-        PreviewContent = previewContent;
-        Areas = new List<PreviewArea>();
-    }
-
-    public IContent PreviewContent { get; set; }
+    public IContent PreviewContent { get; set; } = previewContent;
 
     public List<PreviewArea> Areas { get; set; } = [];
 

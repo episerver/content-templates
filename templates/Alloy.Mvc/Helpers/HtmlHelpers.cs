@@ -87,14 +87,9 @@ public static class HtmlHelpers
         });
     }
 
-    public class MenuItem
+    public class MenuItem(PageData page)
     {
-        public MenuItem(PageData page)
-        {
-            Page = page;
-        }
-
-        public PageData Page { get; set; }
+        public PageData Page { get; set; } = page;
 
         public bool Selected { get; set; }
 
@@ -156,17 +151,9 @@ public static class HtmlHelpers
         return helper.BeginConditionalLink(shouldWriteLink, url, title, cssClass, linkTarget);
     }
 
-    public class ConditionalLink : IDisposable
+    public class ConditionalLink(ViewContext viewContext, bool isLinked) : IDisposable
     {
-        private readonly ViewContext _viewContext;
-        private readonly bool _linked;
         private bool _disposed;
-
-        public ConditionalLink(ViewContext viewContext, bool isLinked)
-        {
-            _viewContext = viewContext;
-            _linked = isLinked;
-        }
 
         public void Dispose()
         {
@@ -183,9 +170,9 @@ public static class HtmlHelpers
 
             _disposed = true;
 
-            if (_linked)
+            if (isLinked)
             {
-                _viewContext.Writer.Write("</a>");
+                viewContext.Writer.Write("</a>");
             }
         }
     }

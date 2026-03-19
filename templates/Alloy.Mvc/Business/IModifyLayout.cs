@@ -8,5 +8,5 @@ namespace Alloy.Mvc._1.Business;
 /// </summary>
 internal interface IModifyLayout
 {
-    void ModifyLayout(LayoutModel layoutModel);
+    public void ModifyLayout(LayoutModel layoutModel);
 }

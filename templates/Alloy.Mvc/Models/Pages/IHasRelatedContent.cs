@@ -2,5 +2,5 @@ namespace Alloy.Mvc._1.Models.Pages;
 
 public interface IHasRelatedContent
 {
-    ContentArea RelatedContentArea { get; }
+    public ContentArea RelatedContentArea { get; }
 }

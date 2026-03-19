@@ -11,9 +11,9 @@ namespace Alloy.Mvc._1.Models.ViewModels;
 /// </remarks>
 public interface IPageViewModel<out T> where T : SitePageData
 {
-    T CurrentPage { get; }
+    public T CurrentPage { get; }
 
-    LayoutModel Layout { get; set; }
+    public LayoutModel Layout { get; set; }
 
-    IContent Section { get; set; }
+    public IContent Section { get; set; }
 }

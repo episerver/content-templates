@@ -95,6 +95,6 @@ public class ContentLocator(
             throw new MissingConfigurationException("No contact page root specified in site settings, unable to retrieve contact pages");
         }
 
-        return contentLoader.GetChildren<ContactPage>(contactsRootPageLink).OrderBy(p => p.PageName);
+        return contentLoader.GetChildren<ContactPage>(contactsRootPageLink).OrderBy(p => p.Name);
     }
 }

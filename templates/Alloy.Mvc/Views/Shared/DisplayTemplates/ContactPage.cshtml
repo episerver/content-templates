@@ -3,7 +3,7 @@
 <p>
     @if(Model != null) 
     {
-        @Model.PageName<br />
+        @Model.Name<br />
         @Html.Translate("/contact/phone")@: : @Model.Phone<br />
         @Html.Translate("/contact/email")@: : @Html.DisplayFor(m => m.Email)
     } 
