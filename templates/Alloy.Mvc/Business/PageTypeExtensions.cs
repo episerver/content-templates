@@ -14,8 +14,8 @@ public static class PageTypeExtensions
     /// <returns></returns>
     public static PageType GetPageType(this Type pageType)
     {
-        var pageTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository<PageType>>();
+        var contentTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository>();
 
-        return pageTypeRepository.Load(pageType);
+        return (PageType)contentTypeRepository.Load(pageType);
     }
 }

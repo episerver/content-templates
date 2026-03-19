@@ -15,7 +15,7 @@ jobs:
       versionSuffix: ${{ github.ref == 'refs/heads/develop' && 'pre-' ||  'ci-' }}${{github.RUN_NUMBER }}
       DOTNET_NOLOGO: 1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - name: Restore
         run: dotnet restore
       - name: Build
@@ -25,7 +25,7 @@ jobs:
       - name: Pack
         run: dotnet pack --no-build --configuration $env:buildConfiguration --version-suffix $env:versionSuffix
       - name: Archive packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: packages
           path: artifacts/*.nupkg
@@ -40,7 +40,7 @@ jobs:
   #     DOTNET_NOLOGO: 1
   #   steps:
   #     - name: Download artifacts
-  #       uses: actions/download-artifact@v2
+  #       uses: actions/download-artifact@v8
   #       with:
   #         name: packages
   #     - name: Publish to Github Packages
@@ -52,7 +52,7 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Cleanup old Packages
-  #       uses: actions/delete-package-versions@v3
+  #       uses: actions/delete-package-versions@v5
   #       with:
   #         package-name: 'EPiServer.Templates'
   #         min-versions-to-keep: 10

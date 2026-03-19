@@ -8,6 +8,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <!-- CS1591: Missing XML documentation -->
     <!-- IDE0005: Using directive is unnecessary -->
-    <WarningsNotAsErrors>$(WarningsNotAsErrors);CS1591;IDE0005</WarningsNotAsErrors>
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);CS1591;IDE0005;NU1902</WarningsNotAsErrors>
   </PropertyGroup>
 </Project>

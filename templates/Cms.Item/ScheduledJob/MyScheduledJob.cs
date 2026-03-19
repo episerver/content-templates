@@ -4,7 +4,7 @@ using EPiServer.Scheduler;
 
 namespace MyAppNamespace;
 
-[ScheduledPlugIn(
+[ScheduledJob(
     DisplayName = "MyScheduledJob",
     Description = "",
     GUID = "3F7881B2-2451-4941-BB7C-5FAB9A6A799F",
