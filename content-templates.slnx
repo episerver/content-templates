@@ -1,0 +1,30 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/build/">
+    <File Path="build/codeanalysis.props" />
+    <File Path="build/version.props" />
+  </Folder>
+  <Folder Name="/build/workflows/">
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/release.yml" />
+  </Folder>
+  <Folder Name="/global/">
+    <File Path=".editorConfig" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
+    <File Path="nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/templates/">
+    <Project Path="templates/Alloy.Mvc/Alloy.Mvc.1.csproj" />
+    <Project Path="templates/Cms.Empty/Cms.Empty.1.csproj" />
+    <Project Path="templates/Cms.Item/Cms.Item.csproj" />
+    <Project Path="templates/Commerce.Empty/Commerce.Empty.1.csproj" />
+  </Folder>
+  <Project Path="templates/EPiServer.Templates.csproj" />
+</Solution>

@@ -1,8 +1,8 @@
 using Alloy.Mvc._1.Extensions;
-using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
+using EPiServer.Data;
+using EPiServer.DependencyInjection;
 using EPiServer.Scheduler;
-using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 
 namespace Alloy.Mvc._1;
@@ -25,9 +25,12 @@ public class Startup
             services.Configure<SchedulerOptions>(options => options.Enabled = false);
         }
 
+        services.Configure<DataAccessOptions>(o => o.UpdateDatabaseCompatibilityLevel = true);
+
         services
             .AddCmsAspNetIdentity<ApplicationUser>()
             .AddCms()
+            .AddVisitorGroups()
             .AddAlloy()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
