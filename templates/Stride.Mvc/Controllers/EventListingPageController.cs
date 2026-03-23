@@ -4,14 +4,11 @@ using EPiServer.Shell.Security;
 
 namespace Stride.Mvc._1.Controllers;
 
-public class EventListingPageController : ListingPageController<EventListingPage, EventPage>
-{
-    public EventListingPageController(
+public class EventListingPageController(
         UISignInManager uiSignInManager,
         ThemeService themeService,
-        IContentLoader contentLoader)
-        : base(uiSignInManager, themeService, contentLoader) { }
-
+        IContentLoader contentLoader) : ListingPageController<EventListingPage, EventPage>(uiSignInManager, themeService, contentLoader)
+{
     protected override IEnumerable<EventPage> OrderItems(IEnumerable<EventPage> items)
         => items.OrderBy(x => x.EventDate);
 }

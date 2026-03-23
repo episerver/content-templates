@@ -11,13 +11,8 @@ namespace Stride.Mvc._1.Controllers;
 /// Controller for rendering ExperienceData pages.
 /// </summary>
 [TemplateDescriptor(Inherited = true, ModelType = typeof(ExperienceData))]
-public sealed class ExperienceController : PageControllerBase<ExperienceData>
+public sealed class ExperienceController(UISignInManager signInManager, ThemeService themeService) : PageControllerBase<ExperienceData>(signInManager, themeService)
 {
-    public ExperienceController(UISignInManager signInManager, ThemeService themeService)
-        : base(signInManager, themeService)
-    {
-    }
-
     public IActionResult Index(ExperienceData currentPage)
     {
         var model = CreateModel(currentPage);

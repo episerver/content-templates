@@ -4,14 +4,11 @@ using EPiServer.Shell.Security;
 
 namespace Stride.Mvc._1.Controllers;
 
-public class NewsArticlePageController : DetailPageController<NewsArticlePage>
-{
-    public NewsArticlePageController(
+public class NewsArticlePageController(
         UISignInManager uiSignInManager,
         ThemeService themeService,
-        IContentLoader contentLoader)
-        : base(uiSignInManager, themeService, contentLoader) { }
-
+        IContentLoader contentLoader) : DetailPageController<NewsArticlePage>(uiSignInManager, themeService, contentLoader)
+{
     protected override IEnumerable<NewsArticlePage> OrderRelated(IEnumerable<NewsArticlePage> items)
         => items.OrderByDescending(x => x.PublishDate);
 }

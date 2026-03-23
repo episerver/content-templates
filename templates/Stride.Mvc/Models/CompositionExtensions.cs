@@ -1,4 +1,3 @@
-using EPiServer.VisualBuilder;
 using EPiServer.VisualBuilder.Compositions;
 using EPiServer.Web;
 using EPiServer.Web.Mvc.Html;

@@ -6,17 +6,8 @@ namespace Stride.Mvc._1.Controllers;
 
 [ApiController]
 [Route("api/search")]
-public class SearchApiController : ControllerBase
+public class SearchApiController(ISearchProviderManager searchProviderManager, UrlResolver urlResolver) : ControllerBase
 {
-    private readonly ISearchProviderManager _searchProviderManager;
-    private readonly UrlResolver _urlResolver;
-
-    public SearchApiController(ISearchProviderManager searchProviderManager, UrlResolver urlResolver)
-    {
-        _searchProviderManager = searchProviderManager;
-        _urlResolver = urlResolver;
-    }
-
     [HttpGet]
     public IActionResult Search([FromQuery] string q)
     {
@@ -26,7 +17,7 @@ public class SearchApiController : ControllerBase
         }
 
         var query = new Query(q.Trim(), 20);
-        var providers = _searchProviderManager.ListProviders(SearchAreaNames.PagesSearchAreaName, true);
+        var providers = searchProviderManager.ListProviders(SearchAreaNames.PagesSearchAreaName, true);
 
         var results = new List<object>();
 
@@ -62,7 +53,7 @@ public class SearchApiController : ControllerBase
     {
         if (hit.Metadata.TryGetValue("Id", out var idStr) && ContentReference.TryParse(idStr, out var contentLink))
         {
-            return _urlResolver.GetUrl(contentLink) ?? "";
+            return urlResolver.GetUrl(contentLink) ?? "";
         }
 
         return "";

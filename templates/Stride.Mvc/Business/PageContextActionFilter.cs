@@ -14,15 +14,8 @@ namespace Stride.Mvc._1.Business;
 /// and other page framework components allowing the controllers to focus on the specifics for the page types
 /// and actions that they handle.
 /// </remarks>
-public class PageContextActionFilter : IResultFilter
+public class PageContextActionFilter(PageViewContextFactory contextFactory) : IResultFilter
 {
-    private readonly PageViewContextFactory _contextFactory;
-
-    public PageContextActionFilter(PageViewContextFactory contextFactory)
-    {
-        _contextFactory = contextFactory;
-    }
-
     public void OnResultExecuting(ResultExecutingContext context)
     {
         var controller = context.Controller as Controller;
@@ -32,7 +25,7 @@ public class PageContextActionFilter : IResultFilter
         {
             var currentContentLink = context.HttpContext.GetContentLink();
 
-            var layoutModel = model.Layout ?? _contextFactory.CreateLayoutModel(currentContentLink, context.HttpContext);
+            var layoutModel = model.Layout ?? contextFactory.CreateLayoutModel(currentContentLink, context.HttpContext);
 
             if (context.Controller is IModifyLayout layoutController)
             {
@@ -41,7 +34,7 @@ public class PageContextActionFilter : IResultFilter
 
             model.Layout = layoutModel;
 
-            model.Section ??= _contextFactory.GetSection(currentContentLink);
+            model.Section ??= contextFactory.GetSection(currentContentLink);
         }
     }
 

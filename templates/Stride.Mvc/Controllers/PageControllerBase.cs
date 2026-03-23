@@ -14,17 +14,9 @@ namespace Stride.Mvc._1.Controllers;
 /// All controllers that renders pages should inherit from this class so that we can
 /// apply action filters, such as for output caching site wide, should we want to.
 /// </summary>
-public abstract class PageControllerBase<T> : PageController<T>, IModifyLayout
+public abstract class PageControllerBase<T>(UISignInManager uISignInManager, ThemeService themeService) : PageController<T>, IModifyLayout
     where T : PageData
 {
-    private readonly UISignInManager _uiSignInManager;
-    private readonly ThemeService _themeService;
-
-    protected PageControllerBase(UISignInManager uISignInManager, ThemeService themeService)
-    {
-        _uiSignInManager = uISignInManager;
-        _themeService = themeService;
-    }
 
     public override void OnActionExecuted(ActionExecutedContext context)
     {
@@ -33,7 +25,7 @@ public abstract class PageControllerBase<T> : PageController<T>, IModifyLayout
         // Apply theme CSS classes to ViewBag for categorizable content
         if (context.Result is ViewResult && PageContext.Content is ICategorizable categorizableContent)
         {
-            var themeCssClasses = _themeService.GetThemeCssClassNames(categorizableContent);
+            var themeCssClasses = themeService.GetThemeCssClassNames(categorizableContent);
             ViewBag.ThemeCssClasses = string.Join(" ", themeCssClasses);
         }
     }
@@ -49,7 +41,7 @@ public abstract class PageControllerBase<T> : PageController<T>, IModifyLayout
     /// </remarks>
     public async Task<IActionResult> Logout()
     {
-        await _uiSignInManager.SignOutAsync();
+        await uISignInManager.SignOutAsync();
         return Redirect(HttpContext.RequestServices.GetService<UrlResolver>().GetUrl(PageContext.ContentLink, PageContext.LanguageID));
     }
 

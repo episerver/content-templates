@@ -6,34 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Stride.Mvc._1.Controllers;
 
-public class StandardPageController : PageControllerBase<StandardPage>
-{
-    private readonly IContentLoader _contentLoader;
-
-    public StandardPageController(
+public class StandardPageController(
         UISignInManager uiSignInManager,
         ThemeService themeService,
-        IContentLoader contentLoader)
-        : base(uiSignInManager, themeService)
-    {
-        _contentLoader = contentLoader;
-    }
-
+        IContentLoader contentLoader) : PageControllerBase<StandardPage>(uiSignInManager, themeService)
+{
     public ViewResult Index(StandardPage currentPage)
     {
-        var newsListings = _contentLoader.GetChildren<NewsListingPage>(currentPage.ContentLink)
+        var newsListings = contentLoader.GetChildren<NewsListingPage>(currentPage.ContentLink)
             .Select(listing => new StandardPageViewModel.NewsListingWithArticles(
                 listing,
-                [.. _contentLoader.GetChildren<NewsArticlePage>(listing.ContentLink)
+                [.. contentLoader.GetChildren<NewsArticlePage>(listing.ContentLink)
                     .OrderByDescending(n => n.PublishDate)
                     .Take(3)]))
             .Where(x => x.Articles.Count > 0)
             .ToList();
 
-        var eventListings = _contentLoader.GetChildren<EventListingPage>(currentPage.ContentLink)
+        var eventListings = contentLoader.GetChildren<EventListingPage>(currentPage.ContentLink)
             .Select(listing => new StandardPageViewModel.EventListingWithEvents(
                 listing,
-                [.. _contentLoader.GetChildren<EventPage>(listing.ContentLink)
+                [.. contentLoader.GetChildren<EventPage>(listing.ContentLink)
                     .OrderBy(e => e.EventDate)
                     .Take(2)]))
             .Where(x => x.Events.Count > 0)

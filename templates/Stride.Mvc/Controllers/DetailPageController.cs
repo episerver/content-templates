@@ -8,25 +8,17 @@ namespace Stride.Mvc._1.Controllers;
 /// <summary>
 /// Generic base controller for detail pages that display related sibling items.
 /// </summary>
-public abstract class DetailPageController<T> : PageControllerBase<T>
-    where T : PageData
-{
-    protected readonly IContentLoader ContentLoader;
-
-    protected virtual int RelatedItemsLimit => 3;
-
-    protected DetailPageController(
+public abstract class DetailPageController<T>(
         UISignInManager uiSignInManager,
         ThemeService themeService,
-        IContentLoader contentLoader)
-        : base(uiSignInManager, themeService)
-    {
-        ContentLoader = contentLoader;
-    }
+        IContentLoader contentLoader) : PageControllerBase<T>(uiSignInManager, themeService)
+    where T : PageData
+{
+    protected virtual int RelatedItemsLimit => 3;
 
     public virtual ViewResult Index(T currentPage)
     {
-        var siblings = ContentLoader.GetChildren<T>(currentPage.ParentLink)
+        var siblings = contentLoader.GetChildren<T>(currentPage.ParentLink)
             .Where(p => !p.ContentLink.CompareToIgnoreWorkID(currentPage.ContentLink));
 
         var model = new DetailPageViewModel<T>(currentPage)

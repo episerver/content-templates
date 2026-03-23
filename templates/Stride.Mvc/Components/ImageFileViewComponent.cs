@@ -9,15 +9,8 @@ namespace Stride.Mvc._1.Components;
 /// <summary>
 /// Controller for the image file.
 /// </summary>
-public class ImageFileViewComponent : PartialContentComponent<ImageFile>
+public class ImageFileViewComponent(UrlResolver urlResolver) : PartialContentComponent<ImageFile>
 {
-    private readonly UrlResolver _urlResolver;
-
-    public ImageFileViewComponent(UrlResolver urlResolver)
-    {
-        _urlResolver = urlResolver;
-    }
-
     /// <summary>
     /// The index action for the image file. Creates the view model and renders the view.
     /// </summary>
@@ -26,7 +19,7 @@ public class ImageFileViewComponent : PartialContentComponent<ImageFile>
     {
         var model = new ImageViewModel
         {
-            Url = _urlResolver.GetUrl(currentContent.ContentLink),
+            Url = urlResolver.GetUrl(currentContent.ContentLink),
             Name = currentContent.Name,
             Copyright = currentContent.Copyright
         };
