@@ -4,44 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Stride.Mvc._1.Components;
 
-public class SidebarViewComponent : ViewComponent
+public class SidebarViewComponent(IContentLoader contentLoader, IApplicationResolver applicationResolver) : ViewComponent
 {
-    private readonly IContentLoader _contentLoader;
-    private readonly IApplicationResolver _applicationResolver;
-
-    public SidebarViewComponent(IContentLoader contentLoader, IApplicationResolver applicationResolver)
-    {
-        _contentLoader = contentLoader;
-        _applicationResolver = applicationResolver;
-    }
-
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        var searchRoot = ContentReference.RootPage;
-        try
-        {
-            var application = await _applicationResolver.GetByContextAsync(CancellationToken.None);
-            if (application is IRoutableApplication routableApplication && !ContentReference.IsNullOrEmpty(routableApplication.EntryPoint))
-            {
-                searchRoot = routableApplication.EntryPoint;
-            }
-        }
-        catch
-        {
-        }
-
         var newsArticles = new List<NewsArticlePage>();
         var events = new List<EventPage>();
 
-        if (!ContentReference.IsNullOrEmpty(searchRoot))
+        if (!ContentReference.IsNullOrEmpty(ContentReference.RootPage))
         {
-            foreach (var childRef in _contentLoader.GetDescendents(searchRoot).Take(500))
+            foreach (var childRef in contentLoader.GetDescendents(ContentReference.RootPage).Take(500))
             {
-                if (_contentLoader.TryGet<NewsArticlePage>(childRef, out var newsPage))
+                if (contentLoader.TryGet<NewsArticlePage>(childRef, out var newsPage))
                 {
                     newsArticles.Add(newsPage);
                 }
-                else if (_contentLoader.TryGet<EventPage>(childRef, out var eventPage))
+                else if (contentLoader.TryGet<EventPage>(childRef, out var eventPage))
                 {
                     events.Add(eventPage);
                 }

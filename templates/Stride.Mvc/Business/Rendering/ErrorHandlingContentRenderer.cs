@@ -13,15 +13,8 @@ namespace Stride.Mvc._1.Business.Rendering;
 /// <remarks>
 /// Prints an error message for editors so that they can easily report errors to developers.
 /// </remarks>
-public class ErrorHandlingContentRenderer : IContentRenderer
+public class ErrorHandlingContentRenderer(MvcContentRenderer mvcRenderer) : IContentRenderer
 {
-    private readonly MvcContentRenderer _mvcRenderer;
-
-    public ErrorHandlingContentRenderer(MvcContentRenderer mvcRenderer)
-    {
-        _mvcRenderer = mvcRenderer;
-    }
-
     /// <summary>
     /// Renders the contentData using the wrapped renderer and catches common, non-critical exceptions.
     /// </summary>
@@ -29,7 +22,7 @@ public class ErrorHandlingContentRenderer : IContentRenderer
     {
         try
         {
-            await _mvcRenderer.RenderAsync(helper, contentData, templateModel);
+            await mvcRenderer.RenderAsync(helper, contentData, templateModel);
         }
         catch (Exception ex) when (!Debugger.IsAttached)
         {

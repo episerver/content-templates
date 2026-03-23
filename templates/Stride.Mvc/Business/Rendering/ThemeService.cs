@@ -6,15 +6,8 @@ namespace Stride.Mvc._1.Business.Rendering;
 /// Service for managing theme-related CSS classes based on content categories
 /// </summary>
 [ServiceConfiguration(typeof(ThemeService), Lifecycle = ServiceInstanceScope.Scoped)]
-public class ThemeService
+public class ThemeService(CategoryRepository categoryRepository)
 {
-    private readonly CategoryRepository _categoryRepository;
-
-    public ThemeService(CategoryRepository categoryRepository)
-    {
-        _categoryRepository = categoryRepository;
-    }
-
     /// <summary>
     /// Returns the CSS classes associated with the themes of the content, as decided by its categories
     /// </summary>
@@ -28,7 +21,7 @@ public class ThemeService
 
         var cssClasses = new HashSet<string>();
 
-        foreach (var categoryName in content.Category.Select(category => _categoryRepository.Get(category).Name.ToLowerInvariant()))
+        foreach (var categoryName in content.Category.Select(category => categoryRepository.Get(category).Name.ToLowerInvariant()))
         {
             switch (categoryName)
             {

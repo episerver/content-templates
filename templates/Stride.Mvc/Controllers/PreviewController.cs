@@ -1,6 +1,5 @@
 using Stride.Mvc._1.Business;
 using Stride.Mvc._1.Models.ViewModels;
-using EPiServer.Applications;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Framework.Web;
 using EPiServer.Framework.Web.Mvc;
@@ -17,35 +16,19 @@ namespace Stride.Mvc._1.Controllers;
     AvailableWithoutTag = false)]
 [VisitorGroupImpersonation]
 [RequireClientResources]
-public class PreviewController : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
-{
-    private readonly IContentLoader _contentLoader;
-    private readonly TemplateResolver _templateResolver;
-    private readonly IApplicationResolver _applicationResolver;
-    private readonly DisplayOptions _displayOptions;
-
-    public PreviewController(
+public class PreviewController(
         IContentLoader contentLoader,
         TemplateResolver templateResolver,
-        IApplicationResolver applicationResolver,
-        DisplayOptions displayOptions)
-    {
-        _contentLoader = contentLoader;
-        _templateResolver = templateResolver;
-        _applicationResolver = applicationResolver;
-        _displayOptions = displayOptions;
-    }
-
+        DisplayOptions displayOptions) : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
+{
     public async Task<IActionResult> Index(IContent currentContent, CancellationToken cancellationToken)
     {
         //As the layout requires a page for title etc we "borrow" the home page
-        var application = await _applicationResolver.GetByContextAsync(cancellationToken);
-        var routableApplication = application as IRoutableApplication;
-        var homePage = _contentLoader.Get<PageData>(routableApplication?.EntryPoint ?? ContentReference.StartPage);
+        var homePage = contentLoader.Get<PageData>(ContentReference.StartPage);
 
         var model = new PreviewModel(homePage, currentContent);
 
-        var supportedDisplayOptions = _displayOptions
+        var supportedDisplayOptions = displayOptions
             .Select(x => new { x.Tag, x.Name, Supported = SupportsTag(currentContent, x.Tag) })
             .ToList();
 
@@ -77,7 +60,7 @@ public class PreviewController : ActionControllerBase, IRenderTemplate<BlockData
 
     private bool SupportsTag(IContent content, string tag)
     {
-        var templateModel = _templateResolver.Resolve(
+        var templateModel = templateResolver.Resolve(
             HttpContext,
             content.GetOriginalType(),
             content,

@@ -8,29 +8,21 @@ namespace Stride.Mvc._1.Controllers;
 /// <summary>
 /// Generic base controller for listing pages that display children of a specific type.
 /// </summary>
-public abstract class ListingPageController<TPage, TChild> : PageControllerBase<TPage>
+public abstract class ListingPageController<TPage, TChild>(
+        UISignInManager uiSignInManager,
+        ThemeService themeService,
+        IContentLoader contentLoader) : PageControllerBase<TPage>(uiSignInManager, themeService)
     where TPage : PageData
     where TChild : PageData
 {
-    protected readonly IContentLoader ContentLoader;
-
     protected virtual int PageSize => 12;
-
-    protected ListingPageController(
-        UISignInManager uiSignInManager,
-        ThemeService themeService,
-        IContentLoader contentLoader)
-        : base(uiSignInManager, themeService)
-    {
-        ContentLoader = contentLoader;
-    }
 
     public virtual ViewResult Index(TPage currentPage)
     {
-        var children = ContentLoader.GetChildren<TChild>(currentPage.ContentLink);
+        var children = contentLoader.GetChildren<TChild>(currentPage.ContentLink);
         var model = new ListingPageViewModel<TPage, TChild>(currentPage)
         {
-            Items = OrderItems(children).Take(PageSize).ToList()
+            Items = [.. OrderItems(children).Take(PageSize)]
         };
         return View($"~/Views/{currentPage.GetOriginalType().Name}/Index.cshtml", model);
     }

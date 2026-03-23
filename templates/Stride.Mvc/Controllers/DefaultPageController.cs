@@ -17,13 +17,8 @@ namespace Stride.Mvc._1.Controllers;
 /// argument. That may however have side effects.
 /// </remarks>
 [TemplateDescriptor(Inherited = true)]
-public class DefaultPageController : PageControllerBase<SitePageData>
+public class DefaultPageController(UISignInManager uISignInManager, ThemeService themeService) : PageControllerBase<SitePageData>(uISignInManager, themeService)
 {
-    public DefaultPageController(UISignInManager uISignInManager, ThemeService themeService)
-        : base(uISignInManager, themeService)
-    {
-    }
-
     public ViewResult Index(SitePageData currentPage)
     {
         var model = CreateModel(currentPage);

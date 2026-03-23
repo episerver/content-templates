@@ -1,17 +1,15 @@
 using EPiServer.Shell.ObjectEditing;
-using System.Collections.Generic;
 
-namespace Stride.Mvc._1.Business
+namespace Stride.Mvc._1.Business;
+
+public class HeroLayoutSelectionFactory : ISelectionFactory
 {
-    public class HeroLayoutSelectionFactory : ISelectionFactory
+    public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
     {
-        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
-        {
-            return
-            [
-                new SelectItem { Value = "single-column", Text = "Single Column (Centered)" },
-                new SelectItem { Value = "two-column", Text = "Two Column (Split)" }
-            ];
-        }
+        return
+        [
+            new SelectItem { Value = "single-column", Text = "Single Column (Centered)" },
+            new SelectItem { Value = "two-column", Text = "Two Column (Split)" }
+        ];
     }
 }
