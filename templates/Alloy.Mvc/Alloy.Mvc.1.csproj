@@ -13,8 +13,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="13.0.0-preview3" />
-    <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.0.0-preview3" />
+    <PackageReference Include="EPiServer.CMS" Version="13.0.0-preview4" />
+    <PackageReference Include="EPiServer.Cms.UI.AspNetIdentity" Version="13.0.0-preview4" />
     <PackageReference Include="Wangkanai.Detection" Version="8.7.0" />
   </ItemGroup>
   
