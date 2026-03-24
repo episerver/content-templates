@@ -23,7 +23,6 @@ public class Startup(IWebHostEnvironment webHostingEnvironment)
         services
             .AddCmsAspNetIdentity<ApplicationUser>()
             .AddCms()
-            .AddVisitorGroups()
             .AddAlloy()
             .AddAdminUserRegistration()
             .AddEmbeddedLocalization<Startup>();
