@@ -1,5 +1,10 @@
 @model Stride.Mvc._1.Models.Sections.HeroSection
 
+@{
+    ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+    var overlay = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("backgroundOverlay", out var overlayVal)) ? overlayVal : "none";
+}
+
 <epi-grid class="hero-section relative">
     <epi-styles>
         <epi-style name="height">
@@ -7,6 +12,10 @@
             <epi-style-map value="medium" class="min-h-[600px]" />
             <epi-style-map value="large" class="min-h-[800px]" />
             <epi-style-map value="fullscreen" class="min-h-screen" />
+        </epi-style>
+        <epi-style name="backgroundOverlay">
+            <epi-style-map value="none" class="" />
+            <epi-style-map value="blur" class="" />
         </epi-style>
     </epi-styles>
 
@@ -23,127 +32,62 @@
                        loop
                        muted
                        playsinline
-                       class="md:opacity-90 opacity-50 absolute inset-0 w-full h-full object-cover rounded-lg"
+                       class="@(overlay == "blur" ? "md:opacity-90 opacity-50" : "") absolute inset-0 w-full h-full object-cover rounded-lg"
                        epi-property="HeroImage"></video>
             }
             else
             {
                 <img src="@mediaUrl"
                      alt="Hero background"
-                     class="md:opacity-90 opacity-50 absolute inset-0 w-full h-full object-cover rounded-lg"
+                     class="@(overlay == "blur" ? "md:opacity-90 opacity-50" : "") absolute inset-0 w-full h-full object-cover rounded-lg"
                      epi-property="HeroImage" />
             }
-        }
 
-        @{
-            var hasSideImage = Model?.SideImage != null && !ContentReference.IsNullOrEmpty(Model.SideImage);
-            var hasHeading = !string.IsNullOrEmpty(Model?.Heading);
-            var hasDescription = !string.IsNullOrEmpty(Model?.Description);
-            var hasPrimaryButton = !string.IsNullOrEmpty(Model?.PrimaryButtonText);
-            var hasSecondaryButton = !string.IsNullOrEmpty(Model?.SecondaryButtonText);
-            var hasButtons = hasPrimaryButton || hasSecondaryButton;
-        }
-
-        @if (Model?.LayoutStyle == "two-column")
-        {
-            <div class="h-[90vh] max-h-[900px] relative z-10 w-full container px-5 mx-auto flex gap-12 items-center py-20">
-                <div class="grow-[2] basis-0">
-                    @if (hasHeading)
-                    {
-                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 drop-shadow-[white_0px_0px_25px] scroll-fade-up scroll-delay-1"
-                            epi-property="Heading">@Model.Heading</h1>
-                    }
-
-                    @if (hasDescription)
-                    {
-                        <p class="text-lg leading-relaxed text-foreground mt-5 max-w-md mb-8 drop-shadow-[white_0px_0px_15px] scroll-fade-up scroll-delay-2"
-                           epi-property="Description">@Model.Description</p>
-                    }
-
-                    @if (hasButtons)
-                    {
-                        <div class="flex flex-wrap gap-4 scroll-fade-up scroll-delay-3">
-                            @if (hasPrimaryButton)
-                            {
-                                <a href="@Model.PrimaryButtonLink"
-                                   class="cursor-pointer rounded-md px-6 py-3 font-medium transition-all border-2 border-key1 bg-key1 text-white hover:-translate-y-0.5 duration-100">
-                                    <span epi-property="PrimaryButtonText">@Model.PrimaryButtonText</span>
-                                </a>
-                            }
-                            @if (hasSecondaryButton)
-                            {
-                                <a href="@Model.SecondaryButtonLink"
-                                   class="cursor-pointer rounded-md px-6 py-3 font-medium transition-all border-2 border-foreground hover:-translate-y-0.5 duration-100 drop-shadow-[white_0px_0px_5px]">
-                                    <span epi-property="SecondaryButtonText">@Model.SecondaryButtonText</span>
-                                </a>
-                            }
-                        </div>
-                    }
-                </div>
-
-                @if (hasSideImage)
-                {
-                    <div class="grow basis-0 hidden md:block">
-                        <div class="w-full relative aspect-[1/2.02] -mb-[100%]">
-                            <img src="@Url.ContentUrl(Model.SideImage)"
-                                 alt=""
-                                 class="absolute -left-[32.9%] !max-w-[166%] -top-[10%] select-none pointer-events-none scroll-parallax"
-                                 data-parallax-speed="0.85"
-                                 draggable="false"
-                                 epi-property="SideImage" />
-                        </div>
-                    </div>
-                }
-            </div>
-        }
-        else
-        {
-            @if (Model?.HeroImage != null && !ContentReference.IsNullOrEmpty(Model.HeroImage))
+            if (overlay == "blur")
             {
                 <div class="absolute inset-0 bg-gradient-to-t from-background2 via-background2/60 to-background2/30 rounded-lg z-[1]"></div>
             }
-
-            <div class="h-[90vh] max-h-[900px] relative z-10 w-full container px-5 mx-auto flex items-center justify-center py-20">
-                <div class="max-w-3xl text-center space-y-6">
-                    @if (hasHeading)
-                    {
-                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 scroll-fade-up scroll-delay-1"
-                            epi-property="Heading">@Model.Heading</h1>
-                    }
-
-                    @if (hasDescription)
-                    {
-                        <p class="text-lg leading-relaxed text-foreground/80 mt-5 max-w-2xl mx-auto scroll-fade-up scroll-delay-2"
-                           epi-property="Description">@Model.Description</p>
-                    }
-
-                    @if (hasButtons)
-                    {
-                        <div class="flex flex-wrap justify-center gap-4 scroll-fade-up scroll-delay-3">
-                            @if (hasPrimaryButton)
-                            {
-                                <a href="@Model.PrimaryButtonLink"
-                                   class="cursor-pointer rounded-md px-6 py-3 font-medium transition-all border-2 border-key1 bg-key1 text-white hover:-translate-y-0.5 duration-100">
-                                    <span epi-property="PrimaryButtonText">@Model.PrimaryButtonText</span>
-                                </a>
-                            }
-                            @if (hasSecondaryButton)
-                            {
-                                <a href="@Model.SecondaryButtonLink"
-                                   class="cursor-pointer rounded-md px-6 py-3 font-medium transition-all border-2 border-foreground hover:-translate-y-0.5 duration-100">
-                                    <span epi-property="SecondaryButtonText">@Model.SecondaryButtonText</span>
-                                </a>
-                            }
-                        </div>
-                    }
-                </div>
-            </div>
         }
-    </div>
 
-    <epi-row class="hidden">
-        <epi-column>
-            <epi-component/>
-        </epi-column>
-    </epi-row>
+        <epi-row class="h-[90vh] max-h-[900px] relative z-10 w-full container px-5 mx-auto flex gap-12 items-center py-20">
+            <epi-column class="basis-0 grow">
+                <epi-styles>
+                    <epi-style name="role">
+                        <epi-style-map value="content" class="grow-[2] space-y-6 flex flex-wrap gap-4 items-start content-center hero-content-col" />
+                        <epi-style-map value="image" class="grow hidden md:block hero-image-col scroll-fade-up scroll-delay-4" />
+                    </epi-style>
+                </epi-styles>
+                <epi-component class="w-full scroll-fade-up">
+                    <epi-styles>
+                        <epi-style name="width">
+                            <epi-style-map value="full" class="!w-full" />
+                            <epi-style-map value="half" class="!w-[calc(50%-0.5rem)]" />
+                            <epi-style-map value="third" class="!w-[calc(33.333%-0.667rem)]" />
+                        </epi-style>
+                        <epi-style name="variant">
+                            <epi-style-map value="primary" class="" />
+                            <epi-style-map value="blue" class="" />
+                            <epi-style-map value="outline" class="" />
+                            <epi-style-map value="secondary" class="" />
+                            <epi-style-map value="ghost" class="" />
+                        </epi-style>
+                        <epi-style name="level">
+                            <epi-style-map value="h1" class="" />
+                            <epi-style-map value="h2" class="" />
+                            <epi-style-map value="h3" class="" />
+                            <epi-style-map value="h4" class="" />
+                            <epi-style-map value="h5" class="" />
+                            <epi-style-map value="h6" class="" />
+                        </epi-style>
+                        <epi-style name="parallax">
+                            <epi-style-map value="none" class="" />
+                            <epi-style-map value="low" class="parallax-low" />
+                            <epi-style-map value="medium" class="parallax-medium" />
+                            <epi-style-map value="high" class="parallax-high" />
+                        </epi-style>
+                    </epi-styles>
+                </epi-component>
+            </epi-column>
+        </epi-row>
+    </div>
 </epi-grid>

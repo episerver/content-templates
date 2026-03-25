@@ -37,5 +37,6 @@ public class PuffElement : SiteBlockData
         Name = "Link",
         GroupName = SystemTabNames.Content,
         Order = 40)]
-    public virtual Url Link { get; set; }
+    [AllowedTypes(typeof(PageData))]
+    public virtual ContentReference Link { get; set; }
 }

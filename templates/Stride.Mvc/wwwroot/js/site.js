@@ -73,6 +73,13 @@ if (isEditMode) {
 }
 
 (function() {
+    var parallaxSpeeds = { 'parallax-low': '0.95', 'parallax-medium': '0.9', 'parallax-high': '0.8' };
+    Object.keys(parallaxSpeeds).forEach(function(cls) {
+        document.querySelectorAll('.' + cls).forEach(function(el) {
+            el.setAttribute('data-parallax-speed', parallaxSpeeds[cls]);
+        });
+    });
+
     var parallaxEls = document.querySelectorAll('[data-parallax-speed]');
     if (!parallaxEls.length) return;
     var ticking = false;

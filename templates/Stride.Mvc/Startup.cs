@@ -1,25 +1,19 @@
-using Stride.Mvc._1.Extensions;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.DependencyInjection;
 using EPiServer.Scheduler;
 using EPiServer.Web.Routing;
+using Stride.Mvc._1.Business.Initialization;
+using Stride.Mvc._1.Extensions;
 
 namespace Stride.Mvc._1;
 
-public class Startup
+public class Startup(IWebHostEnvironment webHostingEnvironment)
 {
-    private readonly IWebHostEnvironment _webHostingEnvironment;
-
-    public Startup(IWebHostEnvironment webHostingEnvironment)
-    {
-        _webHostingEnvironment = webHostingEnvironment;
-    }
-
     public void ConfigureServices(IServiceCollection services)
     {
-        if (_webHostingEnvironment.IsDevelopment())
+        if (webHostingEnvironment.IsDevelopment())
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(_webHostingEnvironment.ContentRootPath, "App_Data"));
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(webHostingEnvironment.ContentRootPath, "App_Data"));
 
             services.Configure<SchedulerOptions>(options => options.Enabled = false);
         }

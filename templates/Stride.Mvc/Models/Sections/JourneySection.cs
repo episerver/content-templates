@@ -12,14 +12,6 @@ namespace Stride.Mvc._1.Models.Sections;
 public class JourneySection : SectionData
 {
     [Display(
-        Name = "Layout Format",
-        Description = "Header layout: two-column or stacked",
-        GroupName = SystemTabNames.Content,
-        Order = 5)]
-    [EPiServer.Shell.ObjectEditing.SelectOne(SelectionFactoryType = typeof(Business.LayoutFormatSelectionFactory))]
-    public virtual string LayoutFormat { get; set; } = "stacked";
-
-    [Display(
         Name = "Eyebrow",
         GroupName = SystemTabNames.Content,
         Order = 10)]

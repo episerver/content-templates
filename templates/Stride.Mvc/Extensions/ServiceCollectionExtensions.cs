@@ -1,4 +1,5 @@
 using Stride.Mvc._1.Business;
+using Stride.Mvc._1.Business.Initialization;
 using Stride.Mvc._1.Business.Rendering;
 using EPiServer.Web;
 using Microsoft.AspNetCore.Mvc;

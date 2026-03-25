@@ -12,13 +12,6 @@ namespace Stride.Mvc._1.Models.Sections;
 public class AppShowcaseSection : SectionData
 {
     [Display(
-        Name = "Section Number",
-        Description = "Section number label",
-        GroupName = SystemTabNames.Content,
-        Order = 10)]
-    public virtual string SectionNumber { get; set; }
-
-    [Display(
         Name = "Section Label",
         Description = "Section label text",
         GroupName = SystemTabNames.Content,
@@ -39,28 +32,4 @@ public class AppShowcaseSection : SectionData
         Order = 40)]
     [UIHint(UIHint.Textarea)]
     public virtual string Description { get; set; }
-
-    [Display(
-        Name = "Screenshot 1",
-        Description = "Left app screenshot image",
-        GroupName = SystemTabNames.Content,
-        Order = 50)]
-    [UIHint(UIHint.Image)]
-    public virtual ContentReference Screenshot1 { get; set; }
-
-    [Display(
-        Name = "Screenshot 2",
-        Description = "Center app screenshot image",
-        GroupName = SystemTabNames.Content,
-        Order = 60)]
-    [UIHint(UIHint.Image)]
-    public virtual ContentReference Screenshot2 { get; set; }
-
-    [Display(
-        Name = "Screenshot 3",
-        Description = "Right app screenshot image",
-        GroupName = SystemTabNames.Content,
-        Order = 70)]
-    [UIHint(UIHint.Image)]
-    public virtual ContentReference Screenshot3 { get; set; }
 }

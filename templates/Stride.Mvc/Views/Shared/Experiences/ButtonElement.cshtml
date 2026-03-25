@@ -1,6 +1,9 @@
 @model Stride.Mvc._1.Models.Blocks.ButtonElement
 
 @{
+    ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+    var variant = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("variant", out var variantVal)) ? variantVal : "primary";
+
     var variantMap = new Dictionary<string, string>
     {
         { "primary", "bg-slate-900 text-white hover:bg-slate-800" },
@@ -12,14 +15,13 @@
 
     var baseClasses = "inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-colors duration-200 w-full";
 
-    var variant = Model.Variant ?? "primary";
     variantMap.TryGetValue(variant, out var variantClasses);
     variantClasses ??= variantMap["primary"];
 }
 
-@if (Model.Link != null && !string.IsNullOrEmpty(Model.Link.ToString()))
+@if (!ContentReference.IsNullOrEmpty(Model.Link))
 {
-    <a href="@Model.Link" class="@baseClasses @variantClasses">
+    <a href="@Url.ContentUrl(Model.Link)" class="@baseClasses @variantClasses">
         <span epi-property="Text">@Model.Text</span>
     </a>
 }

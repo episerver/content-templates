@@ -1,7 +1,7 @@
 @model Stride.Mvc._1.Models.Blocks.ProductCardElement
 
 @{
-    var linkUrl = Model.Link != null && !string.IsNullOrEmpty(Model.Link.ToString())
+    var linkUrl = !ContentReference.IsNullOrEmpty(Model.Link)
         ? Url.ContentUrl(Model.Link)
         : "#";
 }
