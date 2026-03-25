@@ -29,21 +29,17 @@
                 ]
             },
             {
-                "Key": "textAlignment",
-                "Name": "Text Alignment",
+                "Key": "backgroundOverlay",
+                "Name": "Background Overlay",
                 "Editor": "select",
                 "Choices": [
                     {
-                        "Key": "left",
-                        "Name": "Left"
+                        "Key": "none",
+                        "Name": "None (default)"
                     },
                     {
-                        "Key": "center",
-                        "Name": "Center"
-                    },
-                    {
-                        "Key": "right",
-                        "Name": "Right"
+                        "Key": "blur",
+                        "Name": "Blur overlay"
                     }
                 ]
             }
@@ -55,17 +51,17 @@
         "BaseType": "Section",
         "Settings": [
             {
-                "Key": "layoutFormat",
-                "Name": "Layout Format",
+                "Key": "layout",
+                "Name": "Layout",
                 "Editor": "select",
                 "Choices": [
                     {
-                        "Key": "twoCols",
-                        "Name": "Two Columns - Left: section label + heading (2 break lines), Right: description (1 break line above)"
+                        "Key": "split",
+                        "Name": "Split — Heading left, description right, image below"
                     },
                     {
-                        "Key": "stacked",
-                        "Name": "Stacked - Section label (1 break line), heading & description below (no break lines)"
+                        "Key": "aside",
+                        "Name": "Aside — Heading & description stacked left, image right"
                     }
                 ]
             },
@@ -100,20 +96,50 @@
         "BaseType": "Section",
         "Settings": [
             {
-                "Key": "layoutFormat",
-                "Name": "Layout Format",
+                "Key": "layout",
+                "Name": "Layout",
                 "Editor": "select",
                 "Choices": [
                     {
-                        "Key": "twoCols",
-                        "Name": "Two Columns - Left: section label + heading (2 break lines), Right: description (1 break line above)"
+                        "Key": "split",
+                        "Name": "Split — Heading left, description right, image below"
                     },
                     {
-                        "Key": "stacked",
-                        "Name": "Stacked - Section label (1 break line), heading & description below (no break lines)"
+                        "Key": "aside",
+                        "Name": "Aside — Heading & description stacked left, image right"
                     }
                 ]
             },
+            {
+                "Key": "padding",
+                "Name": "Padding",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "small",
+                        "Name": "Small"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "large",
+                        "Name": "Large"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultAppShowcaseSection",
+        "Name": "Default App Showcase",
+        "BaseType": "Section",
+        "Settings": [
             {
                 "Key": "padding",
                 "Name": "Padding",
@@ -232,6 +258,28 @@
         ]
     },
     {
+        "Key": "heroColumn",
+        "Name": "Hero Column",
+        "NodeType": "Column",
+        "Settings": [
+            {
+                "Key": "role",
+                "Name": "Column Role",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "content",
+                        "Name": "Content"
+                    },
+                    {
+                        "Key": "image",
+                        "Name": "Image"
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "Key": "defaultComponent",
         "Name": "Default",
         "BaseType": "Block",
@@ -257,6 +305,86 @@
                     {
                         "Key": "large",
                         "Name": "Large"
+                    }
+                ]
+            },
+            {
+                "Key": "width",
+                "Name": "Width",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "full",
+                        "Name": "Full width"
+                    },
+                    {
+                        "Key": "half",
+                        "Name": "Half (1/2)"
+                    },
+                    {
+                        "Key": "third",
+                        "Name": "Third (1/3)"
+                    }
+                ]
+            },
+            {
+                "Key": "level",
+                "Name": "Heading Level",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "h1",
+                        "Name": "H1"
+                    },
+                    {
+                        "Key": "h2",
+                        "Name": "H2"
+                    },
+                    {
+                        "Key": "h3",
+                        "Name": "H3"
+                    },
+                    {
+                        "Key": "h4",
+                        "Name": "H4"
+                    },
+                    {
+                        "Key": "h5",
+                        "Name": "H5"
+                    },
+                    {
+                        "Key": "h6",
+                        "Name": "H6"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Key": "defaultImage",
+        "Name": "Image Style",
+        "NodeType": "Component",
+        "Settings": [
+            {
+                "Key": "parallax",
+                "Name": "Parallax Speed",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "none",
+                        "Name": "None"
+                    },
+                    {
+                        "Key": "low",
+                        "Name": "Low"
+                    },
+                    {
+                        "Key": "medium",
+                        "Name": "Medium"
+                    },
+                    {
+                        "Key": "high",
+                        "Name": "High"
                     }
                 ]
             }
@@ -291,6 +419,25 @@
                     {
                         "Key": "ghost",
                         "Name": "Ghost"
+                    }
+                ]
+            },
+            {
+                "Key": "width",
+                "Name": "Width",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "full",
+                        "Name": "Full width"
+                    },
+                    {
+                        "Key": "half",
+                        "Name": "Half (1/2)"
+                    },
+                    {
+                        "Key": "third",
+                        "Name": "Third (1/3)"
                     }
                 ]
             }

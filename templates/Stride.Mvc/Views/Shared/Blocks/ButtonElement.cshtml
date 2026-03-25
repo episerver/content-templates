@@ -1,24 +1,13 @@
 @model Stride.Mvc._1.Models.Blocks.ButtonElement
 
 @{
-    var variantMap = new Dictionary<string, string>
-    {
-        { "primary", "bg-slate-900 text-white hover:bg-slate-800" },
-        { "blue", "bg-key1 text-white hover:bg-key1/90" },
-        { "outline", "bg-transparent text-foreground border-2 border-foreground hover:bg-foreground/5" },
-        { "secondary", "bg-white text-slate-900 border-2 border-slate-900 hover:bg-slate-50" },
-        { "ghost", "bg-transparent text-slate-900 hover:bg-slate-100" }
-    };
-
     var baseClasses = "inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-colors duration-200";
-    var variant = Model.Variant ?? "primary";
-    variantMap.TryGetValue(variant, out var variantClasses);
-    variantClasses ??= variantMap["primary"];
+    var variantClasses = "bg-slate-900 text-white hover:bg-slate-800";
 }
 
-@if (Model.Link != null && !string.IsNullOrEmpty(Model.Link.ToString()))
+@if (!ContentReference.IsNullOrEmpty(Model.Link))
 {
-    <a href="@Model.Link" class="@baseClasses @variantClasses">
+    <a href="@Url.ContentUrl(Model.Link)" class="@baseClasses @variantClasses">
         @Model.Text
     </a>
 }

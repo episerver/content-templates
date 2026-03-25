@@ -24,10 +24,10 @@
             </div>
         }
 
-        @if (Model.Link != null && !string.IsNullOrEmpty(Model.Link?.ToString()))
+        @if (!ContentReference.IsNullOrEmpty(Model.Link))
         {
             <div class="mt-auto">
-                <a href="@Model.Link"
+                <a href="@Url.ContentUrl(Model.Link)"
                    class="inline-flex items-center gap-2 text-key1 hover:text-key1/80 font-semibold transition-colors group-hover:gap-3 duration-200"
                    epi-property="Link">
                     Learn more

@@ -48,6 +48,6 @@ public class ProductCardElement : SiteBlockData
         Name = "Link",
         GroupName = SystemTabNames.Content,
         Order = 50)]
-    [Required]
-    public virtual Url Link { get; set; }
+    [AllowedTypes(typeof(PageData))]
+    public virtual ContentReference Link { get; set; }
 }

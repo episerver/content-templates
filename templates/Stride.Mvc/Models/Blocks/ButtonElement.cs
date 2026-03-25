@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using EPiServer.Shell.ObjectEditing;
 
 namespace Stride.Mvc._1.Models.Blocks;
 
@@ -23,13 +22,6 @@ public class ButtonElement : SiteBlockData
         Name = "Link",
         GroupName = SystemTabNames.Content,
         Order = 20)]
-    [Required]
-    public virtual Url Link { get; set; }
-
-    [Display(
-        Name = "Variant",
-        GroupName = SystemTabNames.Content,
-        Order = 30)]
-    [SelectOne(SelectionFactoryType = typeof(Business.ButtonVariantSelectionFactory))]
-    public virtual string Variant { get; set; } = "primary";
+    [AllowedTypes(typeof(PageData))]
+    public virtual ContentReference Link { get; set; }
 }

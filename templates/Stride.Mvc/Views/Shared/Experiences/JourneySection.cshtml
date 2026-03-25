@@ -8,12 +8,21 @@
             <epi-style-map value="medium" class="pt-16" />
             <epi-style-map value="large" class="pt-20" />
         </epi-style>
+        <epi-style name="layout">
+            <epi-style-map value="split" class="" />
+            <epi-style-map value="aside" class="" />
+        </epi-style>
     </epi-styles>
+
+    @{
+        ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+        var layoutFormat = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("layout", out var layoutVal)) ? layoutVal : "split";
+    }
 
     @if (Model != null && (!string.IsNullOrEmpty(Model.Eyebrow) || !string.IsNullOrEmpty(Model.Title) || !string.IsNullOrEmpty(Model.Description)))
     {
         <div class="container mx-auto px-6 mb-6">
-            @if (Model.LayoutFormat == "twoCols")
+            @if (layoutFormat == "split")
             {
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                     <div>

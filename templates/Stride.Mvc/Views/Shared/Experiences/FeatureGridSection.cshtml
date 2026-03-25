@@ -9,34 +9,50 @@
             <epi-style-map value="medium" class="pt-16" />
             <epi-style-map value="large" class="pt-20" />
         </epi-style>
+        <epi-style name="layout">
+            <epi-style-map value="split" class="" />
+            <epi-style-map value="aside" class="" />
+        </epi-style>
     </epi-styles>
 
     @{
-        var hasSideImage = Model?.SideImage != null && !ContentReference.IsNullOrEmpty(Model.SideImage);
+        var hasImage = Model?.Image != null && !ContentReference.IsNullOrEmpty(Model.Image);
+        ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+        var layoutFormat = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("layout", out var layoutVal)) ? layoutVal : "split";
+
+        const string counterKey = "SectionNumberCounter";
+        const string countedNodesKey = "SectionNumberCountedNodes";
+        if (!Context.Items.ContainsKey(countedNodesKey))
+        {
+            Context.Items[countedNodesKey] = new HashSet<string>();
+        }
+        var countedNodes = (HashSet<string>)Context.Items[countedNodesKey];
+        var nodeId = renderingNode?.Key ?? Guid.NewGuid().ToString();
+        if (countedNodes.Add(nodeId))
+        {
+            var prev = Context.Items.ContainsKey(counterKey) ? (int)Context.Items[counterKey] : 0;
+            Context.Items[counterKey] = prev + 1;
+        }
+        var sectionNumber = (Context.Items.ContainsKey(counterKey) ? (int)Context.Items[counterKey] : 1).ToString("D2");
     }
 
-    @if (Model != null && (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
+    @if (Model != null && (!string.IsNullOrEmpty(Model.SectionLabel) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
     {
-        <div class="container mx-auto px-6 @(hasSideImage ? "" : "mb-6")">
-            @if (Model.LayoutFormat == "twoCols")
+        <div class="container mx-auto px-6 mb-6">
+            @if (layoutFormat == "split")
             {
+                @* Layout A: heading left, description right, image below *@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                     <div class="space-y-6">
-                        @if (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel))
+                        @if (!string.IsNullOrEmpty(Model.SectionLabel))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative">
-                                @if (!string.IsNullOrEmpty(Model.SectionNumber))
-                                {
-                                    <span class="absolute text-background2 bg-foreground px-1" epi-property="SectionNumber">
-                                        @Model.SectionNumber
-                                    </span>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.SectionLabel))
-                                {
-                                    <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
-                                        @Model.SectionLabel
-                                    </span>
-                                }
+                                <span class="absolute text-background2 bg-foreground px-1">
+                                    @sectionNumber
+                                </span>
+                                <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
+                                    @Model.SectionLabel
+                                </span>
                             </div>
                         }
 
@@ -60,26 +76,32 @@
                         }
                     </div>
                 </div>
+
+                @if (hasImage)
+                {
+                    <div class="mt-6 scroll-fade-up"
+                         style="-webkit-mask-image: linear-gradient(#000 40%, transparent 75%);">
+                        <img src="@Url.ContentUrl(Model.Image)"
+                             alt=""
+                             class="w-full object-cover object-top rounded-lg"
+                             epi-property="Image" />
+                    </div>
+                }
             }
             else
             {
+                @* Layout B: heading + description stacked left, image right *@
                 <div class="md:flex gap-6 items-start">
                     <div class="basis-0 grow">
-                        @if (!string.IsNullOrEmpty(Model.SectionNumber) || !string.IsNullOrEmpty(Model.SectionLabel))
+                        @if (!string.IsNullOrEmpty(Model.SectionLabel))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative max-w-half-col">
-                                @if (!string.IsNullOrEmpty(Model.SectionNumber))
-                                {
-                                    <span class="absolute text-background2 bg-foreground px-1" epi-property="SectionNumber">
-                                        @Model.SectionNumber
-                                    </span>
-                                }
-                                @if (!string.IsNullOrEmpty(Model.SectionLabel))
-                                {
-                                    <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
-                                        @Model.SectionLabel
-                                    </span>
-                                }
+                                <span class="absolute text-background2 bg-foreground px-1">
+                                    @sectionNumber
+                                </span>
+                                <span class="absolute inline-block origin-top-left md:-translate-x-4 -translate-x-1 translate-y-[4.5rem] text-primary mb-4 rotate-90 text-xs" epi-property="SectionLabel">
+                                    @Model.SectionLabel
+                                </span>
                             </div>
                         }
 
@@ -98,14 +120,14 @@
                         }
                     </div>
 
-                    @if (hasSideImage)
+                    @if (hasImage)
                     {
                         <div class="basis-0 grow scroll-fade-up"
                              style="-webkit-mask-image: linear-gradient(#000 40%, transparent 75%);">
-                            <img src="@Url.ContentUrl(Model.SideImage)"
+                            <img src="@Url.ContentUrl(Model.Image)"
                                  alt=""
                                  class="object-cover object-top aspect-square"
-                                 epi-property="SideImage" />
+                                 epi-property="Image" />
                         </div>
                     }
                     else
@@ -117,7 +139,7 @@
         </div>
     }
 
-    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start @(hasSideImage ? "md:pt-4" : "md:pt-14") pt-6">
+    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start @(hasImage && layoutFormat == "aside" ? "md:pt-4" : "md:pt-14") pt-6">
         <epi-styles>
             <epi-style name="spacing">
                 <epi-style-map value="none" class="gap-0" />

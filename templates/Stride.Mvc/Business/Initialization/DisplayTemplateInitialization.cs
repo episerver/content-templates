@@ -10,7 +10,8 @@ public class DisplayTemplateInitialization : IInitializableModule
 {
     private static readonly Dictionary<string, string> ContentTypeResolutions = new(StringComparer.OrdinalIgnoreCase)
     {
-        { "defaultButton", "ButtonElement" }
+        { "defaultButton", "ButtonElement" },
+        { "defaultImage", "ImageElement" }
     };
 
     private static readonly JsonSerializerOptions JsonOptions = new()

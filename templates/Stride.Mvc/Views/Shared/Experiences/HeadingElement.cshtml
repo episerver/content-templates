@@ -1,7 +1,9 @@
 @model Stride.Mvc._1.Models.Elements.HeadingElement
 
 @{
-    var level = Model?.Level ?? "h2";
+    ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+    var level = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("level", out var levelVal)) ? levelVal : "h2";
+
     var classes = level switch
     {
         "h1" => "text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight",

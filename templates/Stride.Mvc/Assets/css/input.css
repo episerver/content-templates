@@ -302,6 +302,49 @@
 .scroll-delay-3 { transition-delay: 0.45s; }
 .scroll-delay-4 { transition-delay: 0.6s; }
 
+/* Hero image — phone screenshot positioned to overflow the section */
+.hero-image-col > * {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1/2.02;
+  margin-bottom: -100%;
+}
+
+.hero-image-col img {
+  position: absolute !important;
+  left: -32.9%;
+  max-width: 166% !important;
+  width: auto !important;
+  top: -10%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Staggered fade-up for hero content components */
+.hero-content-col > *:nth-child(1) { transition-delay: 0s; }
+.hero-content-col > *:nth-child(2) { transition-delay: 0.15s; }
+.hero-content-col > *:nth-child(3) { transition-delay: 0.3s; }
+.hero-content-col > *:nth-child(4) { transition-delay: 0.3s; }
+.hero-content-col > *:nth-child(n+5) { transition-delay: 0.3s; }
+
+/* App showcase — mask and staggered column layout */
+.app-showcase-mask {
+  -webkit-mask-image: linear-gradient(black 60%, transparent 70%);
+}
+.app-showcase-section .showcase-row > *:nth-child(1) { margin-top: 20%; transition-delay: 0.15s; }
+.app-showcase-section .showcase-row > *:nth-child(2) { margin-top: 10%; transition-delay: 0.3s; }
+.app-showcase-section .showcase-row > *:nth-child(3) { margin-top: 0; transition-delay: 0.45s; }
+
+.app-showcase-section .showcase-row img {
+  position: absolute !important;
+  left: -32.9%;
+  max-width: 166% !important;
+  width: auto !important;
+  top: -10%;
+  user-select: none;
+  pointer-events: none;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: auto;

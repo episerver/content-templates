@@ -15,10 +15,4 @@ public class HeadingElement : BlockData
         GroupName = SystemTabNames.Content,
         Order = 10)]
     public virtual string Text { get; set; }
-
-    [Display(
-        Name = "Level",
-        GroupName = SystemTabNames.Content,
-        Order = 20)]
-    public virtual string Level { get; set; } = "h2";
 }
