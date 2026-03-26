@@ -5,9 +5,8 @@ namespace Stride.Mvc._1.Models.ViewModels;
 /// <summary>
 /// View model for StandardPage when used as a News &amp; Events overview container.
 /// </summary>
-public class StandardPageViewModel : PageViewModel<StandardPage>
+public class StandardPageViewModel(StandardPage currentPage) : PageViewModel<StandardPage>(currentPage)
 {
-    public StandardPageViewModel(StandardPage currentPage) : base(currentPage) { }
 
     public record NewsListingWithArticles(NewsListingPage Listing, IReadOnlyList<NewsArticlePage> Articles);
     public record EventListingWithEvents(EventListingPage Listing, IReadOnlyList<EventPage> Events);

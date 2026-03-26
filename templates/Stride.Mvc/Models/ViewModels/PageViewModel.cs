@@ -1,13 +1,8 @@
 namespace Stride.Mvc._1.Models.ViewModels;
 
-public class PageViewModel<T> : IPageViewModel<T> where T : PageData
+public class PageViewModel<T>(T currentPage) : IPageViewModel<T> where T : PageData
 {
-    public PageViewModel(T currentPage)
-    {
-        CurrentPage = currentPage;
-    }
-
-    public T CurrentPage { get; private set; }
+    public T CurrentPage { get; private set; } = currentPage;
 
     public LayoutModel Layout { get; set; }
 

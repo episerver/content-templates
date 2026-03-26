@@ -7,7 +7,7 @@ namespace Stride.Mvc._1.Controllers;
 public class NewsListingPageController(
         UISignInManager uiSignInManager,
         ThemeService themeService,
-        IContentLoader contentLoader) : ListingPageController<NewsListingPage, NewsArticlePage>(uiSignInManager, themeService, contentLoader) 
+        IContentLoader contentLoader) : ListingPageController<NewsListingPage, NewsArticlePage>(uiSignInManager, themeService, contentLoader)
 {
     protected override IEnumerable<NewsArticlePage> OrderItems(IEnumerable<NewsArticlePage> items)
         => items.OrderByDescending(x => x.PublishDate);

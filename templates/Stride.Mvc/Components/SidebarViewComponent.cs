@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Stride.Mvc._1.Components;
 
-public class SidebarViewComponent(IContentLoader contentLoader, IApplicationResolver applicationResolver) : ViewComponent
+public class SidebarViewComponent(IContentLoader contentLoader) : ViewComponent
 {
     public async Task<IViewComponentResult> InvokeAsync()
     {
