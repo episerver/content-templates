@@ -6,5 +6,5 @@ namespace Stride.Mvc._1.Business.Rendering;
 /// </summary>
 internal interface ICustomCssInContentArea
 {
-    string ContentAreaCssClass { get; }
+    public string ContentAreaCssClass { get; }
 }

@@ -21,7 +21,7 @@ public class PreviewController(
         TemplateResolver templateResolver,
         DisplayOptions displayOptions) : ActionControllerBase, IRenderTemplate<BlockData>, IModifyLayout
 {
-    public async Task<IActionResult> Index(IContent currentContent, CancellationToken cancellationToken)
+    public async Task<IActionResult> Index(IContent currentContent)
     {
         //As the layout requires a page for title etc we "borrow" the home page
         var homePage = contentLoader.Get<PageData>(ContentReference.StartPage);

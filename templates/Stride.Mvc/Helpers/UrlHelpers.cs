@@ -7,7 +7,7 @@ public static class UrlHelpers
     /// <summary>
     /// Returns the URL anchor target for a page with shortcut settings
     /// </summary>
-    public static string PageLinkTarget(this IUrlHelper urlHelper, PageData page)
+    public static string PageLinkTarget(this IUrlHelper _, PageData page)
     {
         return page.LinkType switch
         {

@@ -1,15 +1,10 @@
 namespace Stride.Mvc._1.Models.ViewModels;
 
-public class PreviewModel : PageViewModel<PageData>
+public class PreviewModel(
+    PageData currentPage,
+    IContent previewContent) : PageViewModel<PageData>(currentPage)
 {
-    public PreviewModel(PageData currentPage, IContent previewContent)
-        : base(currentPage)
-    {
-        PreviewContent = previewContent;
-        Areas = new List<PreviewArea>();
-    }
-
-    public IContent PreviewContent { get; set; }
+    public IContent PreviewContent { get; set; } = previewContent;
 
     public List<PreviewArea> Areas { get; set; } = [];
 

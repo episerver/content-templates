@@ -43,7 +43,7 @@ public class AlloyContentAreaItemRenderer(IContentAreaLoader contentAreaLoader)
         return cssClass;
     }
 
-    public void RenderContentAreaItemCss(ContentAreaItem contentAreaItem, TagHelperContext context, TagHelperOutput output)
+    public void RenderContentAreaItemCss(ContentAreaItem contentAreaItem, TagHelperOutput output)
     {
         var displayOption = contentAreaLoader.LoadDisplayOption(contentAreaItem);
         var cssClasses = new StringBuilder();

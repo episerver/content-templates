@@ -13,10 +13,10 @@ public abstract class AlloyPageBase<TModel> : RazorPage<TModel> where TModel : c
     {
     }
 
-    protected void OnItemRendered(ContentAreaItem contentAreaItem, TagHelperContext context, TagHelperOutput output)
+    protected void OnItemRendered(ContentAreaItem contentAreaItem, TagHelperOutput output)
     {
         var alloyContentAreaItemRenderer = ViewContext.HttpContext.RequestServices.GetInstance<AlloyContentAreaItemRenderer>();
 
-        alloyContentAreaItemRenderer.RenderContentAreaItemCss(contentAreaItem, context, output);
+        alloyContentAreaItemRenderer.RenderContentAreaItemCss(contentAreaItem, output);
     }
 }
