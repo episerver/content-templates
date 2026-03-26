@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CMS Quick Navigator — fix Tailwind preflight reset and match header height */
+#epi-quickNavigator-logo {
+  display: inline;
+}
+#epi-quickNavigator {
+  padding: 0.75rem !important; /* half of header py-6 (1.5rem) */
+}
+@media (min-width: 768px) {
+  #epi-quickNavigator {
+    padding: 0.625rem !important; /* half of header md:py-5 (1.25rem) */
+  }
+}
+
 /* Mobile nav menu */
 .mobile-nav-group.open .mobile-nav-children {
   max-height: 500px;

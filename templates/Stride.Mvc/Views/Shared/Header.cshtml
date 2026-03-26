@@ -1,27 +1,18 @@
 @using EPiServer.Applications
 
-@inject IApplicationResolver ApplicationResolver
 @inject IContentLoader ContentLoader
 
 @model IPageViewModel<PageData>
 
 @{
-    var application = await ApplicationResolver.GetByContextAsync(CancellationToken.None);
-    var routableApplication = application as IRoutableApplication;
-    var startPage = routableApplication?.EntryPoint ?? ContentReference.StartPage;
-
-    var navItems = Enumerable.Empty<IContent>();
-    if (startPage != null && !ContentReference.IsNullOrEmpty(startPage))
-    {
-        navItems = ContentLoader.GetChildren<IContent>(startPage)
-            .Where(c => c is PageData pd && pd.VisibleInMenu)
-            .OrderBy(c => (c as PageData)?.SortIndex ?? 0);
-    }
+    var navItems = ContentLoader.GetChildren<IContent>(ContentReference.StartPage)
+        .Where(c => c is PageData pd && pd.VisibleInMenu)
+        .OrderBy(c => (c as PageData)?.SortIndex ?? 0);
 }
 
 <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
     <div class="container mx-auto flex items-center justify-between md:py-5 py-6">
-        <a href="@Url.ContentUrl(startPage)" title="Stride">
+        <a href="@Url.ContentUrl(ContentReference.StartPage)" title="Stride">
             <img src="~/gfx/logotype.png" alt="Stride" class="h-5" />
         </a>
 
