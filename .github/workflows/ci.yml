@@ -16,6 +16,8 @@ jobs:
       DOTNET_NOLOGO: 1
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Restore
         run: dotnet restore
       - name: Build
