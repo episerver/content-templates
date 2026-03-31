@@ -10,7 +10,7 @@ Chose one of the following options to get started.
 
 Prerequisities
 - .NET SDK 10+
-- SQL Server 2016 Express LocalDB (or later)
+- SQL Server 2017 Express LocalDB, compatability level 140 (or later)
 
 ```bash
 $ dotnet run
