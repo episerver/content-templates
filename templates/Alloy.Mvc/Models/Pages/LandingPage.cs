@@ -5,7 +5,7 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Used for campaign or landing pages, commonly used for pages linked in online advertising such as AdWords
 /// </summary>
-[SiteContentType(
+[ContentType(
    GUID = "DBED4258-8213-48DB-A11F-99C034172A54",
    GroupName = Globals.GroupNames.Specialized)]
 [SiteImageUrl]

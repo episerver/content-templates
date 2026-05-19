@@ -5,7 +5,9 @@ namespace Alloy.Mvc._1.Models.Blocks;
 /// <summary>
 /// Used to insert a link which is styled as a button
 /// </summary>
-[SiteContentType(GUID = "426CF12F-1F01-4EA0-922F-0778314DDAF0")]
+[ContentType(
+    GUID = "426CF12F-1F01-4EA0-922F-0778314DDAF0",
+    GroupName = Globals.GroupNames.Default)]
 [SiteImageUrl]
 public class ButtonBlock : SiteBlockData
 {

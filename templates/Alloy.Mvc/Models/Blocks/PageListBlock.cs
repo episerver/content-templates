@@ -7,7 +7,9 @@ namespace Alloy.Mvc._1.Models.Blocks;
 /// <summary>
 /// Used to insert a list of pages, for example a news list
 /// </summary>
-[SiteContentType(GUID = "30685434-33DE-42AF-88A7-3126B936AEAD")]
+[ContentType(
+    GUID = "30685434-33DE-42AF-88A7-3126B936AEAD",
+    GroupName = Globals.GroupNames.Default)]
 [SiteImageUrl]
 public class PageListBlock : SiteBlockData
 {

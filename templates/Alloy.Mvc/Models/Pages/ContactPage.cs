@@ -7,7 +7,7 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Represents contact details for a contact person
 /// </summary>
-[SiteContentType(
+[ContentType(
     GUID = "F8D47655-7B50-4319-8646-3369BA9AF05B",
     GroupName = Globals.GroupNames.Specialized)]
 [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-contact.png")]

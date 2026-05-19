@@ -6,7 +6,7 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Used to present a single product
 /// </summary>
-[SiteContentType(
+[ContentType(
     GUID = "17583DCD-3C11-49DD-A66D-0DEF0DD601FC",
     GroupName = Globals.GroupNames.Products)]
 [SiteImageUrl(Globals.StaticGraphicsFolderPath + "page-type-thumbnail-product.png")]
