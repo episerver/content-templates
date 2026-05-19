@@ -7,7 +7,9 @@ namespace Alloy.Mvc._1.Models.Blocks;
 /// Used to present contact information with a call-to-action link
 /// </summary>
 /// <remarks>Actual contact details are retrieved from a contact page specified using the ContactPageLink property</remarks>
-[SiteContentType(GUID = "7E932EAF-6BC2-4753-902A-8670EDC5F363")]
+[ContentType(
+    GUID = "7E932EAF-6BC2-4753-902A-8670EDC5F363",
+    GroupName = Globals.GroupNames.Default)]
 [SiteImageUrl]
 public class ContactBlock : SiteBlockData
 {

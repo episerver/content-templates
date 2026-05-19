@@ -6,7 +6,7 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Used to provide on-site search
 /// </summary>
-[SiteContentType(
+[ContentType(
     GUID = "AAC25733-1D21-4F82-B031-11E626C91E30",
     GroupName = Globals.GroupNames.Specialized)]
 [SiteImageUrl]

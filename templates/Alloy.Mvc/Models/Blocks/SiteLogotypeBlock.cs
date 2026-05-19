@@ -7,8 +7,9 @@ namespace Alloy.Mvc._1.Models.Blocks;
 /// <summary>
 /// Used to provide a composite property on the start page to set site logotype settings
 /// </summary>
-[SiteContentType(
+[ContentType(
     GUID = "09854019-91A5-4B93-8623-17F038346001",
+    GroupName = Globals.GroupNames.Default,
     AvailableInEditMode = false)] // Should not be created and added to content areas by editors, the SiteLogotypeBlock is only used as a property type
 [SiteImageUrl]
 public class SiteLogotypeBlock : SiteBlockData

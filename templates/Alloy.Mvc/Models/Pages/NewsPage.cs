@@ -10,7 +10,9 @@ namespace Alloy.Mvc._1.Models.Pages;
 /// <summary>
 /// Presents a news section including a list of the most recent articles on the site
 /// </summary>
-[SiteContentType(GUID = "638D8271-5CA3-4C72-BABC-3E8779233263")]
+[ContentType(
+    GUID = "638D8271-5CA3-4C72-BABC-3E8779233263",
+    GroupName = Globals.GroupNames.Default)]
 [SiteImageUrl]
 public class NewsPage : StandardPage
 {
