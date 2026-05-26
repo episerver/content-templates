@@ -23,7 +23,11 @@
         @if (Model != null && Model.HeroImage != null && !ContentReference.IsNullOrEmpty(Model.HeroImage))
         {
             var mediaUrl = Url.ContentUrl(Model.HeroImage);
-            var isVideo = mediaUrl?.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase) ?? false;
+            var mediaPath = mediaUrl != null ? new Uri(mediaUrl, UriKind.RelativeOrAbsolute).IsAbsoluteUri
+                ? new Uri(mediaUrl).AbsolutePath
+                : mediaUrl.Split('?')[0].Split(',')[0]
+                : null;
+            var isVideo = mediaPath?.EndsWith(".mp4", StringComparison.OrdinalIgnoreCase) ?? false;
 
             if (isVideo)
             {
