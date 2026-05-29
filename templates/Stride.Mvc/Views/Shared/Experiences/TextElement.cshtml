@@ -1,6 +1,18 @@
 @model Stride.Mvc._1.Models.Elements.TextElement
 
+@{
+    ViewData.TryGetCompositionRenderingNode(out var renderingNode);
+    var alignment = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("alignment", out var alignVal)) ? alignVal : "left";
+
+    var alignClass = alignment switch
+    {
+        "center" => "text-center mx-auto",
+        "right" => "text-right",
+        _ => ""
+    };
+}
+
 @if (Model != null && !string.IsNullOrEmpty(Model.Text))
 {
-    <p class="text-lg leading-relaxed" epi-property="Text">@Model.Text</p>
+    <p class="text-lg leading-relaxed mt-5 max-w-2xl @alignClass" epi-property="Text">@Model.Text</p>
 }

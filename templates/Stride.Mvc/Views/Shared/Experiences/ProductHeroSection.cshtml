@@ -1,0 +1,40 @@
+@model Stride.Mvc._1.Models.Sections.ProductHeroSection
+
+<section class="p-0">
+    <div class="bg-cover bg-center bg-no-repeat overflow-hidden relative"
+         style="@(Model?.BackgroundImage != null && !ContentReference.IsNullOrEmpty(Model.BackgroundImage) ? $"background-image: url({Url.ContentUrl(Model.BackgroundImage)})" : "")">
+        <div class="absolute bg-background2/40 inset-0 pointer-events-none bg-gradient-to-t from-background2 via-transparent to-transparent"></div>
+        <epi-grid class="min-h-[50vh] relative z-10 container mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center py-50">
+            @if (!string.IsNullOrEmpty(Model?.BadgeLabel))
+            {
+                <div class="mb-6">
+                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground/60">
+                        <i data-lucide="@Model.BadgeIcon" class="w-3.5 h-3.5"></i>
+                        Stride @Model.BadgeLabel
+                    </span>
+                </div>
+            }
+            <epi-row>
+                <epi-column class="max-w-4xl mx-auto">
+                    <epi-component class="w-full">
+                        <epi-styles>
+                            <epi-style name="level">
+                                <epi-style-map value="h1" class="" />
+                                <epi-style-map value="h2" class="" />
+                                <epi-style-map value="h3" class="" />
+                                <epi-style-map value="h4" class="" />
+                                <epi-style-map value="h5" class="" />
+                                <epi-style-map value="h6" class="" />
+                            </epi-style>
+                            <epi-style name="alignment">
+                                <epi-style-map value="left" class="" />
+                                <epi-style-map value="center" class="" />
+                                <epi-style-map value="right" class="" />
+                            </epi-style>
+                        </epi-styles>
+                    </epi-component>
+                </epi-column>
+            </epi-row>
+        </epi-grid>
+    </div>
+</section>

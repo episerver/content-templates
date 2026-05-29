@@ -3,17 +3,27 @@
 @{
     ViewData.TryGetCompositionRenderingNode(out var renderingNode);
     var level = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("level", out var levelVal)) ? levelVal : "h2";
+    var alignment = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("alignment", out var alignVal)) ? alignVal : "left";
+
+    var alignClass = alignment switch
+    {
+        "center" => "text-center mx-auto",
+        "right" => "text-right",
+        _ => ""
+    };
 
     var classes = level switch
     {
-        "h1" => "text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-tight",
-        "h2" => "text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight leading-tight",
-        "h3" => "text-3xl lg:text-4xl font-bold text-slate-900 leading-snug",
-        "h4" => "text-2xl lg:text-3xl font-semibold text-slate-900 leading-snug",
-        "h5" => "text-lg lg:text-xl font-semibold text-slate-600 leading-relaxed",
-        "h6" => "text-base lg:text-lg font-medium text-slate-500 leading-relaxed",
-        _ => "text-4xl font-bold text-slate-900"
+        "h1" => "text-5xl md:text-7xl font-bold tracking-tight mb-6",
+        "h2" => "text-4xl md:text-6xl font-bold tracking-tight mb-4",
+        "h3" => "text-2xl md:text-2xl font-bold tracking-tight mb-4",
+        "h4" => "text-xl md:text-lg font-semibold tracking-tight mb-4",
+        "h5" => "text-md md:text-sm font-semibold mb-4 tracking-tight",
+        "h6" => "text-base md:text-sm font-medium mb-4 tracking-tight",
+        _ => "text-4xl md:text-6xl font-bold tracking-tight mb-4"
     };
+
+    classes = $"{classes} {alignClass}".Trim();
 }
 
 @if (Model != null && !string.IsNullOrEmpty(Model.Text))
