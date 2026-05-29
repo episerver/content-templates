@@ -166,6 +166,13 @@
         ]
     },
     {
+        "Key": "defaultProductHeroSection",
+        "Name": "Default Product Hero",
+        "BaseType": "Section",
+        "IsDefault": true,
+        "Settings": []
+    },
+    {
         "Key": "defaultProductContentSection",
         "Name": "Default Product Content",
         "BaseType": "Section",
@@ -355,6 +362,25 @@
                     {
                         "Key": "h6",
                         "Name": "H6"
+                    }
+                ]
+            },
+            {
+                "Key": "alignment",
+                "Name": "Text Alignment",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "left",
+                        "Name": "Left"
+                    },
+                    {
+                        "Key": "center",
+                        "Name": "Center"
+                    },
+                    {
+                        "Key": "right",
+                        "Name": "Right"
                     }
                 ]
             }
