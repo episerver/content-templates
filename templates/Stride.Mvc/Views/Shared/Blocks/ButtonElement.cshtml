@@ -1,8 +1,8 @@
 @model Stride.Mvc._1.Models.Blocks.ButtonElement
 
 @{
-    var baseClasses = "inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-colors duration-200";
-    var variantClasses = "bg-slate-900 text-white hover:bg-slate-800";
+    var baseClasses = "cursor-pointer box-border rounded-md inline-flex hover:-translate-y-0.5 transition-transform duration-0 hover:duration-100 items-center justify-center px-6 py-3 text-sm font-semibold transition-colors duration-200 uppercase tracking-wider";
+    var variantClasses = "border-2 border-key1 bg-key1 text-foreground-inverted";
 }
 
 @if (!ContentReference.IsNullOrEmpty(Model.Link))

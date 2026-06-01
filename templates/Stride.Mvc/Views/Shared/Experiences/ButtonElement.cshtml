@@ -6,14 +6,14 @@
 
     var variantMap = new Dictionary<string, string>
     {
-        { "primary", "bg-slate-900 text-white hover:bg-slate-800" },
-        { "blue", "bg-key1 text-white hover:bg-key1/90" },
-        { "outline", "bg-transparent text-white border-2 border-white hover:bg-white/10" },
-        { "secondary", "bg-white text-slate-900 border-2 border-slate-900 hover:bg-slate-50" },
-        { "ghost", "bg-transparent text-slate-900 hover:bg-slate-100" }
+        { "primary", "border-2 border-key1 bg-key1 text-foreground-inverted" },
+        { "blue", "border-2 border-key1 bg-key1 text-foreground-inverted" },
+        { "outline", "border-2 border-foreground text-foreground" },
+        { "secondary", "border-2 border-foreground text-foreground" },
+        { "ghost", "bg-transparent text-foreground hover:bg-foreground/5" }
     };
 
-    var baseClasses = "inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-colors duration-200 w-full";
+    var baseClasses = "w-full cursor-pointer box-border rounded-md inline-flex hover:-translate-y-0.5 transition-transform duration-0 hover:duration-100 items-center justify-center px-6 py-3 text-sm font-semibold transition-colors duration-200 uppercase tracking-wider";
 
     variantMap.TryGetValue(variant, out var variantClasses);
     variantClasses ??= variantMap["primary"];
