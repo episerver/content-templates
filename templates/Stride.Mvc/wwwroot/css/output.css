@@ -1893,10 +1893,6 @@ input:where([type='file']):focus {
   margin-top: 2rem;
 }
 
-.mt-auto {
-  margin-top: auto;
-}
-
 .box-border {
   box-sizing: border-box;
 }
@@ -1942,10 +1938,6 @@ input:where([type='file']):focus {
 
 .aspect-\[664\/635\] {
   aspect-ratio: 664/635;
-}
-
-.aspect-square {
-  aspect-ratio: 1 / 1;
 }
 
 .aspect-video {
@@ -2100,10 +2092,6 @@ input:where([type='file']):focus {
   max-width: 56rem;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
-}
-
 .max-w-\[85vw\] {
   max-width: 85vw;
 }
@@ -2126,10 +2114,6 @@ input:where([type='file']):focus {
 
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .grow {
@@ -2934,6 +2918,16 @@ input:where([type='file']):focus {
   letter-spacing: 0.1em;
 }
 
+.\!text-foreground {
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1)) !important;
+}
+
+.\!text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
 .text-background2 {
   --tw-text-opacity: 1;
   color: rgb(242 248 252 / var(--tw-text-opacity, 1));
@@ -3298,6 +3292,10 @@ html {
   scroll-behavior: auto;
 }
 
+html, body {
+  overflow-x: clip;
+}
+
 @media screen and (min-width: 768px) {
   [data-parallax-speed] {
     will-change: transform;
@@ -3580,6 +3578,10 @@ html {
     display: flex;
   }
 
+  .md\:max-h-\[400px\] {
+    max-height: 400px;
+  }
+
   .md\:w-6\/12 {
     width: 50%;
   }
@@ -3709,10 +3711,6 @@ html {
 
   .lg\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .lg\:grid-cols-3 {

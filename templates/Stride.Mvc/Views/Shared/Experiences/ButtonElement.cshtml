@@ -3,6 +3,7 @@
 @{
     ViewData.TryGetCompositionRenderingNode(out var renderingNode);
     var variant = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("variant", out var variantVal)) ? variantVal : "primary";
+    var textColor = (renderingNode?.DisplaySettings != null && renderingNode.DisplaySettings.TryGetValue("textColor", out var textColorVal)) ? textColorVal : "default";
 
     var variantMap = new Dictionary<string, string>
     {
@@ -13,6 +14,13 @@
         { "ghost", "bg-transparent text-foreground hover:bg-foreground/5" }
     };
 
+    var textColorClass = textColor switch
+    {
+        "white" => "!text-white",
+        "dark" => "!text-foreground",
+        _ => ""
+    };
+
     var baseClasses = "w-full cursor-pointer box-border rounded-md inline-flex hover:-translate-y-0.5 transition-transform duration-0 hover:duration-100 items-center justify-center px-6 py-3 text-sm font-semibold transition-colors duration-200 uppercase tracking-wider";
 
     variantMap.TryGetValue(variant, out var variantClasses);
@@ -21,13 +29,13 @@
 
 @if (!ContentReference.IsNullOrEmpty(Model.Link))
 {
-    <a href="@Url.ContentUrl(Model.Link)" class="@baseClasses @variantClasses">
+    <a href="@Url.ContentUrl(Model.Link)" class="@baseClasses @variantClasses @textColorClass">
         <span epi-property="Text">@Model.Text</span>
     </a>
 }
 else
 {
-    <button type="button" class="@baseClasses @variantClasses">
+    <button type="button" class="@baseClasses @variantClasses @textColorClass">
         <span epi-property="Text">@Model.Text</span>
     </button>
 }

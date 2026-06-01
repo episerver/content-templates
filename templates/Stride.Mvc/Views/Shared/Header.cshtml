@@ -11,7 +11,7 @@
 }
 
 <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent">
-    <div class="container mx-auto flex items-center justify-between md:py-5 py-6">
+    <div class="container flex items-center justify-between md:py-5 py-6">
         <a href="@Url.ContentUrl(ContentReference.StartPage)" title="Stride">
             <img src="~/gfx/logotype.png" alt="Stride" class="h-5" />
         </a>
@@ -28,7 +28,7 @@
                 }
             </nav>
 
-            <div class="flex items-center gap-4 translate-y-0.5">
+            <div class="flex items-center gap-4">
                 <button onclick="window.openSearch && window.openSearch()" class="p-1 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Search (Ctrl+K)">
                     <i data-lucide="search" class="w-4 h-4"></i>
                 </button>

@@ -470,6 +470,25 @@
                         "Name": "Third (1/3)"
                     }
                 ]
+            },
+            {
+                "Key": "textColor",
+                "Name": "Text Color",
+                "Editor": "select",
+                "Choices": [
+                    {
+                        "Key": "default",
+                        "Name": "Default (from variant)"
+                    },
+                    {
+                        "Key": "white",
+                        "Name": "White"
+                    },
+                    {
+                        "Key": "dark",
+                        "Name": "Dark"
+                    }
+                ]
             }
         ]
     }
