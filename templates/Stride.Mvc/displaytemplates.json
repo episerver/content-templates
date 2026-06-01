@@ -454,6 +454,10 @@
                 "Editor": "select",
                 "Choices": [
                     {
+                        "Key": "auto",
+                        "Name": "Auto (fit content)"
+                    },
+                    {
                         "Key": "full",
                         "Name": "Full width"
                     },
