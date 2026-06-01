@@ -38,12 +38,12 @@
 
     @if (Model != null && (!string.IsNullOrEmpty(Model.SectionLabel) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
     {
-        <div class="container mx-auto px-6 mb-6">
+        <div class="container mb-6">
             @if (layoutFormat == "split")
             {
                 @* Layout A: heading left, description right, image below *@
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                    <div class="space-y-6">
+                <div class="md:flex gap-6 items-start">
+                    <div class="basis-0 grow space-y-6">
                         @if (!string.IsNullOrEmpty(Model.SectionLabel))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative">
@@ -66,7 +66,7 @@
                         }
                     </div>
 
-                    <div class="flex flex-col">
+                    <div class="basis-0 grow flex flex-col">
                         @if (!string.IsNullOrEmpty(Model.Description))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 md:block hidden"></div>
@@ -122,11 +122,11 @@
 
                     @if (hasImage)
                     {
-                        <div class="basis-0 grow scroll-fade-up"
+                        <div class="basis-0 grow md:max-h-[400px] overflow-hidden scroll-fade-up"
                              style="-webkit-mask-image: linear-gradient(#000 40%, transparent 75%);">
                             <img src="@Url.ContentUrl(Model.Image)"
                                  alt=""
-                                 class="object-cover object-top aspect-square"
+                                 class="object-cover object-top w-full"
                                  epi-property="Image" />
                         </div>
                     }
@@ -139,7 +139,7 @@
         </div>
     }
 
-    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start @(hasImage && layoutFormat == "aside" ? "md:pt-4" : "md:pt-14") pt-6">
+    <epi-row class="container md:flex-row flex flex-col gap-6 md:items-stretch items-start @(hasImage && layoutFormat == "aside" ? "md:pt-4" : "md:pt-14") pt-6">
         <epi-styles>
             <epi-style name="spacing">
                 <epi-style-map value="none" class="gap-0" />

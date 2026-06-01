@@ -1,39 +1,37 @@
 @model PuffElement
 
-<div class="border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-colors h-full group">
+<div class="h-full group">
     @if (Model.Image != null && !ContentReference.IsNullOrEmpty(Model.Image))
     {
-        <div class="aspect-video overflow-hidden">
+        <div class="relative aspect-video rounded-lg overflow-hidden mb-4">
             <img src="@Url.ContentUrl(Model.Image)"
                  alt="@Model.Title"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 class="w-full h-full object-cover transition-transform group-hover:scale-105"
                  epi-property="Image" />
         </div>
     }
 
-    <div class="p-6 flex flex-col">
-        @if (!string.IsNullOrEmpty(Model.Title))
-        {
-            <h3 class="text-xl font-bold mb-3 leading-tight" epi-property="Title">@Model.Title</h3>
-        }
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <h3 class="text-2xl font-bold tracking-tight mb-2" epi-property="Title">@Model.Title</h3>
+    }
 
-        @if (Model.Description != null)
-        {
-            <div class="text-foreground/60 leading-relaxed mb-4 flex-grow" epi-property="Description">
-                @Html.PropertyFor(x => x.Description)
-            </div>
-        }
+    @if (Model.Description != null)
+    {
+        <div class="text-sm leading-relaxed text-foreground mt-4" epi-property="Description">
+            @Html.PropertyFor(x => x.Description)
+        </div>
+    }
 
-        @if (!ContentReference.IsNullOrEmpty(Model.Link))
-        {
-            <div class="mt-auto">
-                <a href="@Url.ContentUrl(Model.Link)"
-                   class="inline-flex items-center gap-2 text-key1 hover:text-key1/80 font-semibold transition-colors group-hover:gap-3 duration-200"
-                   epi-property="Link">
-                    Learn more
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-        }
-    </div>
+    @if (!ContentReference.IsNullOrEmpty(Model.Link))
+    {
+        <div class="mt-4">
+            <a href="@Url.ContentUrl(Model.Link)"
+               class="inline-flex items-center gap-2 text-key1 hover:text-key1/80 font-semibold transition-colors group-hover:gap-3 duration-200"
+               epi-property="Link">
+                Learn more
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    }
 </div>

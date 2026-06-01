@@ -21,11 +21,11 @@
 
     @if (Model != null && (!string.IsNullOrEmpty(Model.Eyebrow) || !string.IsNullOrEmpty(Model.Title) || !string.IsNullOrEmpty(Model.Description)))
     {
-        <div class="container mx-auto px-6 mb-6">
+        <div class="container mb-6">
             @if (layoutFormat == "split")
             {
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                    <div>
+                <div class="md:flex gap-6 items-start">
+                    <div class="basis-0 grow">
                         @if (!string.IsNullOrEmpty(Model.Eyebrow))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 relative">
@@ -45,7 +45,7 @@
                         }
                     </div>
 
-                    <div class="flex flex-col">
+                    <div class="basis-0 grow flex flex-col">
                         @if (!string.IsNullOrEmpty(Model.Description))
                         {
                             <div class="h-9 text-xs uppercase font-bold tracking-wide border-b-4 border-foreground mb-6 md:block hidden"></div>
@@ -88,7 +88,7 @@
         </div>
     }
 
-    <epi-row class="container mx-auto px-6 md:flex-row flex flex-col gap-6 md:items-stretch items-start md:pt-14 pt-6">
+    <epi-row class="container md:flex-row flex flex-col gap-6 md:items-stretch items-start md:pt-14 pt-6">
         <epi-styles>
             <epi-style name="spacing">
                 <epi-style-map value="none" class="gap-0" />

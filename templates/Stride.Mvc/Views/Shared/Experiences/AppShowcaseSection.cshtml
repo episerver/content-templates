@@ -32,7 +32,7 @@
     @* Section header — stacked layout (number, heading, description in one column) *@
     @if (Model != null && (!string.IsNullOrEmpty(Model.SectionLabel) || !string.IsNullOrEmpty(Model.Heading) || !string.IsNullOrEmpty(Model.Description)))
     {
-        <div class="container mx-auto px-6 mb-6">
+        <div class="container mb-6">
             <div class="md:flex gap-6 items-start">
                 <div class="basis-0 grow">
                     @if (!string.IsNullOrEmpty(Model.SectionLabel))

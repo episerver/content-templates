@@ -54,18 +54,9 @@
     @* Decorative grid background *@
     @await Html.PartialAsync("_DecoGrid")
 
-    @if (isExperience)
-    {
-        <div class="pb-20">
-            @RenderBody()
-        </div>
-    }
-    else
-    {
-        <div class="container mx-auto px-4 max-w-7xl py-8">
-            @RenderBody()
-        </div>
-    }
+    <div class="@(isExperience ? "pb-20" : "")">
+        @RenderBody()
+    </div>
 
     @if (!Model.Layout.HideFooter)
     {

@@ -363,6 +363,10 @@ html {
   scroll-behavior: auto;
 }
 
+html, body {
+  overflow-x: clip;
+}
+
 @media screen and (min-width: 768px) {
   [data-parallax-speed] {
     will-change: transform;
