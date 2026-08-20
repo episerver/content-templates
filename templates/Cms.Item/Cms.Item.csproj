@@ -6,6 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EPiServer.CMS" Version="13.0.2" />
+    <PackageReference Include="EPiServer.CMS" Version="13.1.0" />
   </ItemGroup>
 </Project>
