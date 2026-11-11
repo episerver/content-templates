@@ -13,7 +13,7 @@
     <File Path=".github/workflows/release.yml" />
   </Folder>
   <Folder Name="/global/">
-    <File Path=".editorConfig" />
+    <File Path=".editorconfig" />
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />
     <File Path="global.json" />
