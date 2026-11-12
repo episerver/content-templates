@@ -4,24 +4,32 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
   build_test_pack:
     name: Build, test & pack
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       buildConfiguration: release
+      DOTNET_NOLOGO: 1
     steps:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
       - name: Restore
         run: dotnet restore
       - name: Build
-        run: dotnet build --no-restore --configuration $env:buildConfiguration
+        run: dotnet build --no-restore --configuration "$buildConfiguration"
       - name: Test
-        run: dotnet test --no-build --configuration $env:buildConfiguration
+        run: dotnet test --no-build --configuration "$buildConfiguration"
       - name: Pack
-        run: dotnet pack --no-build --configuration $env:buildConfiguration
+        run: dotnet pack --no-build --configuration "$buildConfiguration"
       - name: Archive artifacts
         uses: actions/upload-artifact@v6
         with:
@@ -32,11 +40,23 @@ jobs:
   publish:
     name: Publish
     needs: build_test_pack
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # required to request the OIDC token for NuGet Trusted Publishing
+    env:
+      DOTNET_NOLOGO: 1
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v8
         with:
           name: packages
+      - name: NuGet login (OIDC → temporary API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
       - name: Publish packages
-        run: dotnet nuget push *.nupkg --source 'nuget.org' --skip-duplicate -k ${{ secrets.NugetAuthToken }}
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: dotnet nuget push ./*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key "$NUGET_API_KEY"
